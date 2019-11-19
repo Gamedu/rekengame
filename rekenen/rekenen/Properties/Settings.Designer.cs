@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RekenGame.Properties
+namespace rekenen.Properties
 {
 
 
