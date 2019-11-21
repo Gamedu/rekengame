@@ -70,7 +70,10 @@ namespace rekenen
             {
                 MultiplyEquation(rnd);
             }
-
+            else if (rbDivide.Checked)
+            {
+                DivideEquation(rnd);
+            }
 
         }
         //Maal som\\
@@ -142,6 +145,39 @@ namespace rekenen
                 lblEquation.Text = Convert.ToString(a) + " + " + Convert.ToString(b);
                 tbAnswer.Clear();
             }
+            catch (Exception)
+            {
+                tbAnswer.Clear();
+                MessageBox.Show("Voer een getal in.");
+            }
+        }
+        //Delen
+        private void DivideEquation(Random rnd)
+        {
+            a = rnd.Next(25, 50);
+            b = rnd.Next(1, 25);
+            while (a % b != 0)
+            {
+                a = rnd.Next(25, 50);
+                b = rnd.Next(1, 25);
+            }
+            lblEquation.Text = Convert.ToString(a) + " / " + Convert.ToString(b);
+            try
+            {
+                if (Convert.ToInt32(tbAnswer.Text) == a / b)
+                {
+                    score++;
+                }
+                else
+                {
+                    score--;
+                }
+                tbScore.Text = Convert.ToString(score);
+               
+                
+                tbAnswer.Clear();
+            }
+            
             catch (Exception)
             {
                 tbAnswer.Clear();
