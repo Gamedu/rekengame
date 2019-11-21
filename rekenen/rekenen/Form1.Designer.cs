@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tbGroup = new System.Windows.Forms.TextBox();
-            this.btnStart = new System.Windows.Forms.Button();
+            this.btnGroup = new System.Windows.Forms.Button();
             this.rbPlus = new System.Windows.Forms.RadioButton();
             this.rbMinus = new System.Windows.Forms.RadioButton();
             this.rbMultiply = new System.Windows.Forms.RadioButton();
@@ -57,16 +57,16 @@
             this.tbGroup.Size = new System.Drawing.Size(100, 20);
             this.tbGroup.TabIndex = 0;
             // 
-            // btnStart
+            // btnGroup
             // 
-            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(112, 19);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(125, 23);
-            this.btnStart.TabIndex = 1;
-            this.btnStart.Text = "Go";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
+            this.btnGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGroup.Location = new System.Drawing.Point(112, 16);
+            this.btnGroup.Name = "btnGroup";
+            this.btnGroup.Size = new System.Drawing.Size(343, 23);
+            this.btnGroup.TabIndex = 1;
+            this.btnGroup.Text = "Go";
+            this.btnGroup.UseVisualStyleBackColor = true;
+            this.btnGroup.Click += new System.EventHandler(this.BtnGroup_Click);
             // 
             // rbPlus
             // 
@@ -79,48 +79,52 @@
             this.rbPlus.TabStop = true;
             this.rbPlus.Text = "+";
             this.rbPlus.UseVisualStyleBackColor = true;
+            this.rbPlus.Click += new System.EventHandler(this.RbPlus_Click);
             // 
             // rbMinus
             // 
             this.rbMinus.AutoSize = true;
             this.rbMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMinus.Location = new System.Drawing.Point(20, 92);
+            this.rbMinus.Location = new System.Drawing.Point(6, 92);
             this.rbMinus.Name = "rbMinus";
             this.rbMinus.Size = new System.Drawing.Size(63, 67);
             this.rbMinus.TabIndex = 3;
             this.rbMinus.TabStop = true;
             this.rbMinus.Text = "-";
             this.rbMinus.UseVisualStyleBackColor = true;
+            this.rbMinus.Click += new System.EventHandler(this.RbMinus_Click);
             // 
             // rbMultiply
             // 
             this.rbMultiply.AutoSize = true;
             this.rbMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMultiply.Location = new System.Drawing.Point(17, 165);
+            this.rbMultiply.Location = new System.Drawing.Point(6, 165);
             this.rbMultiply.Name = "rbMultiply";
-            this.rbMultiply.Size = new System.Drawing.Size(66, 67);
+            this.rbMultiply.Size = new System.Drawing.Size(72, 67);
             this.rbMultiply.TabIndex = 4;
             this.rbMultiply.TabStop = true;
-            this.rbMultiply.Text = "*";
+            this.rbMultiply.Text = "x";
             this.rbMultiply.UseVisualStyleBackColor = true;
+            this.rbMultiply.Click += new System.EventHandler(this.RbMultiply_Click);
             // 
             // rbDivide
             // 
             this.rbDivide.AutoSize = true;
             this.rbDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDivide.Location = new System.Drawing.Point(20, 238);
+            this.rbDivide.Location = new System.Drawing.Point(6, 238);
             this.rbDivide.Name = "rbDivide";
             this.rbDivide.Size = new System.Drawing.Size(60, 67);
             this.rbDivide.TabIndex = 5;
             this.rbDivide.TabStop = true;
-            this.rbDivide.Text = "/";
+            this.rbDivide.Text = ":";
             this.rbDivide.UseVisualStyleBackColor = true;
+            this.rbDivide.Click += new System.EventHandler(this.RbDivide_Click);
             // 
             // rbTest
             // 
             this.rbTest.AutoSize = true;
             this.rbTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTest.Location = new System.Drawing.Point(17, 311);
+            this.rbTest.Location = new System.Drawing.Point(6, 311);
             this.rbTest.Name = "rbTest";
             this.rbTest.Size = new System.Drawing.Size(180, 67);
             this.rbTest.TabIndex = 6;
@@ -137,7 +141,7 @@
             this.groupBox1.Controls.Add(this.rbDivide);
             this.groupBox1.Location = new System.Drawing.Point(18, 67);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(199, 376);
+            this.groupBox1.Size = new System.Drawing.Size(204, 391);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Instellingen";
@@ -145,10 +149,10 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tbGroup);
-            this.groupBox2.Controls.Add(this.btnStart);
+            this.groupBox2.Controls.Add(this.btnGroup);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(449, 49);
+            this.groupBox2.Size = new System.Drawing.Size(468, 49);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Klas";
@@ -159,9 +163,9 @@
             this.groupBox3.Controls.Add(this.tbAnswer);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.lblEquation);
-            this.groupBox3.Location = new System.Drawing.Point(321, 109);
+            this.groupBox3.Location = new System.Drawing.Point(228, 67);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(482, 422);
+            this.groupBox3.Size = new System.Drawing.Size(252, 171);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Sommen";
@@ -169,27 +173,27 @@
             // btnNewEquation
             // 
             this.btnNewEquation.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewEquation.Location = new System.Drawing.Point(152, 212);
+            this.btnNewEquation.Location = new System.Drawing.Point(6, 108);
             this.btnNewEquation.Name = "btnNewEquation";
             this.btnNewEquation.Size = new System.Drawing.Size(233, 51);
             this.btnNewEquation.TabIndex = 3;
-            this.btnNewEquation.Text = "Start";
+            this.btnNewEquation.Text = "Controleer";
             this.btnNewEquation.UseVisualStyleBackColor = true;
             this.btnNewEquation.Click += new System.EventHandler(this.BtnNewEquation_Click);
             // 
             // tbAnswer
             // 
             this.tbAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAnswer.Location = new System.Drawing.Point(152, 159);
+            this.tbAnswer.Location = new System.Drawing.Point(152, 63);
             this.tbAnswer.Name = "tbAnswer";
-            this.tbAnswer.Size = new System.Drawing.Size(100, 38);
+            this.tbAnswer.Size = new System.Drawing.Size(87, 38);
             this.tbAnswer.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 159);
+            this.label1.Location = new System.Drawing.Point(9, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 31);
             this.label1.TabIndex = 1;
@@ -207,19 +211,19 @@
             // 
             // tbScore
             // 
-            this.tbScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 65F);
+            this.tbScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F);
             this.tbScore.Location = new System.Drawing.Point(6, 19);
             this.tbScore.Multiline = true;
             this.tbScore.Name = "tbScore";
-            this.tbScore.Size = new System.Drawing.Size(188, 98);
+            this.tbScore.Size = new System.Drawing.Size(233, 182);
             this.tbScore.TabIndex = 3;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.tbScore);
-            this.groupBox4.Location = new System.Drawing.Point(879, 414);
+            this.groupBox4.Location = new System.Drawing.Point(228, 244);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(200, 123);
+            this.groupBox4.Size = new System.Drawing.Size(252, 214);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Score";
@@ -235,7 +239,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -251,7 +254,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox tbGroup;
-        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnGroup;
         private System.Windows.Forms.RadioButton rbPlus;
         private System.Windows.Forms.RadioButton rbMinus;
         private System.Windows.Forms.RadioButton rbMultiply;

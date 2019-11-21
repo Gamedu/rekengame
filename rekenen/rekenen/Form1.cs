@@ -5,14 +5,24 @@ namespace rekenen
 {
     public partial class Form1 : Form
     {
+        Random rnd = new Random();
         public Form1()
         {
             InitializeComponent();
         }
         //Wanneer je op de klas go button drukt\\
-        private void BtnStart_Click(object sender, EventArgs e)
+        private void BtnGroup_Click(object sender, EventArgs e)
         {
-            Test(Int32.Parse(tbGroup.Text));
+            try
+            {
+                Test(Int32.Parse(tbGroup.Text));
+            }
+            catch (Exception)
+            {
+
+                tbGroup.Clear();
+                MessageBox.Show("Voer een getal in.");
+            }
         }
 
         public void Test(int groep)
@@ -49,13 +59,13 @@ namespace rekenen
         {
             btnNewEquation.Text = "Controleer";
             Som();
+            tbScore.Enabled = false;
         }
 
         int score = 0;
 
         public void Som()
         {
-            Random rnd = new Random();
             if (rbPlus.Checked)
             {
                 PlusEquation(rnd);
@@ -92,7 +102,7 @@ namespace rekenen
                 tbScore.Text = Convert.ToString(score);
                 a = rnd.Next(10);
                 b = rnd.Next(10);
-                lblEquation.Text = Convert.ToString(a) + " * " + Convert.ToString(b);
+                lblEquation.Text = Convert.ToString(a) + " x " + Convert.ToString(b);
                 tbAnswer.Clear();
             }
             catch (Exception)
@@ -115,7 +125,7 @@ namespace rekenen
                     score--;
                 }
                 tbScore.Text = Convert.ToString(score);
-                a = rnd.Next(25,50);
+                a = rnd.Next(25, 50);
                 b = rnd.Next(25);
                 lblEquation.Text = Convert.ToString(a) + " - " + Convert.ToString(b);
                 tbAnswer.Clear();
@@ -126,7 +136,7 @@ namespace rekenen
                 MessageBox.Show("Voer een getal in.");
             }
         }
-        //PLus som\\
+        //Plus som\\
         private void PlusEquation(Random rnd)
         {
             try
@@ -151,17 +161,17 @@ namespace rekenen
                 MessageBox.Show("Voer een getal in.");
             }
         }
-        //Delen
+        //Deel som\\
         private void DivideEquation(Random rnd)
         {
             a = rnd.Next(25, 50);
             b = rnd.Next(1, 25);
             while (a % b != 0)
             {
-                a = rnd.Next(25, 50);
-                b = rnd.Next(1, 25);
+                a = rnd.Next(10, 25);
+                b = rnd.Next(1, 10);
             }
-            lblEquation.Text = Convert.ToString(a) + " / " + Convert.ToString(b);
+            lblEquation.Text = Convert.ToString(a) + " : " + Convert.ToString(b);
             try
             {
                 if (Convert.ToInt32(tbAnswer.Text) == a / b)
@@ -173,11 +183,11 @@ namespace rekenen
                     score--;
                 }
                 tbScore.Text = Convert.ToString(score);
-               
-                
+
+
                 tbAnswer.Clear();
             }
-            
+
             catch (Exception)
             {
                 tbAnswer.Clear();
@@ -185,9 +195,47 @@ namespace rekenen
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void RbPlus_Click(object sender, EventArgs e)
         {
-            tbAnswer.Text = Convert.ToString(0);
+            int a = rnd.Next(1, 50);
+            int b = rnd.Next(1, 50);
+            lblEquation.Text = Convert.ToString(a) + " + " + Convert.ToString(b);
+            tbAnswer.Clear();
+            tbScore.Clear();
+        }
+
+        private void RbMinus_Click(object sender, EventArgs e)
+        {
+            int a = rnd.Next(25, 50);
+            int b = rnd.Next(1, 25);
+
+            lblEquation.Text = Convert.ToString(a) + " - " + Convert.ToString(b);
+            tbAnswer.Clear();
+            tbScore.Clear();
+        }
+
+        private void RbMultiply_Click(object sender, EventArgs e)
+        {
+            int a = rnd.Next(1, 5);
+            int b = rnd.Next(1, 5);
+
+            lblEquation.Text = Convert.ToString(a) + " x " + Convert.ToString(b);
+            tbAnswer.Clear();
+            tbScore.Clear();
+        }
+
+        private void RbDivide_Click(object sender, EventArgs e)
+        {
+            int a = rnd.Next(10, 25);
+            int b = rnd.Next(1, 10);
+            while (a % b != 0)
+            {
+                a = rnd.Next(10, 25);
+                b = rnd.Next(1, 10);
+            }
+            lblEquation.Text = Convert.ToString(a) + " : " + Convert.ToString(b);
+            tbAnswer.Clear();
+            tbScore.Clear();
         }
     }
 }
