@@ -39,7 +39,7 @@
             this.tbAnswer = new System.Windows.Forms.TextBox();
             this.lblEquation = new System.Windows.Forms.Label();
             this.tbScore = new System.Windows.Forms.TextBox();
-            this.rbTest = new System.Windows.Forms.RadioButton();
+            this.btnExam = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbGroup
@@ -53,7 +53,7 @@
             // btnGroup
             // 
             this.btnGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGroup.Location = new System.Drawing.Point(276, 112);
+            this.btnGroup.Location = new System.Drawing.Point(259, 100);
             this.btnGroup.Name = "btnGroup";
             this.btnGroup.Size = new System.Drawing.Size(343, 23);
             this.btnGroup.TabIndex = 1;
@@ -121,9 +121,9 @@
             // btnNewEquation
             // 
             this.btnNewEquation.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewEquation.Location = new System.Drawing.Point(276, 352);
+            this.btnNewEquation.Location = new System.Drawing.Point(331, 352);
             this.btnNewEquation.Name = "btnNewEquation";
-            this.btnNewEquation.Size = new System.Drawing.Size(233, 51);
+            this.btnNewEquation.Size = new System.Drawing.Size(184, 44);
             this.btnNewEquation.TabIndex = 3;
             this.btnNewEquation.Text = "Controleer";
             this.btnNewEquation.UseVisualStyleBackColor = true;
@@ -132,16 +132,17 @@
             // tbAnswer
             // 
             this.tbAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAnswer.Location = new System.Drawing.Point(457, 308);
+            this.tbAnswer.Location = new System.Drawing.Point(331, 317);
+            this.tbAnswer.Multiline = true;
             this.tbAnswer.Name = "tbAnswer";
-            this.tbAnswer.Size = new System.Drawing.Size(87, 38);
+            this.tbAnswer.Size = new System.Drawing.Size(364, 29);
             this.tbAnswer.TabIndex = 2;
             // 
             // lblEquation
             // 
             this.lblEquation.AutoSize = true;
             this.lblEquation.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEquation.Location = new System.Drawing.Point(450, 264);
+            this.lblEquation.Location = new System.Drawing.Point(440, 275);
             this.lblEquation.Name = "lblEquation";
             this.lblEquation.Size = new System.Drawing.Size(140, 39);
             this.lblEquation.TabIndex = 0;
@@ -153,20 +154,18 @@
             this.tbScore.Location = new System.Drawing.Point(408, 456);
             this.tbScore.Multiline = true;
             this.tbScore.Name = "tbScore";
-            this.tbScore.Size = new System.Drawing.Size(221, 100);
+            this.tbScore.Size = new System.Drawing.Size(221, 73);
             this.tbScore.TabIndex = 3;
             // 
-            // rbTest
+            // btnExam
             // 
-            this.rbTest.AutoSize = true;
-            this.rbTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTest.Location = new System.Drawing.Point(515, 352);
-            this.rbTest.Name = "rbTest";
-            this.rbTest.Size = new System.Drawing.Size(180, 67);
-            this.rbTest.TabIndex = 6;
-            this.rbTest.TabStop = true;
-            this.rbTest.Text = "Toets";
-            this.rbTest.UseVisualStyleBackColor = true;
+            this.btnExam.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExam.Location = new System.Drawing.Point(521, 352);
+            this.btnExam.Name = "btnExam";
+            this.btnExam.Size = new System.Drawing.Size(174, 44);
+            this.btnExam.TabIndex = 6;
+            this.btnExam.Text = "Toets";
+            this.btnExam.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -174,13 +173,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1018, 539);
+            this.ClientSize = new System.Drawing.Size(1011, 541);
+            this.Controls.Add(this.btnExam);
             this.Controls.Add(this.tbScore);
             this.Controls.Add(this.btnNewEquation);
             this.Controls.Add(this.btnGroup);
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.tbGroup);
-            this.Controls.Add(this.rbTest);
             this.Controls.Add(this.lblEquation);
             this.Controls.Add(this.rbMinus);
             this.Controls.Add(this.rbDivide);
@@ -205,7 +204,7 @@
         private System.Windows.Forms.Label lblEquation;
         private System.Windows.Forms.TextBox tbScore;
         private System.Windows.Forms.Button btnNewEquation;
-        private System.Windows.Forms.RadioButton rbTest;
+        private System.Windows.Forms.Button btnExam;
     }
 }
 
