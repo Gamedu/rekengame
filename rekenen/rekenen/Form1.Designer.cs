@@ -40,12 +40,12 @@
             this.lblEquation = new System.Windows.Forms.Label();
             this.tbScore = new System.Windows.Forms.TextBox();
             this.btnExam = new System.Windows.Forms.Button();
-            this.btnStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbGroup
             // 
-            this.tbGroup.Location = new System.Drawing.Point(391, 46);
+            this.tbGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGroup.Location = new System.Drawing.Point(383, 46);
             this.tbGroup.Multiline = true;
             this.tbGroup.Name = "tbGroup";
             this.tbGroup.Size = new System.Drawing.Size(65, 48);
@@ -53,12 +53,12 @@
             // 
             // btnGroup
             // 
-            this.btnGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGroup.Location = new System.Drawing.Point(259, 100);
+            this.btnGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGroup.Location = new System.Drawing.Point(322, 136);
             this.btnGroup.Name = "btnGroup";
-            this.btnGroup.Size = new System.Drawing.Size(343, 23);
+            this.btnGroup.Size = new System.Drawing.Size(387, 106);
             this.btnGroup.TabIndex = 1;
-            this.btnGroup.Text = "Go";
+            this.btnGroup.Text = "Start";
             this.btnGroup.UseVisualStyleBackColor = true;
             this.btnGroup.Click += new System.EventHandler(this.BtnGroup_Click);
             // 
@@ -132,7 +132,7 @@
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAnswer.Location = new System.Drawing.Point(331, 317);
             this.tbAnswer.Multiline = true;
             this.tbAnswer.Name = "tbAnswer";
@@ -142,7 +142,9 @@
             // lblEquation
             // 
             this.lblEquation.AutoSize = true;
+            this.lblEquation.BackColor = System.Drawing.Color.Transparent;
             this.lblEquation.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEquation.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblEquation.Location = new System.Drawing.Point(440, 275);
             this.lblEquation.Name = "lblEquation";
             this.lblEquation.Size = new System.Drawing.Size(140, 39);
@@ -168,16 +170,6 @@
             this.btnExam.Text = "Toets";
             this.btnExam.UseVisualStyleBackColor = true;
             // 
-            // btnStart
-            // 
-            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(322, 138);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(385, 103);
-            this.btnStart.TabIndex = 7;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,7 +177,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1011, 541);
-            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.btnExam);
             this.Controls.Add(this.tbScore);
             this.Controls.Add(this.btnNewEquation);
@@ -217,7 +208,6 @@
         private System.Windows.Forms.TextBox tbScore;
         private System.Windows.Forms.Button btnNewEquation;
         private System.Windows.Forms.Button btnExam;
-        private System.Windows.Forms.Button btnStart;
     }
 }
 
