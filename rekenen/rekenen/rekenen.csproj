@@ -79,5 +79,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\Button_Green_Divide.jpg" />
+    <Content Include="Images\Button_Green_Minus.jpg" />
+    <Content Include="Images\Button_Green_Multiply.jpg" />
+    <Content Include="Images\Button_Green_Plus.jpg" />
+    <Content Include="Images\Button_Red_Divide.jpg" />
+    <Content Include="Images\Button_Red_Minus.jpg" />
+    <Content Include="Images\Button_Red_Multiply.jpg" />
+    <Content Include="Images\Button_Red_Plus.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace rekenen
@@ -24,6 +25,8 @@ namespace rekenen
                 MessageBox.Show("Voer een getal in.");
             }
         }
+
+
 
         public void Test(int groep)
         {
@@ -51,6 +54,8 @@ namespace rekenen
                     break;
             }
         }
+
+
 
         int a = 0;
         int b = 0;
