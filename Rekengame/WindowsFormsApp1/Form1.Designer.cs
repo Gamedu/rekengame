@@ -28,13 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.rbPlus = new System.Windows.Forms.RadioButton();
+            this.rbMinus = new System.Windows.Forms.RadioButton();
+            this.rbMultiply = new System.Windows.Forms.RadioButton();
+            this.rbDivide = new System.Windows.Forms.RadioButton();
+            this.RBGroup = new System.Windows.Forms.GroupBox();
+            this.RBGroup.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // rbPlus
+            // 
+            this.rbPlus.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbPlus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbPlus.BackgroundImage")));
+            this.rbPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rbPlus.Location = new System.Drawing.Point(6, 19);
+            this.rbPlus.Name = "rbPlus";
+            this.rbPlus.Size = new System.Drawing.Size(75, 75);
+            this.rbPlus.TabIndex = 0;
+            this.rbPlus.TabStop = true;
+            this.rbPlus.Tag = "Plus";
+            this.rbPlus.UseVisualStyleBackColor = true;
+            this.rbPlus.Click += new System.EventHandler(this.RadioBtn_Click);
+            // 
+            // rbMinus
+            // 
+            this.rbMinus.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbMinus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbMinus.BackgroundImage")));
+            this.rbMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rbMinus.Location = new System.Drawing.Point(6, 100);
+            this.rbMinus.Name = "rbMinus";
+            this.rbMinus.Size = new System.Drawing.Size(75, 75);
+            this.rbMinus.TabIndex = 1;
+            this.rbMinus.TabStop = true;
+            this.rbMinus.Tag = "Minus";
+            this.rbMinus.UseVisualStyleBackColor = true;
+            this.rbMinus.Click += new System.EventHandler(this.RadioBtn_Click);
+            // 
+            // rbMultiply
+            // 
+            this.rbMultiply.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbMultiply.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbMultiply.BackgroundImage")));
+            this.rbMultiply.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rbMultiply.Location = new System.Drawing.Point(6, 181);
+            this.rbMultiply.Name = "rbMultiply";
+            this.rbMultiply.Size = new System.Drawing.Size(75, 75);
+            this.rbMultiply.TabIndex = 2;
+            this.rbMultiply.TabStop = true;
+            this.rbMultiply.Tag = "Multiply";
+            this.rbMultiply.UseVisualStyleBackColor = true;
+            this.rbMultiply.Click += new System.EventHandler(this.RadioBtn_Click);
+            // 
+            // rbDivide
+            // 
+            this.rbDivide.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbDivide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbDivide.BackgroundImage")));
+            this.rbDivide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rbDivide.Location = new System.Drawing.Point(6, 262);
+            this.rbDivide.Name = "rbDivide";
+            this.rbDivide.Size = new System.Drawing.Size(75, 75);
+            this.rbDivide.TabIndex = 3;
+            this.rbDivide.TabStop = true;
+            this.rbDivide.Tag = "Divide";
+            this.rbDivide.UseVisualStyleBackColor = true;
+            this.rbDivide.Click += new System.EventHandler(this.RadioBtn_Click);
+            // 
+            // RBGroup
+            // 
+            this.RBGroup.Controls.Add(this.rbPlus);
+            this.RBGroup.Controls.Add(this.rbDivide);
+            this.RBGroup.Controls.Add(this.rbMinus);
+            this.RBGroup.Controls.Add(this.rbMultiply);
+            this.RBGroup.Location = new System.Drawing.Point(12, 31);
+            this.RBGroup.Name = "RBGroup";
+            this.RBGroup.Size = new System.Drawing.Size(91, 341);
+            this.RBGroup.TabIndex = 4;
+            this.RBGroup.TabStop = false;
+            this.RBGroup.Text = "groupBox1";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.RBGroup);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.RBGroup.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.RadioButton rbPlus;
+        private System.Windows.Forms.RadioButton rbMinus;
+        private System.Windows.Forms.RadioButton rbMultiply;
+        private System.Windows.Forms.RadioButton rbDivide;
+        private System.Windows.Forms.GroupBox RBGroup;
     }
 }
 
