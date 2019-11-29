@@ -140,7 +140,6 @@
             this.tbAnswer.Name = "tbAnswer";
             this.tbAnswer.Size = new System.Drawing.Size(100, 20);
             this.tbAnswer.TabIndex = 9;
-            this.tbAnswer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbAnswer_KeyUp_1);
             // 
             // Form1
             // 
