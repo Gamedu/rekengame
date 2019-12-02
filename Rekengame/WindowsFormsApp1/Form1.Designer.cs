@@ -41,7 +41,7 @@
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.lblScore = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnScore = new System.Windows.Forms.Button();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,7 +87,7 @@
             this.rbMultiply.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rbMultiply.FlatAppearance.BorderSize = 0;
             this.rbMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMultiply.Location = new System.Drawing.Point(3, 165);
+            this.rbMultiply.Location = new System.Drawing.Point(84, 3);
             this.rbMultiply.Name = "rbMultiply";
             this.rbMultiply.Size = new System.Drawing.Size(75, 75);
             this.rbMultiply.TabIndex = 2;
@@ -104,7 +104,7 @@
             this.rbDivide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rbDivide.FlatAppearance.BorderSize = 0;
             this.rbDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDivide.Location = new System.Drawing.Point(3, 246);
+            this.rbDivide.Location = new System.Drawing.Point(84, 84);
             this.rbDivide.Name = "rbDivide";
             this.rbDivide.Size = new System.Drawing.Size(75, 75);
             this.rbDivide.TabIndex = 3;
@@ -117,15 +117,17 @@
             // lblSum
             // 
             this.lblSum.AutoSize = true;
-            this.lblSum.Location = new System.Drawing.Point(127, 23);
+            this.lblSum.BackColor = System.Drawing.Color.Transparent;
+            this.lblSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSum.Location = new System.Drawing.Point(181, 15);
             this.lblSum.Name = "lblSum";
-            this.lblSum.Size = new System.Drawing.Size(28, 13);
+            this.lblSum.Size = new System.Drawing.Size(69, 31);
             this.lblSum.TabIndex = 5;
             this.lblSum.Text = "Som";
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Location = new System.Drawing.Point(100, 61);
+            this.tbAnswer.Location = new System.Drawing.Point(179, 53);
             this.tbAnswer.Name = "tbAnswer";
             this.tbAnswer.Size = new System.Drawing.Size(100, 20);
             this.tbAnswer.TabIndex = 9;
@@ -138,21 +140,23 @@
             this.pnlButtons.Controls.Add(this.rbMinus);
             this.pnlButtons.Location = new System.Drawing.Point(12, 12);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(82, 325);
+            this.pnlButtons.Size = new System.Drawing.Size(163, 162);
             this.pnlButtons.TabIndex = 10;
             // 
             // lblScore
             // 
             this.lblScore.AutoSize = true;
-            this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.Location = new System.Drawing.Point(337, 23);
+            this.lblScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.ForeColor = System.Drawing.Color.Indigo;
+            this.lblScore.Location = new System.Drawing.Point(345, 117);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(0, 31);
+            this.lblScore.Size = new System.Drawing.Size(0, 63);
             this.lblScore.TabIndex = 4;
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(113, 87);
+            this.btnStart.Location = new System.Drawing.Point(181, 79);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 12;
@@ -160,22 +164,24 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
-            // label1
+            // btnScore
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(238, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 31);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Score:";
+            this.btnScore.BackColor = System.Drawing.Color.Transparent;
+            this.btnScore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScore.Enabled = false;
+            this.btnScore.Location = new System.Drawing.Point(181, 108);
+            this.btnScore.Name = "btnScore";
+            this.btnScore.Size = new System.Drawing.Size(148, 72);
+            this.btnScore.TabIndex = 13;
+            this.btnScore.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(852, 508);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnScore);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.pnlButtons);
@@ -203,7 +209,7 @@
         private System.Windows.Forms.Panel pnlButtons;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnScore;
     }
 }
 

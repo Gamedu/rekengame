@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
+            btnScore.BackgroundImage = Image.FromFile(@"Images\Score.png");
         }
 
         //Click event for all the radio buttons in the panel\\
@@ -29,33 +31,76 @@ namespace WindowsFormsApp1
                 var btnColour = rb == radioButtonSender ? "Green" : "Red";
                 rb.BackgroundImage = Image.FromFile($@"Images\Button_{btnColour}_{(string)rb.Tag}.jpg");
 
-                GenerateNumbers(1, 50, 1, 50 );
-                lblSum.Text = $"{randomNumberOne} " + radioButtonSender.Text + $" {randomNumberTwo}";
+                lblSum.Text = "Klik op start!";
+                score = 0;
+                lblScore.Text = Convert.ToString(score);
             }
         }
 
         //Click event for the start button\\
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            if (btnStart.Text == "Controleer")
+            if (rbPlus.Checked)
             {
-                if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne + randomNumberTwo)
+                if (btnStart.Text == "Controleer")
                 {
-                    score++;
-                    lblScore.Text = Convert.ToString(score);
+                    if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne + randomNumberTwo)
+                    {
+                        score++;
+                        lblScore.Text = Convert.ToString(score);
+                    }
                 }
-                else
-                {
-                    score--;
-                    lblScore.Text = Convert.ToString(score);
-                }
+                GenerateNumbers(1, 10, 1, 10);
+                lblSum.Text = "Wat is " + $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " ?";
             }
 
-            tbAnswer.Clear();
-            btnStart.Text = "Controleer";
+            else if (rbMinus.Checked)
+            {
+                if (btnStart.Text == "Controleer")
+                {
+                    if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne - randomNumberTwo)
+                    {
+                        score++;
+                        lblScore.Text = Convert.ToString(score);
+                    }
+                }
+                GenerateNumbers(5, 10, 1, 5);
+                lblSum.Text = "Wat is " + $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " ?";
+            }
 
-            GenerateNumbers(1, 10, 1, 10);
-            lblSum.Text = $"Wat is {randomNumberOne} + {randomNumberTwo}";
+            else if (rbMultiply.Checked)
+            {
+                if (btnStart.Text == "Controleer")
+                {
+                    if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne * randomNumberTwo)
+                    {
+                        score++;
+                        lblScore.Text = Convert.ToString(score);
+                    }
+                }
+                GenerateNumbers(1, 5, 1, 5);
+                lblSum.Text = "Wat is " + $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " ?";
+            }
+
+            else
+            {
+                if (btnStart.Text == "Controleer")
+                {
+                    if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne / randomNumberTwo)
+                    {
+                        score++;
+                        lblScore.Text = Convert.ToString(score);
+                    }
+                }
+                GenerateNumbers(1, 10, 1, 5);
+                while (randomNumberOne % randomNumberTwo != 0)
+                {
+                    GenerateNumbers(5, 10, 1, 5);
+                }
+                lblSum.Text = "Wat is " + $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " ?";
+            }
+            btnStart.Text = "Controleer";
+            tbAnswer.Clear();
         }
 
         //Method for creating two random numbers that are temporarily stored as two variables\\
