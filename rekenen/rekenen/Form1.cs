@@ -166,7 +166,7 @@ namespace rekenen
                 MessageBox.Show("Voer een getal in.");
             }
         }
-        //Deel som\\
+        //Deel sommen\\
         private void DivideEquation(Random rnd)
         {
             a = rnd.Next(25, 50);
