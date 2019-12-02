@@ -93,7 +93,7 @@
             this.rbMultiply.TabIndex = 2;
             this.rbMultiply.TabStop = true;
             this.rbMultiply.Tag = "Multiply";
-            this.rbMultiply.Text = "*";
+            this.rbMultiply.Text = "x";
             this.rbMultiply.UseVisualStyleBackColor = true;
             this.rbMultiply.Click += new System.EventHandler(this.RadioBtn_Click);
             // 
@@ -110,7 +110,7 @@
             this.rbDivide.TabIndex = 3;
             this.rbDivide.TabStop = true;
             this.rbDivide.Tag = "Divide";
-            this.rbDivide.Text = "/";
+            this.rbDivide.Text = ":";
             this.rbDivide.UseVisualStyleBackColor = true;
             this.rbDivide.Click += new System.EventHandler(this.RadioBtn_Click);
             // 

@@ -28,8 +28,9 @@ namespace WindowsFormsApp1
             {
                 var btnColour = rb == radioButtonSender ? "Green" : "Red";
                 rb.BackgroundImage = Image.FromFile($@"Images\Button_{btnColour}_{(string)rb.Tag}.jpg");
+
                 GenerateNumbers(1, 50, 1, 50 );
-                lblSum.Text = "{randomNumberOne}" + rb.Text + "{randomNumberTwo}";
+                lblSum.Text = $"{randomNumberOne} " + radioButtonSender.Text + $" {randomNumberTwo}";
             }
         }
 
