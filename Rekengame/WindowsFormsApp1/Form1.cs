@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
             {
                 if (btnStart.Text == "Controleer")
                 {
-                    if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne + randomNumberTwo)
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
                     {
                         score++;
                         lblScore.Text = Convert.ToString(score);
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             {
                 if (btnStart.Text == "Controleer")
                 {
-                    if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne - randomNumberTwo)
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
                     {
                         score++;
                         lblScore.Text = Convert.ToString(score);
@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
             {
                 if (btnStart.Text == "Controleer")
                 {
-                    if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne * randomNumberTwo)
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
                     {
                         score++;
                         lblScore.Text = Convert.ToString(score);
@@ -86,7 +86,7 @@ namespace WindowsFormsApp1
             {
                 if (btnStart.Text == "Controleer")
                 {
-                    if (Convert.ToInt32(tbAnswer.Text) == randomNumberOne / randomNumberTwo)
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
                     {
                         score++;
                         lblScore.Text = Convert.ToString(score);
@@ -109,5 +109,17 @@ namespace WindowsFormsApp1
             randomNumberOne = rnd.Next(minValueOne, maxValueOne);
             randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
         }
+
+        private void tbAnswer_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnStart.PerformClick();
+            }
+        }
     }
 }
+// Laat juiste antwoord zien?
+// Score vervangen door punten?
+// Getal x groter of kleiner dan y?
+// Geen dubbele sommen
