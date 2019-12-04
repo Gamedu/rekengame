@@ -12,12 +12,12 @@ namespace WindowsFormsApp1
         private int randomNumberOne;
         private int randomNumberTwo;
         private int score;
+        private int time;
 
         public Form1()
         {
             InitializeComponent();
             this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
-            btnScore.BackgroundImage = Image.FromFile(@"Images\Points.png");
         }
 
         //Click event for all the radio buttons in the panel\\
@@ -60,6 +60,9 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
+                    GameCountDown.Enabled = true;
+                    EndGame.Enabled = true;
+                    time = 10;
                     GenerateNumbers(1, 20, 1, 20);
                     lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
                 }
@@ -85,6 +88,9 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
+                    GameCountDown.Enabled = true;
+                    EndGame.Enabled = true;
+                    time = 10;
                     GenerateNumbers(10, 20, 1, 10);
                     lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
                 }
@@ -112,6 +118,9 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
+                    GameCountDown.Enabled = true;
+                    EndGame.Enabled = true;
+                    time = 10;
                     GenerateNumbers(1, 10, 1, 10);
                     lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
                 }
@@ -143,6 +152,9 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
+                    GameCountDown.Enabled = true;
+                    EndGame.Enabled = true;
+                    time = 10;
                     GenerateNumbers(5, 10, 1, 5);
                     while (randomNumberOne % randomNumberTwo != 0)
                     {
@@ -197,6 +209,22 @@ namespace WindowsFormsApp1
                 lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " = " +
                               $"{randomNumberOne / randomNumberTwo}";
             }
+        }
+
+        private void GameCountDown_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = Convert.ToString(time);
+            time--;
+
+        }
+
+        private void EndGame_Tick(object sender, EventArgs e)
+        {
+            GameCountDown.Enabled = false;
+            EndGame.Enabled = false;
+            time = 10;
+            MessageBox.Show($"De tijd is om. \n Je hebt {score} punten gehaald.");
+
         }
     }
 }

@@ -36,13 +36,14 @@
             this.rbDivide = new System.Windows.Forms.RadioButton();
             this.lblSum = new System.Windows.Forms.Label();
             this.GameCountDown = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.EndGame = new System.Windows.Forms.Timer(this.components);
             this.tbAnswer = new System.Windows.Forms.TextBox();
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.lblScore = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
-            this.btnScore = new System.Windows.Forms.Button();
             this.btnAnswer = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,6 +127,16 @@
             this.lblSum.TabIndex = 5;
             this.lblSum.Text = "Kies een rekensom";
             // 
+            // GameCountDown
+            // 
+            this.GameCountDown.Interval = 1000;
+            this.GameCountDown.Tick += new System.EventHandler(this.GameCountDown_Tick);
+            // 
+            // EndGame
+            // 
+            this.EndGame.Interval = 12000;
+            this.EndGame.Tick += new System.EventHandler(this.EndGame_Tick);
+            // 
             // tbAnswer
             // 
             this.tbAnswer.Location = new System.Drawing.Point(177, 46);
@@ -151,7 +162,7 @@
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore.ForeColor = System.Drawing.Color.Purple;
-            this.lblScore.Location = new System.Drawing.Point(345, 117);
+            this.lblScore.Location = new System.Drawing.Point(381, 96);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(0, 63);
             this.lblScore.TabIndex = 4;
@@ -167,21 +178,10 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
-            // btnScore
-            // 
-            this.btnScore.BackColor = System.Drawing.Color.Transparent;
-            this.btnScore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnScore.Enabled = false;
-            this.btnScore.Location = new System.Drawing.Point(177, 102);
-            this.btnScore.Name = "btnScore";
-            this.btnScore.Size = new System.Drawing.Size(152, 72);
-            this.btnScore.TabIndex = 13;
-            this.btnScore.UseVisualStyleBackColor = false;
-            // 
             // btnAnswer
             // 
             this.btnAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswer.Location = new System.Drawing.Point(254, 74);
+            this.btnAnswer.Location = new System.Drawing.Point(254, 72);
             this.btnAnswer.Name = "btnAnswer";
             this.btnAnswer.Size = new System.Drawing.Size(75, 23);
             this.btnAnswer.TabIndex = 14;
@@ -189,14 +189,38 @@
             this.btnAnswer.UseVisualStyleBackColor = true;
             this.btnAnswer.Click += new System.EventHandler(this.BtnAnswer_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Purple;
+            this.label1.Location = new System.Drawing.Point(177, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(198, 63);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Punten";
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(57, 177);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(73, 39);
+            this.lblTime.TabIndex = 16;
+            this.lblTime.Text = "Tijd";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(852, 508);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAnswer);
-            this.Controls.Add(this.btnScore);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.pnlButtons);
@@ -219,13 +243,14 @@
         private System.Windows.Forms.RadioButton rbDivide;
         private System.Windows.Forms.Label lblSum;
         private System.Windows.Forms.Timer GameCountDown;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer EndGame;
         private System.Windows.Forms.TextBox tbAnswer;
         private System.Windows.Forms.Panel pnlButtons;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Button btnScore;
         private System.Windows.Forms.Button btnAnswer;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTime;
     }
 }
 
