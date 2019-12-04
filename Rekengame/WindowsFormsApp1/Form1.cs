@@ -60,8 +60,9 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
+                    tbAnswer.Clear();
+                    lblTime.Visible = true;
                     GameCountDown.Enabled = true;
-                    EndGame.Enabled = true;
                     time = 10;
                     GenerateNumbers(1, 20, 1, 20);
                     lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
@@ -88,8 +89,9 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
+                    tbAnswer.Clear();
+                    lblTime.Visible = true;
                     GameCountDown.Enabled = true;
-                    EndGame.Enabled = true;
                     time = 10;
                     GenerateNumbers(10, 20, 1, 10);
                     lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
@@ -118,8 +120,9 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
+                    tbAnswer.Clear();
+                    lblTime.Visible = true;
                     GameCountDown.Enabled = true;
-                    EndGame.Enabled = true;
                     time = 10;
                     GenerateNumbers(1, 10, 1, 10);
                     lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
@@ -152,8 +155,9 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
+                    tbAnswer.Clear();
+                    lblTime.Visible = true;
                     GameCountDown.Enabled = true;
-                    EndGame.Enabled = true;
                     time = 10;
                     GenerateNumbers(5, 10, 1, 5);
                     while (randomNumberOne % randomNumberTwo != 0)
@@ -213,19 +217,17 @@ namespace WindowsFormsApp1
 
         private void GameCountDown_Tick(object sender, EventArgs e)
         {
-            lblTime.Text = Convert.ToString(time);
             time--;
-
+            lblTime.Text = Convert.ToString(time);
+            if (time == 0)
+            {
+                GameCountDown.Enabled = false;
+                MessageBox.Show($"De tijd is om. \n Je score is {score}");
+                lblTime.Visible = false;
+                rbPlus.PerformClick();
+            }
         }
 
-        private void EndGame_Tick(object sender, EventArgs e)
-        {
-            GameCountDown.Enabled = false;
-            EndGame.Enabled = false;
-            time = 10;
-            MessageBox.Show($"De tijd is om. \n Je hebt {score} punten gehaald.");
-
-        }
     }
 }
 // Getal x groter of kleiner dan y?

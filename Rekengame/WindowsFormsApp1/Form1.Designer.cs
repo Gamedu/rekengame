@@ -36,7 +36,6 @@
             this.rbDivide = new System.Windows.Forms.RadioButton();
             this.lblSum = new System.Windows.Forms.Label();
             this.GameCountDown = new System.Windows.Forms.Timer(this.components);
-            this.EndGame = new System.Windows.Forms.Timer(this.components);
             this.tbAnswer = new System.Windows.Forms.TextBox();
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.lblScore = new System.Windows.Forms.Label();
@@ -132,11 +131,6 @@
             this.GameCountDown.Interval = 1000;
             this.GameCountDown.Tick += new System.EventHandler(this.GameCountDown_Tick);
             // 
-            // EndGame
-            // 
-            this.EndGame.Interval = 12000;
-            this.EndGame.Tick += new System.EventHandler(this.EndGame_Tick);
-            // 
             // tbAnswer
             // 
             this.tbAnswer.Location = new System.Drawing.Point(177, 46);
@@ -206,11 +200,12 @@
             this.lblTime.AutoSize = true;
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(57, 177);
+            this.lblTime.Location = new System.Drawing.Point(335, 46);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(73, 39);
+            this.lblTime.Size = new System.Drawing.Size(55, 39);
             this.lblTime.TabIndex = 16;
-            this.lblTime.Text = "Tijd";
+            this.lblTime.Text = "10";
+            this.lblTime.Visible = false;
             // 
             // Form1
             // 
@@ -243,7 +238,6 @@
         private System.Windows.Forms.RadioButton rbDivide;
         private System.Windows.Forms.Label lblSum;
         private System.Windows.Forms.Timer GameCountDown;
-        private System.Windows.Forms.Timer EndGame;
         private System.Windows.Forms.TextBox tbAnswer;
         private System.Windows.Forms.Panel pnlButtons;
         private System.Windows.Forms.Label lblScore;
