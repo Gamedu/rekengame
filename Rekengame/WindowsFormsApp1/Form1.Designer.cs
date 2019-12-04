@@ -42,6 +42,7 @@
             this.lblScore = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnScore = new System.Windows.Forms.Button();
+            this.btnAnswer = new System.Windows.Forms.Button();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,20 +119,20 @@
             // 
             this.lblSum.AutoSize = true;
             this.lblSum.BackColor = System.Drawing.Color.Transparent;
-            this.lblSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSum.Location = new System.Drawing.Point(181, 15);
+            this.lblSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSum.Location = new System.Drawing.Point(181, 12);
             this.lblSum.Name = "lblSum";
-            this.lblSum.Size = new System.Drawing.Size(69, 31);
+            this.lblSum.Size = new System.Drawing.Size(262, 31);
             this.lblSum.TabIndex = 5;
-            this.lblSum.Text = "Som";
+            this.lblSum.Text = "Kies een rekensom";
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Location = new System.Drawing.Point(179, 53);
+            this.tbAnswer.Location = new System.Drawing.Point(177, 46);
             this.tbAnswer.Name = "tbAnswer";
-            this.tbAnswer.Size = new System.Drawing.Size(100, 20);
+            this.tbAnswer.Size = new System.Drawing.Size(152, 20);
             this.tbAnswer.TabIndex = 9;
-            this.tbAnswer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbAnswer_KeyUp);
+            this.tbAnswer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbAnswer_KeyDown);
             // 
             // pnlButtons
             // 
@@ -149,7 +150,7 @@
             this.lblScore.AutoSize = true;
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.ForeColor = System.Drawing.Color.Indigo;
+            this.lblScore.ForeColor = System.Drawing.Color.Purple;
             this.lblScore.Location = new System.Drawing.Point(345, 117);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(0, 63);
@@ -157,9 +158,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(181, 79);
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(177, 72);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(71, 24);
             this.btnStart.TabIndex = 12;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -170,11 +172,22 @@
             this.btnScore.BackColor = System.Drawing.Color.Transparent;
             this.btnScore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnScore.Enabled = false;
-            this.btnScore.Location = new System.Drawing.Point(181, 108);
+            this.btnScore.Location = new System.Drawing.Point(177, 102);
             this.btnScore.Name = "btnScore";
-            this.btnScore.Size = new System.Drawing.Size(148, 72);
+            this.btnScore.Size = new System.Drawing.Size(152, 72);
             this.btnScore.TabIndex = 13;
             this.btnScore.UseVisualStyleBackColor = false;
+            // 
+            // btnAnswer
+            // 
+            this.btnAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnswer.Location = new System.Drawing.Point(254, 74);
+            this.btnAnswer.Name = "btnAnswer";
+            this.btnAnswer.Size = new System.Drawing.Size(75, 23);
+            this.btnAnswer.TabIndex = 14;
+            this.btnAnswer.Text = "Antwoord";
+            this.btnAnswer.UseVisualStyleBackColor = true;
+            this.btnAnswer.Click += new System.EventHandler(this.BtnAnswer_Click);
             // 
             // Form1
             // 
@@ -182,6 +195,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(852, 508);
+            this.Controls.Add(this.btnAnswer);
             this.Controls.Add(this.btnScore);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblScore);
@@ -211,6 +225,7 @@
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnScore;
+        private System.Windows.Forms.Button btnAnswer;
     }
 }
 

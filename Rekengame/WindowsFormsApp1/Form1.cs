@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
-            btnScore.BackgroundImage = Image.FromFile(@"Images\Score.png");
+            btnScore.BackgroundImage = Image.FromFile(@"Images\Points.png");
         }
 
         //Click event for all the radio buttons in the panel\\
@@ -48,10 +48,21 @@ namespace WindowsFormsApp1
                     {
                         score++;
                         lblScore.Text = Convert.ToString(score);
+                        GenerateNumbers(1, 20, 1, 20);
+                        lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
+                    }
+                    else
+                    {
+                        score--;
+                        lblScore.Text = Convert.ToString(score);
                     }
                 }
-                GenerateNumbers(1, 10, 1, 10);
-                lblSum.Text = "Wat is " + $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " ?";
+
+                if (btnStart.Text == "Start")
+                {
+                    GenerateNumbers(1, 20, 1, 20);
+                    lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
+                }
             }
 
             else if (rbMinus.Checked)
@@ -62,10 +73,23 @@ namespace WindowsFormsApp1
                     {
                         score++;
                         lblScore.Text = Convert.ToString(score);
+                        GenerateNumbers(10, 20, 1, 10);
+                        lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
+                    }
+                    else
+                    {
+                        score--;
+                        lblScore.Text = Convert.ToString(score);
                     }
                 }
-                GenerateNumbers(5, 10, 1, 5);
-                lblSum.Text = "Wat is " + $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " ?";
+
+                if (btnStart.Text == "Start")
+                {
+                    GenerateNumbers(10, 20, 1, 10);
+                    lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
+                }
+
+
             }
 
             else if (rbMultiply.Checked)
@@ -76,10 +100,23 @@ namespace WindowsFormsApp1
                     {
                         score++;
                         lblScore.Text = Convert.ToString(score);
+                        GenerateNumbers(1, 10, 1, 10);
+                        lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
+                    }
+                    else
+                    {
+                        score--;
+                        lblScore.Text = Convert.ToString(score);
                     }
                 }
-                GenerateNumbers(1, 5, 1, 5);
-                lblSum.Text = "Wat is " + $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " ?";
+
+                if (btnStart.Text == "Start")
+                {
+                    GenerateNumbers(1, 10, 1, 10);
+                    lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
+                }
+
+
             }
 
             else
@@ -90,14 +127,31 @@ namespace WindowsFormsApp1
                     {
                         score++;
                         lblScore.Text = Convert.ToString(score);
+                        GenerateNumbers(5, 10, 1, 5);
+                        while (randomNumberOne % randomNumberTwo != 0)
+                        {
+                            GenerateNumbers(5, 10, 1, 5);
+                        }
+                        lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+                    }
+                    else
+                    {
+                        score--;
+                        lblScore.Text = Convert.ToString(score);
                     }
                 }
-                GenerateNumbers(1, 10, 1, 5);
-                while (randomNumberOne % randomNumberTwo != 0)
+
+                if (btnStart.Text == "Start")
                 {
                     GenerateNumbers(5, 10, 1, 5);
+                    while (randomNumberOne % randomNumberTwo != 0)
+                    {
+                        GenerateNumbers(5, 10, 1, 5);
+                    }
+                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
                 }
-                lblSum.Text = "Wat is " + $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " ?";
+
+
             }
             btnStart.Text = "Controleer";
             tbAnswer.Clear();
@@ -110,16 +164,43 @@ namespace WindowsFormsApp1
             randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
         }
 
-        private void tbAnswer_KeyUp(object sender, KeyEventArgs e)
+        private void TbAnswer_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 btnStart.PerformClick();
             }
         }
+
+        private void BtnAnswer_Click(object sender, EventArgs e)
+        {
+            if (rbPlus.Checked)
+            {
+                lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " = " +
+                              $"{randomNumberOne + randomNumberTwo}";
+            }
+
+            if (rbMinus.Checked)
+            {
+                lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " = " +
+                              $"{randomNumberOne - randomNumberTwo}";
+            }
+
+            if (rbMultiply.Checked)
+            {
+                lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " = " +
+                              $"{randomNumberOne * randomNumberTwo}";
+            }
+
+            if (rbDivide.Checked)
+            {
+                lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " = " +
+                              $"{randomNumberOne / randomNumberTwo}";
+            }
+        }
     }
 }
-// Laat juiste antwoord zien?
-// Score vervangen door punten?
 // Getal x groter of kleiner dan y?
-// Geen dubbele sommen
+// Geen dubbele opgaves
+// Muziek?
+// Timers voor einde van de game
