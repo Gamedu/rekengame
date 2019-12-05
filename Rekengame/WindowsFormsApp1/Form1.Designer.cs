@@ -45,7 +45,11 @@
             this.lblTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tmrControle = new System.Windows.Forms.Timer(this.components);
+            this.pnlUI = new System.Windows.Forms.Panel();
+            this.btnGo = new System.Windows.Forms.Button();
+            this.lblIntro = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
+            this.pnlUI.SuspendLayout();
             this.SuspendLayout();
             // 
             // rbPlus
@@ -140,7 +144,7 @@
             this.lblSum.AutoSize = true;
             this.lblSum.BackColor = System.Drawing.Color.Transparent;
             this.lblSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSum.Location = new System.Drawing.Point(181, 12);
+            this.lblSum.Location = new System.Drawing.Point(3, 3);
             this.lblSum.Name = "lblSum";
             this.lblSum.Size = new System.Drawing.Size(262, 31);
             this.lblSum.TabIndex = 5;
@@ -153,11 +157,10 @@
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Location = new System.Drawing.Point(177, 46);
+            this.tbAnswer.Location = new System.Drawing.Point(3, 37);
             this.tbAnswer.Name = "tbAnswer";
-            this.tbAnswer.Size = new System.Drawing.Size(152, 20);
+            this.tbAnswer.Size = new System.Drawing.Size(104, 20);
             this.tbAnswer.TabIndex = 9;
-            this.tbAnswer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbAnswer_KeyPress);
             // 
             // pnlButtons
             // 
@@ -167,7 +170,7 @@
             this.pnlButtons.Controls.Add(this.rbMultiply);
             this.pnlButtons.Controls.Add(this.rbMinus);
             this.pnlButtons.ForeColor = System.Drawing.Color.Transparent;
-            this.pnlButtons.Location = new System.Drawing.Point(12, 12);
+            this.pnlButtons.Location = new System.Drawing.Point(8, 43);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(163, 162);
             this.pnlButtons.TabIndex = 10;
@@ -178,7 +181,7 @@
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore.ForeColor = System.Drawing.Color.Purple;
-            this.lblScore.Location = new System.Drawing.Point(381, 98);
+            this.lblScore.Location = new System.Drawing.Point(207, 89);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(57, 63);
             this.lblScore.TabIndex = 4;
@@ -186,10 +189,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(334, 46);
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(113, 37);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(104, 49);
+            this.btnStart.Size = new System.Drawing.Size(163, 49);
             this.btnStart.TabIndex = 12;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -198,9 +201,9 @@
             // btnAnswer
             // 
             this.btnAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswer.Location = new System.Drawing.Point(177, 72);
+            this.btnAnswer.Location = new System.Drawing.Point(3, 63);
             this.btnAnswer.Name = "btnAnswer";
-            this.btnAnswer.Size = new System.Drawing.Size(152, 23);
+            this.btnAnswer.Size = new System.Drawing.Size(104, 23);
             this.btnAnswer.TabIndex = 14;
             this.btnAnswer.Text = "Antwoord";
             this.btnAnswer.UseVisualStyleBackColor = true;
@@ -212,7 +215,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Purple;
-            this.label1.Location = new System.Drawing.Point(177, 98);
+            this.label1.Location = new System.Drawing.Point(3, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 63);
             this.label1.TabIndex = 15;
@@ -224,7 +227,7 @@
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.Purple;
-            this.lblTime.Location = new System.Drawing.Point(318, 161);
+            this.lblTime.Location = new System.Drawing.Point(140, 152);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(87, 63);
             this.lblTime.TabIndex = 16;
@@ -237,7 +240,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Purple;
-            this.label2.Location = new System.Drawing.Point(181, 161);
+            this.label2.Location = new System.Drawing.Point(3, 152);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 63);
             this.label2.TabIndex = 17;
@@ -247,6 +250,45 @@
             // 
             this.tmrControle.Enabled = true;
             this.tmrControle.Interval = 10;
+            this.tmrControle.Tick += new System.EventHandler(this.TmrControle_Tick_1);
+            // 
+            // pnlUI
+            // 
+            this.pnlUI.BackColor = System.Drawing.Color.Transparent;
+            this.pnlUI.Controls.Add(this.label1);
+            this.pnlUI.Controls.Add(this.label2);
+            this.pnlUI.Controls.Add(this.lblSum);
+            this.pnlUI.Controls.Add(this.lblTime);
+            this.pnlUI.Controls.Add(this.tbAnswer);
+            this.pnlUI.Controls.Add(this.lblScore);
+            this.pnlUI.Controls.Add(this.btnAnswer);
+            this.pnlUI.Controls.Add(this.btnStart);
+            this.pnlUI.Location = new System.Drawing.Point(177, 43);
+            this.pnlUI.Name = "pnlUI";
+            this.pnlUI.Size = new System.Drawing.Size(279, 220);
+            this.pnlUI.TabIndex = 18;
+            // 
+            // btnGo
+            // 
+            this.btnGo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGo.Location = new System.Drawing.Point(8, 208);
+            this.btnGo.Name = "btnGo";
+            this.btnGo.Size = new System.Drawing.Size(163, 42);
+            this.btnGo.TabIndex = 19;
+            this.btnGo.Text = "Start";
+            this.btnGo.UseVisualStyleBackColor = true;
+            this.btnGo.Click += new System.EventHandler(this.BtnGo_Click);
+            // 
+            // lblIntro
+            // 
+            this.lblIntro.AutoSize = true;
+            this.lblIntro.BackColor = System.Drawing.Color.Transparent;
+            this.lblIntro.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntro.Location = new System.Drawing.Point(2, 9);
+            this.lblIntro.Name = "lblIntro";
+            this.lblIntro.Size = new System.Drawing.Size(435, 31);
+            this.lblIntro.TabIndex = 20;
+            this.lblIntro.Text = "Selecteer een som en klik op \'Start\'";
             // 
             // Form1
             // 
@@ -254,19 +296,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(852, 508);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblTime);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnAnswer);
-            this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.lblIntro);
+            this.Controls.Add(this.btnGo);
+            this.Controls.Add(this.pnlUI);
             this.Controls.Add(this.pnlButtons);
-            this.Controls.Add(this.tbAnswer);
-            this.Controls.Add(this.lblSum);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
             this.Text = "Form1";
             this.pnlButtons.ResumeLayout(false);
+            this.pnlUI.ResumeLayout(false);
+            this.pnlUI.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,6 +328,9 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer tmrControle;
+        private System.Windows.Forms.Panel pnlUI;
+        private System.Windows.Forms.Button btnGo;
+        private System.Windows.Forms.Label lblIntro;
     }
 }
 

@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
+            pnlUI.Visible = false;
         }
 
         //Click event for all the radio buttons in the panel\\
@@ -227,59 +228,72 @@ namespace WindowsFormsApp1
             if (time == 0)
             {
                 GameCountDown.Enabled = false;
-                MessageBox.Show($"De tijd is om. \n Je score is {score}");
                 lblTime.Visible = false;
                 time = 10;
+                lblTime.Text = Convert.ToString(time);
                 rbPlus.Visible = true;
                 rbMinus.Visible = true;
                 rbMultiply.Visible = true;
                 rbDivide.Visible = true;
                 rbPlus.PerformClick();
-                lblSum.Text = "Kies een rekensom.";
                 btnStart.Visible = true;
+                pnlUI.Hide();
+                pnlButtons.Visible = true;
+                lblIntro.Visible = true;
+                btnGo.Visible = true;
+                MessageBox.Show($"De tijd is om. \n Je score is {score}");
+
             }
         }
 
-        private void TbAnswer_KeyPress(object sender, KeyPressEventArgs e)
+        private void BtnGo_Click(object sender, EventArgs e)
         {
+            pnlUI.Visible = true;
+            btnGo.Hide();
+            lblIntro.Hide();
+            pnlButtons.Hide();
+            btnStart.PerformClick();
+            this.ActiveControl = tbAnswer;
+        }
 
-            if (rbPlus.Checked)
+        private void TmrControle_Tick_1(object sender, EventArgs e)
+        {
             {
-                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
+                if (rbPlus.Checked)
                 {
-                    btnStart.PerformClick();
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
+                    {
+                        btnStart.PerformClick();
+                    }
+                }
+
+                if (rbMinus.Checked)
+                {
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
+                    {
+                        btnStart.PerformClick();
+                    }
+                }
+
+                if (rbMultiply.Checked)
+                {
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
+                    {
+                        btnStart.PerformClick();
+                    }
+                }
+
+                if (rbDivide.Checked)
+                {
+                    if (randomNumberOne != 0 && randomNumberTwo != 0)
+                    {
+                        if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
+                        {
+                            btnStart.PerformClick();
+                        }
+                    }
                 }
             }
-
-            if (rbMinus.Checked)
-            {
-                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
-                {
-                    btnStart.PerformClick();
-                }
-            }
-
-            if (rbMultiply.Checked)
-            {
-                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
-                {
-                    btnStart.PerformClick();
-                }
-            }
-
-            if (rbDivide.Checked)
-            {
-                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
-                {
-                    btnStart.PerformClick();
-                }
-            }
-
-            switch ()
-            {
-                
-            }
-
         }
     }
 }
