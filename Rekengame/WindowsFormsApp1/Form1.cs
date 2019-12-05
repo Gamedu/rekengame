@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
         private int randomNumberOne;
         private int randomNumberTwo;
         private int score;
-        private int time;
+        private int time = 10;
 
         public Form1()
         {
@@ -63,9 +63,13 @@ namespace WindowsFormsApp1
                     tbAnswer.Clear();
                     lblTime.Visible = true;
                     GameCountDown.Enabled = true;
-                    time = 10;
                     GenerateNumbers(1, 20, 1, 20);
                     lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
+
+                    rbMinus.Visible = false;
+                    rbMultiply.Visible = false;
+                    rbDivide.Visible = false;
+
                 }
             }
 
@@ -92,9 +96,12 @@ namespace WindowsFormsApp1
                     tbAnswer.Clear();
                     lblTime.Visible = true;
                     GameCountDown.Enabled = true;
-                    time = 10;
                     GenerateNumbers(10, 20, 1, 10);
                     lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
+
+                    rbPlus.Visible = false;
+                    rbMultiply.Visible = false;
+                    rbDivide.Visible = false;
                 }
 
 
@@ -123,9 +130,12 @@ namespace WindowsFormsApp1
                     tbAnswer.Clear();
                     lblTime.Visible = true;
                     GameCountDown.Enabled = true;
-                    time = 10;
                     GenerateNumbers(1, 10, 1, 10);
                     lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
+
+                    rbPlus.Visible = false;
+                    rbMinus.Visible = false;
+                    rbDivide.Visible = false;
                 }
 
 
@@ -158,13 +168,16 @@ namespace WindowsFormsApp1
                     tbAnswer.Clear();
                     lblTime.Visible = true;
                     GameCountDown.Enabled = true;
-                    time = 10;
                     GenerateNumbers(5, 10, 1, 5);
                     while (randomNumberOne % randomNumberTwo != 0)
                     {
                         GenerateNumbers(5, 10, 1, 5);
                     }
                     lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+
+                    rbPlus.Visible = false;
+                    rbMinus.Visible = false;
+                    rbMultiply.Visible = false; ;
                 }
 
 
@@ -224,13 +237,15 @@ namespace WindowsFormsApp1
                 GameCountDown.Enabled = false;
                 MessageBox.Show($"De tijd is om. \n Je score is {score}");
                 lblTime.Visible = false;
+                time = 10;
+                rbPlus.Visible = true;
+                rbMinus.Visible = true;
+                rbMultiply.Visible = true;
+                rbDivide.Visible = true;
                 rbPlus.PerformClick();
+                lblSum.Text = "Kies een rekensom.";
             }
         }
-
     }
 }
-// Getal x groter of kleiner dan y?
-// Geen dubbele opgaves
 // Muziek?
-// Timers voor einde van de game

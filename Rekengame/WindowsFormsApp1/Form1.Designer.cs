@@ -141,10 +141,12 @@
             // 
             // pnlButtons
             // 
+            this.pnlButtons.BackColor = System.Drawing.Color.Transparent;
             this.pnlButtons.Controls.Add(this.rbPlus);
             this.pnlButtons.Controls.Add(this.rbDivide);
             this.pnlButtons.Controls.Add(this.rbMultiply);
             this.pnlButtons.Controls.Add(this.rbMinus);
+            this.pnlButtons.ForeColor = System.Drawing.Color.Transparent;
             this.pnlButtons.Location = new System.Drawing.Point(12, 12);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(163, 162);
