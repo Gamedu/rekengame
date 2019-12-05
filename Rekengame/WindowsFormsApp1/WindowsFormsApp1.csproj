@@ -75,28 +75,28 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Images\Button_Green_Divide.jpg">
+    <Content Include="Images\Button_Green_Divide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Button_Green_Minus.jpg">
+    <Content Include="Images\Button_Green_Minus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Button_Green_Multiply.jpg">
+    <Content Include="Images\Button_Green_Multiply.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Button_Green_Plus.jpg">
+    <Content Include="Images\Button_Green_Plus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Button_Red_Divide.jpg">
+    <Content Include="Images\Button_Red_Divide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Button_Red_Minus.jpg">
+    <Content Include="Images\Button_Red_Minus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Button_Red_Multiply.jpg">
+    <Content Include="Images\Button_Red_Multiply.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Button_Red_Plus.jpg">
+    <Content Include="Images\Button_Red_Plus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Jungle_Kids.jpg">

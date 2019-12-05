@@ -43,6 +43,7 @@
             this.btnAnswer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +102,7 @@
             // rbDivide
             // 
             this.rbDivide.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbDivide.BackColor = System.Drawing.Color.Transparent;
             this.rbDivide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbDivide.BackgroundImage")));
             this.rbDivide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rbDivide.FlatAppearance.BorderSize = 0;
@@ -112,7 +114,7 @@
             this.rbDivide.TabStop = true;
             this.rbDivide.Tag = "Divide";
             this.rbDivide.Text = ":";
-            this.rbDivide.UseVisualStyleBackColor = true;
+            this.rbDivide.UseVisualStyleBackColor = false;
             this.rbDivide.Click += new System.EventHandler(this.RadioBtn_Click);
             // 
             // lblSum
@@ -158,10 +160,11 @@
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore.ForeColor = System.Drawing.Color.Purple;
-            this.lblScore.Location = new System.Drawing.Point(381, 96);
+            this.lblScore.Location = new System.Drawing.Point(381, 98);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(0, 63);
+            this.lblScore.Size = new System.Drawing.Size(57, 63);
             this.lblScore.TabIndex = 4;
+            this.lblScore.Text = "0";
             // 
             // btnStart
             // 
@@ -191,7 +194,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Purple;
-            this.label1.Location = new System.Drawing.Point(177, 96);
+            this.label1.Location = new System.Drawing.Point(177, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 63);
             this.label1.TabIndex = 15;
@@ -201,13 +204,26 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(335, 46);
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.Purple;
+            this.lblTime.Location = new System.Drawing.Point(318, 161);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(55, 39);
+            this.lblTime.Size = new System.Drawing.Size(87, 63);
             this.lblTime.TabIndex = 16;
             this.lblTime.Text = "10";
             this.lblTime.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Purple;
+            this.label2.Location = new System.Drawing.Point(181, 161);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 63);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Tijd:";
             // 
             // Form1
             // 
@@ -215,6 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(852, 508);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAnswer);
@@ -247,6 +264,7 @@
         private System.Windows.Forms.Button btnAnswer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             foreach (var rb in this.pnlButtons.Controls.OfType<RadioButton>())
             {
                 var btnColour = rb == radioButtonSender ? "Green" : "Red";
-                rb.BackgroundImage = Image.FromFile($@"Images\Button_{btnColour}_{(string)rb.Tag}.jpg");
+                rb.BackgroundImage = Image.FromFile($@"Images\Button_{btnColour}_{(string)rb.Tag}.png");
 
                 lblSum.Text = "Klik op start!";
                 score = 0;
