@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tmrControle = new System.Windows.Forms.Timer(this.components);
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,10 @@
             this.rbPlus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbPlus.BackgroundImage")));
             this.rbPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rbPlus.FlatAppearance.BorderSize = 0;
+            this.rbPlus.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.rbPlus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.rbPlus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.rbPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbPlus.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbPlus.Location = new System.Drawing.Point(4, 3);
@@ -71,6 +76,10 @@
             this.rbMinus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbMinus.BackgroundImage")));
             this.rbMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rbMinus.FlatAppearance.BorderSize = 0;
+            this.rbMinus.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.rbMinus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.rbMinus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.rbMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbMinus.Location = new System.Drawing.Point(3, 84);
             this.rbMinus.Name = "rbMinus";
@@ -85,9 +94,14 @@
             // rbMultiply
             // 
             this.rbMultiply.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbMultiply.BackColor = System.Drawing.Color.Transparent;
             this.rbMultiply.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbMultiply.BackgroundImage")));
             this.rbMultiply.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rbMultiply.FlatAppearance.BorderSize = 0;
+            this.rbMultiply.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.rbMultiply.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.rbMultiply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.rbMultiply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbMultiply.Location = new System.Drawing.Point(84, 3);
             this.rbMultiply.Name = "rbMultiply";
@@ -96,7 +110,7 @@
             this.rbMultiply.TabStop = true;
             this.rbMultiply.Tag = "Multiply";
             this.rbMultiply.Text = "x";
-            this.rbMultiply.UseVisualStyleBackColor = true;
+            this.rbMultiply.UseVisualStyleBackColor = false;
             this.rbMultiply.Click += new System.EventHandler(this.RadioBtn_Click);
             // 
             // rbDivide
@@ -106,6 +120,10 @@
             this.rbDivide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rbDivide.BackgroundImage")));
             this.rbDivide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rbDivide.FlatAppearance.BorderSize = 0;
+            this.rbDivide.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.rbDivide.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.rbDivide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.rbDivide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbDivide.Location = new System.Drawing.Point(84, 84);
             this.rbDivide.Name = "rbDivide";
@@ -139,7 +157,7 @@
             this.tbAnswer.Name = "tbAnswer";
             this.tbAnswer.Size = new System.Drawing.Size(152, 20);
             this.tbAnswer.TabIndex = 9;
-            this.tbAnswer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbAnswer_KeyDown);
+            this.tbAnswer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbAnswer_KeyPress);
             // 
             // pnlButtons
             // 
@@ -168,10 +186,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(177, 72);
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(334, 46);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(71, 24);
+            this.btnStart.Size = new System.Drawing.Size(104, 49);
             this.btnStart.TabIndex = 12;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -180,9 +198,9 @@
             // btnAnswer
             // 
             this.btnAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswer.Location = new System.Drawing.Point(254, 72);
+            this.btnAnswer.Location = new System.Drawing.Point(177, 72);
             this.btnAnswer.Name = "btnAnswer";
-            this.btnAnswer.Size = new System.Drawing.Size(75, 23);
+            this.btnAnswer.Size = new System.Drawing.Size(152, 23);
             this.btnAnswer.TabIndex = 14;
             this.btnAnswer.Text = "Antwoord";
             this.btnAnswer.UseVisualStyleBackColor = true;
@@ -225,6 +243,11 @@
             this.label2.TabIndex = 17;
             this.label2.Text = "Tijd:";
             // 
+            // tmrControle
+            // 
+            this.tmrControle.Enabled = true;
+            this.tmrControle.Interval = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,6 +288,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer tmrControle;
     }
 }
 

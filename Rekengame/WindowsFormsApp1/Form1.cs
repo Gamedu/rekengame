@@ -193,14 +193,6 @@ namespace WindowsFormsApp1
             randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
         }
 
-        private void TbAnswer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnStart.PerformClick();
-            }
-        }
-
         private void BtnAnswer_Click(object sender, EventArgs e)
         {
             if (rbPlus.Checked)
@@ -244,7 +236,50 @@ namespace WindowsFormsApp1
                 rbDivide.Visible = true;
                 rbPlus.PerformClick();
                 lblSum.Text = "Kies een rekensom.";
+                btnStart.Visible = true;
             }
+        }
+
+        private void TbAnswer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (rbPlus.Checked)
+            {
+                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
+                {
+                    btnStart.PerformClick();
+                }
+            }
+
+            if (rbMinus.Checked)
+            {
+                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
+                {
+                    btnStart.PerformClick();
+                }
+            }
+
+            if (rbMultiply.Checked)
+            {
+                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
+                {
+                    btnStart.PerformClick();
+                }
+            }
+
+            if (rbDivide.Checked)
+            {
+                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
+                {
+                    btnStart.PerformClick();
+                }
+            }
+
+            switch ()
+            {
+                
+            }
+
         }
     }
 }
