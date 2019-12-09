@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
                     {
+                        ScorePlusOne();
                         AfterFirstClick(1, 10, 1, 10, "+");
                     }
                     else
@@ -57,7 +58,7 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
-                    FirstStartClick(1, 10, 1, 10, "+");
+                    AfterFirstClick(1, 10, 1, 10, "+");
                 }
             }
 
@@ -67,6 +68,7 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
                     {
+                        ScorePlusOne();
                         AfterFirstClick(10, 20, 1, 10, "-");
                     }
                     else
@@ -77,7 +79,7 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
-                    FirstStartClick(10, 20, 1, 10, "-");
+                    AfterFirstClick(10, 20, 1, 10, "-");
                 }
 
 
@@ -89,6 +91,7 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
                     {
+                        ScorePlusOne();
                         AfterFirstClick(1, 10, 1, 10, "x");
                     }
                     else
@@ -100,7 +103,7 @@ namespace WindowsFormsApp1
                 if (btnStart.Text == "Start")
                 {
                     tbAnswer.Clear();
-                    FirstStartClick(1, 10, 1, 10, "x");
+                    AfterFirstClick(1, 10, 1, 10, "x");
                 }
 
 
@@ -112,6 +115,7 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
                     {
+                        ScorePlusOne();
                         AfterFirstClick(5, 10, 1, 5, "+");
                         while (randomNumberOne % randomNumberTwo != 0)
                         {
@@ -127,7 +131,7 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
-                    FirstStartClick(5, 10, 1, 5, "+");
+                    AfterFirstClick(5, 10, 1, 5, "+");
                     while (randomNumberOne % randomNumberTwo != 0)
                     {
                         GenerateNumbers(5, 10, 1, 5);
@@ -141,20 +145,11 @@ namespace WindowsFormsApp1
             tbAnswer.Clear();
         }
 
-
-
-        private void FirstStartClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
+        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
         {
             tbAnswer.Clear();
             lblTime.Visible = true;
             GameCountDown.Enabled = true;
-            GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
-            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
-        }
-
-        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
-        {
-            ScorePlusOne();
             GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
             lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
         }
@@ -280,6 +275,11 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

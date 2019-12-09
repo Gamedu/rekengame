@@ -295,7 +295,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(852, 508);
+            this.ClientSize = new System.Drawing.Size(784, 411);
             this.Controls.Add(this.lblIntro);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.pnlUI);
@@ -303,6 +303,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlButtons.ResumeLayout(false);
             this.pnlUI.ResumeLayout(false);
             this.pnlUI.PerformLayout();
