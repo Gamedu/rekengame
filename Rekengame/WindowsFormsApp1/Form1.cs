@@ -47,30 +47,17 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
                     {
-                        score++;
-                        lblScore.Text = Convert.ToString(score);
-                        GenerateNumbers(1, 20, 1, 20);
-                        lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
+                        AfterFirstClick(1, 10, 1, 10, "+");
                     }
                     else
                     {
-                        score--;
-                        lblScore.Text = Convert.ToString(score);
+                        ScoreMinusOne();
                     }
                 }
 
                 if (btnStart.Text == "Start")
                 {
-                    tbAnswer.Clear();
-                    lblTime.Visible = true;
-                    GameCountDown.Enabled = true;
-                    GenerateNumbers(1, 20, 1, 20);
-                    lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
-
-                    rbMinus.Visible = false;
-                    rbMultiply.Visible = false;
-                    rbDivide.Visible = false;
-
+                    FirstStartClick(1, 10, 1, 10, "+");
                 }
             }
 
@@ -80,29 +67,17 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
                     {
-                        score++;
-                        lblScore.Text = Convert.ToString(score);
-                        GenerateNumbers(10, 20, 1, 10);
-                        lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
+                        AfterFirstClick(10, 20, 1, 10, "-");
                     }
                     else
                     {
-                        score--;
-                        lblScore.Text = Convert.ToString(score);
+                        ScoreMinusOne();
                     }
                 }
 
                 if (btnStart.Text == "Start")
                 {
-                    tbAnswer.Clear();
-                    lblTime.Visible = true;
-                    GameCountDown.Enabled = true;
-                    GenerateNumbers(10, 20, 1, 10);
-                    lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
-
-                    rbPlus.Visible = false;
-                    rbMultiply.Visible = false;
-                    rbDivide.Visible = false;
+                    FirstStartClick(10, 20, 1, 10, "-");
                 }
 
 
@@ -114,29 +89,18 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
                     {
-                        score++;
-                        lblScore.Text = Convert.ToString(score);
-                        GenerateNumbers(1, 10, 1, 10);
-                        lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
+                        AfterFirstClick(1, 10, 1, 10, "x");
                     }
                     else
                     {
-                        score--;
-                        lblScore.Text = Convert.ToString(score);
+                        ScoreMinusOne();
                     }
                 }
 
                 if (btnStart.Text == "Start")
                 {
                     tbAnswer.Clear();
-                    lblTime.Visible = true;
-                    GameCountDown.Enabled = true;
-                    GenerateNumbers(1, 10, 1, 10);
-                    lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
-
-                    rbPlus.Visible = false;
-                    rbMinus.Visible = false;
-                    rbDivide.Visible = false;
+                    FirstStartClick(1, 10, 1, 10, "x");
                 }
 
 
@@ -148,9 +112,7 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
                     {
-                        score++;
-                        lblScore.Text = Convert.ToString(score);
-                        GenerateNumbers(5, 10, 1, 5);
+                        AfterFirstClick(5, 10, 1, 5, "+");
                         while (randomNumberOne % randomNumberTwo != 0)
                         {
                             GenerateNumbers(5, 10, 1, 5);
@@ -159,32 +121,54 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
-                        score--;
-                        lblScore.Text = Convert.ToString(score);
+                        ScoreMinusOne();
                     }
                 }
 
                 if (btnStart.Text == "Start")
                 {
-                    tbAnswer.Clear();
-                    lblTime.Visible = true;
-                    GameCountDown.Enabled = true;
-                    GenerateNumbers(5, 10, 1, 5);
+                    FirstStartClick(5, 10, 1, 5, "+");
                     while (randomNumberOne % randomNumberTwo != 0)
                     {
                         GenerateNumbers(5, 10, 1, 5);
                     }
                     lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-
-                    rbPlus.Visible = false;
-                    rbMinus.Visible = false;
-                    rbMultiply.Visible = false; ;
                 }
 
 
             }
             btnStart.Text = "Controleer";
             tbAnswer.Clear();
+        }
+
+
+
+        private void FirstStartClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
+        {
+            tbAnswer.Clear();
+            lblTime.Visible = true;
+            GameCountDown.Enabled = true;
+            GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
+            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
+        }
+
+        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
+        {
+            ScorePlusOne();
+            GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
+            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
+        }
+
+        private void ScorePlusOne()
+        {
+            score++;
+            lblScore.Text = Convert.ToString(score);
+        }
+
+        private void ScoreMinusOne()
+        {
+            score--;
+            lblScore.Text = Convert.ToString(score);
         }
 
         //Method for creating two random numbers that are temporarily stored as two variables\\
@@ -249,6 +233,8 @@ namespace WindowsFormsApp1
         private void BtnGo_Click(object sender, EventArgs e)
         {
             pnlUI.Visible = true;
+            pnlUI.Top = 10;
+            pnlUI.Left = 10;
             btnGo.Hide();
             lblIntro.Hide();
             pnlButtons.Hide();
@@ -297,4 +283,3 @@ namespace WindowsFormsApp1
         }
     }
 }
-// Muziek?
