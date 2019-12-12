@@ -18,10 +18,10 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
-            pnlUI.Visible = false;
+            ControlUIVisibility(true, false);
         }
 
-        //Click event for all the radio buttons in the panel\\
+        //Click event for all the radio settings in the panel\\
         private void RadioBtn_Click(object sender, EventArgs e)
         {
             btnStart.Text = "Start";
@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
                 rb.BackgroundImage = Image.FromFile($@"Images\Button_{btnColour}_{(string)rb.Tag}.png");
 
                 lblSum.Text = "Klik op start!";
-                score = 0;
+                ResetValues();
                 lblScore.Text = Convert.ToString(score);
             }
         }
@@ -47,12 +47,12 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
                     {
-                        ScorePlusOne();
+                        ScoreUp();
                         AfterFirstClick(1, 10, 1, 10, "+");
                     }
                     else
                     {
-                        ScoreMinusOne();
+                        ScoreDown();
                     }
                 }
 
@@ -68,12 +68,12 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
                     {
-                        ScorePlusOne();
+                        ScoreUp();
                         AfterFirstClick(10, 20, 1, 10, "-");
                     }
                     else
                     {
-                        ScoreMinusOne();
+                        ScoreDown();
                     }
                 }
 
@@ -91,12 +91,12 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
                     {
-                        ScorePlusOne();
+                        ScoreUp();
                         AfterFirstClick(1, 10, 1, 10, "x");
                     }
                     else
                     {
-                        ScoreMinusOne();
+                        ScoreDown();
                     }
                 }
 
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
                 {
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
                     {
-                        ScorePlusOne();
+                        ScoreUp();
                         AfterFirstClick(5, 10, 1, 5, "+");
                         while (randomNumberOne % randomNumberTwo != 0)
                         {
@@ -125,7 +125,7 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
-                        ScoreMinusOne();
+                        ScoreDown();
                     }
                 }
 
@@ -143,6 +143,7 @@ namespace WindowsFormsApp1
             }
             btnStart.Text = "Controleer";
             tbAnswer.Clear();
+            this.ActiveControl = tbAnswer;
         }
 
         private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
@@ -154,17 +155,7 @@ namespace WindowsFormsApp1
             lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
         }
 
-        private void ScorePlusOne()
-        {
-            score++;
-            lblScore.Text = Convert.ToString(score);
-        }
 
-        private void ScoreMinusOne()
-        {
-            score--;
-            lblScore.Text = Convert.ToString(score);
-        }
 
         //Method for creating two random numbers that are temporarily stored as two variables\\
         private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
@@ -207,34 +198,50 @@ namespace WindowsFormsApp1
             if (time == 0)
             {
                 GameCountDown.Enabled = false;
-                lblTime.Visible = false;
-                time = 10;
                 lblTime.Text = Convert.ToString(time);
-                rbPlus.Visible = true;
-                rbMinus.Visible = true;
-                rbMultiply.Visible = true;
-                rbDivide.Visible = true;
-                rbPlus.PerformClick();
-                btnStart.Visible = true;
-                pnlUI.Hide();
-                pnlButtons.Visible = true;
-                lblIntro.Visible = true;
-                btnGo.Visible = true;
+                ControlUIVisibility(true, false);
                 MessageBox.Show($"De tijd is om. \n Je score is {score}");
-
+                rbPlus.PerformClick();
+                ResetValues();
             }
         }
 
         private void BtnGo_Click(object sender, EventArgs e)
         {
-            pnlUI.Visible = true;
-            pnlUI.Top = 10;
-            pnlUI.Left = 10;
-            btnGo.Hide();
-            lblIntro.Hide();
-            pnlButtons.Hide();
-            btnStart.PerformClick();
-            this.ActiveControl = tbAnswer;
+            ControlUIVisibility(false, true);
+            pnlGame.Top = 10;
+            pnlGame.Left = 10;
+        }
+
+
+        //Methode om standaard waarden terug te zetten\\
+        private void ResetValues()
+        {
+            score = 0;
+            time = 10;
+            tbAnswer.Clear();
+        }
+
+
+        //Methode om UI te setten\\
+        private void ControlUIVisibility(bool settings, bool game)
+        {
+            pnlButtons.Visible = settings;
+            pnlGame.Visible = game;
+        }
+
+        //Methode om de score te verhogen\\
+        private void ScoreUp()
+        {
+            score++;
+            lblScore.Text = Convert.ToString(score);
+        }
+
+        //Methode om de score te verlagen\\
+        private void ScoreDown()
+        {
+            score--;
+            lblScore.Text = Convert.ToString(score);
         }
 
         private void TmrControle_Tick_1(object sender, EventArgs e)
@@ -276,10 +283,6 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+
