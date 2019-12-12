@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using org.mariuszgromada.math.mxparser;
+
 
 namespace WindowsFormsApp1
 {
@@ -9,6 +11,8 @@ namespace WindowsFormsApp1
     {
         //Global variables\\
         private readonly Random rnd = new Random();
+        private Function function;
+        private Argument one;
         private int randomNumberOne;
         private int randomNumberTwo;
         private int score;
@@ -16,6 +20,8 @@ namespace WindowsFormsApp1
 
         public Form1()
         {
+            function = new Function($"{randomNumberOne}");
+            one = new Argument($"one = {randomNumberOne}");
             InitializeComponent();
             this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
             ControlUIVisibility(true, false);
