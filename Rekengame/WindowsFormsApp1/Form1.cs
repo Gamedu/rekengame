@@ -160,6 +160,7 @@ namespace WindowsFormsApp1
         //Method for creating two random numbers that are temporarily stored as two variables\\
         private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
         {
+            //Zorg dat je de switch case in deze methode zet zodat je de verschillende waardes gewoon uit de methode kan halen
             randomNumberOne = rnd.Next(minValueOne, maxValueOne);
             randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
         }
