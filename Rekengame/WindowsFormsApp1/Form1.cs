@@ -17,7 +17,8 @@ namespace WindowsFormsApp1
         private int randomNumberTwo;
         private int score;
         private int time = 10;
-        private int groep = 3;
+        private string groep = "8 Insert Hier De Klas Uit De Database";
+
         public Form1()
         {
             function = new Function($"{randomNumberOne}");
@@ -54,7 +55,29 @@ namespace WindowsFormsApp1
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
                     {
                         ScoreUp();
-                        AfterFirstClick(1, 10, 1, 10, "+");
+                        switch (groep[0])
+                        {
+                            case '3':
+                                AfterFirstClick(1, 6, 1, 6, "+");
+                                break;
+                            case '4':
+                                AfterFirstClick(11, 91, 1, 11, "+");
+                                break;
+                            case '5':
+                                AfterFirstClick(101, 501, 101, 501, "+");
+                                break;
+                            case '6':
+                                AfterFirstClick(1001, 5001, 1001, 5001, "+");
+                                break;
+                            case '7':
+                            case '8':
+                                AfterFirstClick(10001, 50001, 10001, 50001, "+");
+                                break;
+                            default:
+                                AfterFirstClick(1, 10, 1, 10, ":");
+                                break;
+                        }
+
                     }
                     else
                     {
@@ -75,11 +98,35 @@ namespace WindowsFormsApp1
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
                     {
                         ScoreUp();
-                        AfterFirstClick(10, 20, 1, 10, "-");
+                        switch (groep[0])
+                        {
+                            case '3':
+                                AfterFirstClick(7, 11, 1, 6, "-");
+                                break;
+                            case '4':
+                                AfterFirstClick(11, 101, 1, 10, "-");
+                                break;
+                            case '5':
+                                AfterFirstClick(101, 1001, 10, 100, "-");
+                                break;
+                            case '6':
+                                AfterFirstClick(1001, 10001, 100, 1000, "-");
+                                break;
+                            case '7':
+                            case '8':
+                                AfterFirstClick(10001, 100001, 1000, 10000, "-");
+                                break;
+                            default:
+                                AfterFirstClick(1, 10, 1, 10, ":");
+                                break;
+                        }
                     }
                     else
                     {
-                        ScoreDown();
+                        if (score != 0)
+                        {
+                            ScoreDown();
+                        }
                     }
                 }
 
@@ -98,7 +145,25 @@ namespace WindowsFormsApp1
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
                     {
                         ScoreUp();
-                        AfterFirstClick(1, 10, 1, 10, "x");
+                        switch (groep[0])
+                        {
+                            case '4':
+                                AfterFirstClick(1, 11, 1, 11, "x");
+                                break;
+                            case '5':
+                                AfterFirstClick(10, 100, 1, 11, "x");
+                                break;
+                            case '6':
+                                AfterFirstClick(10, 100, 10, 100, "x");
+                                break;
+                            case '7':
+                            case '8':
+                                AfterFirstClick(10, 1000, 10, 1000, "x");
+                                break;
+                            default:
+                                AfterFirstClick(1, 10, 1, 10, ":");
+                                break;
+                        }
                     }
                     else
                     {
@@ -122,10 +187,46 @@ namespace WindowsFormsApp1
                     if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
                     {
                         ScoreUp();
-                        AfterFirstClick(5, 10, 1, 5, "+");
+                        switch (groep[0])
+                        {
+                            case '4':
+                                AfterFirstClick(1, 11, 1, 11, ":");
+                                break;
+                            case '5':
+                                AfterFirstClick(11, 101, 11, 101, ":");
+                                break;
+                            case '6':
+                                AfterFirstClick(101, 1001, 101, 1001, ":");
+                                break;
+                            case '7':
+                            case '8':
+                                AfterFirstClick(1001, 10001, 1001, 10001, ":");
+                                break;
+                            default:
+                                AfterFirstClick(1, 10, 1, 10, ":");
+                                break;
+                        }
                         while (randomNumberOne % randomNumberTwo != 0)
                         {
-                            GenerateNumbers(5, 10, 1, 5);
+                            switch (groep[0])
+                            {
+                                case '4':
+                                    AfterFirstClick(1, 11, 1, 11, ":");
+                                    break;
+                                case '5':
+                                    AfterFirstClick(11, 101, 11, 101, ":");
+                                    break;
+                                case '6':
+                                    AfterFirstClick(101, 1001, 101, 1001, ":");
+                                    break;
+                                case '7':
+                                case '8':
+                                    AfterFirstClick(1001, 10001, 1001, 10001, ":");
+                                    break;
+                                default:
+                                    AfterFirstClick(1, 10, 1, 10, ":");
+                                    break;
+                            }
                         }
                         lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
                     }
@@ -137,7 +238,7 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
-                    AfterFirstClick(5, 10, 1, 5, "+");
+                    AfterFirstClick(5, 10, 1, 5, ":");
                     while (randomNumberOne % randomNumberTwo != 0)
                     {
                         GenerateNumbers(5, 10, 1, 5);
@@ -247,8 +348,11 @@ namespace WindowsFormsApp1
         //Methode om de score te verlagen\\
         private void ScoreDown()
         {
-            score--;
-            lblScore.Text = Convert.ToString(score);
+            if (score != 0)
+            {
+                score--;
+                lblScore.Text = Convert.ToString(score);
+            }
         }
 
         private void TmrControle_Tick_1(object sender, EventArgs e)
