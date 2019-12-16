@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
         private int randomNumberTwo;
         private int score;
         private int time = 10;
-
+        private int groep = 3;
         public Form1()
         {
             function = new Function($"{randomNumberOne}");
