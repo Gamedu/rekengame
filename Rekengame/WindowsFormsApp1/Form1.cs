@@ -27,7 +27,26 @@ namespace WindowsFormsApp1
             one = new Argument($"one = {randomNumberOne}");
             InitializeComponent();
             this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
-            ControlUIVisibility(true, false);
+            SetClassUI();
+        }
+
+        private void SetClassUI()
+        {
+            switch (groep[0])
+            {
+                case '3':
+                    ControlUIVisibility(true, true, true, false, false, false);
+                    break;
+                case '4':
+                    ControlUIVisibility(true, true, true, true, false, false);
+                    break;
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                    ControlUIVisibility(true, true, true, true, true, false);
+                    break;
+            }
         }
 
         //Click event for all the radio settings in the panel\\
@@ -191,14 +210,11 @@ namespace WindowsFormsApp1
                         ScoreUp();
                         switch (groep[0])
                         {
-                            case '4':
+                            case '5':
                                 DivideSom(1, 11, 1, 11, ":");
                                 break;
-                            case '5':
-                                DivideSom(1, 101, 1, 11, ":");
-                                break;
                             case '6':
-                                DivideSom(1, 101, 1, 1001, ":");
+                                DivideSom(1, 101, 1, 11, ":");
                                 break;
                             case '7':
                             case '8':
@@ -299,7 +315,8 @@ namespace WindowsFormsApp1
             {
                 GameCountDown.Enabled = false;
                 lblTime.Text = Convert.ToString(time);
-                ControlUIVisibility(true, false);
+                SetClassUI();
+
                 MessageBox.Show($"De tijd is om. \n Je score is {score}");
                 rbPlus.PerformClick();
                 ResetValues();
@@ -308,7 +325,7 @@ namespace WindowsFormsApp1
 
         private void BtnGo_Click(object sender, EventArgs e)
         {
-            ControlUIVisibility(false, true);
+            ControlUIVisibility(false, false, false, false, false, true);
             pnlGame.Top = 10;
             pnlGame.Left = 10;
         }
@@ -320,13 +337,18 @@ namespace WindowsFormsApp1
             score = 0;
             time = 10;
             tbAnswer.Clear();
+            SetClassUI();
         }
 
 
         //Methode om UI te setten\\
-        private void ControlUIVisibility(bool settings, bool game)
+        private void ControlUIVisibility(bool settings, bool btnPlus, bool btnMinus, bool btnMultiply, bool btnDivide, bool game)
         {
             pnlButtons.Visible = settings;
+            rbPlus.Visible = btnPlus;
+            rbMinus.Visible = btnMinus;
+            rbMultiply.Visible = btnMultiply;
+            rbDivide.Visible = btnDivide;
             pnlGame.Visible = game;
         }
 
