@@ -15,9 +15,11 @@ namespace WindowsFormsApp1
         private Argument one;
         private int randomNumberOne;
         private int randomNumberTwo;
+        private int divisibleNumberOne;
+        private int divisibleNumberTwo;
         private int score;
         private int time = 10;
-        private string groep = "8 Insert Hier De Klas Uit De Database";
+        private string groep = "5 Insert Hier De Klas Uit De Database";
 
         public Form1()
         {
@@ -184,51 +186,29 @@ namespace WindowsFormsApp1
             {
                 if (btnStart.Text == "Controleer")
                 {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(divisibleNumberOne / divisibleNumberTwo))
                     {
                         ScoreUp();
                         switch (groep[0])
                         {
                             case '4':
-                                AfterFirstClick(1, 11, 1, 11, ":");
+                                DivideSom(1, 11, 1, 11, ":");
                                 break;
                             case '5':
-                                AfterFirstClick(11, 101, 11, 101, ":");
+                                DivideSom(1, 101, 1, 11, ":");
                                 break;
                             case '6':
-                                AfterFirstClick(101, 1001, 101, 1001, ":");
+                                DivideSom(1, 101, 1, 1001, ":");
                                 break;
                             case '7':
                             case '8':
-                                AfterFirstClick(1001, 10001, 1001, 10001, ":");
+                                DivideSom(1, 1001, 1, 101, ":");
                                 break;
                             default:
-                                AfterFirstClick(1, 10, 1, 10, ":");
+                                DivideSom(1, 10, 1, 10, ":");
                                 break;
                         }
-                        while (randomNumberOne % randomNumberTwo != 0)
-                        {
-                            switch (groep[0])
-                            {
-                                case '4':
-                                    AfterFirstClick(1, 11, 1, 11, ":");
-                                    break;
-                                case '5':
-                                    AfterFirstClick(11, 101, 11, 101, ":");
-                                    break;
-                                case '6':
-                                    AfterFirstClick(101, 1001, 101, 1001, ":");
-                                    break;
-                                case '7':
-                                case '8':
-                                    AfterFirstClick(1001, 10001, 1001, 10001, ":");
-                                    break;
-                                default:
-                                    AfterFirstClick(1, 10, 1, 10, ":");
-                                    break;
-                            }
-                        }
-                        lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+
                     }
                     else
                     {
@@ -238,12 +218,8 @@ namespace WindowsFormsApp1
 
                 if (btnStart.Text == "Start")
                 {
-                    AfterFirstClick(5, 10, 1, 5, ":");
-                    while (randomNumberOne % randomNumberTwo != 0)
-                    {
-                        GenerateNumbers(5, 10, 1, 5);
-                    }
-                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+                    DivideSom(5, 10, 1, 5, ":");
+                    lblSum.Text = $"{divisibleNumberOne}" + " : " + $"{divisibleNumberTwo}" + " =";
                 }
 
 
@@ -263,13 +239,29 @@ namespace WindowsFormsApp1
         }
 
 
+        private void DivideSom(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
+        {
+            tbAnswer.Clear();
+            lblTime.Visible = true;
+            GameCountDown.Enabled = true;
+            DivisibleNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
+            lblSum.Text = $"{divisibleNumberOne}" + " " + type + " " + $"{divisibleNumberTwo}" + " =";
+        }
+
+
 
         //Method for creating two random numbers that are temporarily stored as two variables\\
         private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
         {
-            //Zorg dat je de switch case in deze methode zet zodat je de verschillende waardes gewoon uit de methode kan halen
             randomNumberOne = rnd.Next(minValueOne, maxValueOne);
             randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
+        }
+
+        //Deel methode om lag te voorkomen\\
+        private void DivisibleNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
+        {
+            divisibleNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
+            divisibleNumberOne = rnd.Next(minValueOne, maxValueOne) * divisibleNumberTwo;
         }
 
         private void BtnAnswer_Click(object sender, EventArgs e)
@@ -294,8 +286,8 @@ namespace WindowsFormsApp1
 
             if (rbDivide.Checked)
             {
-                lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " = " +
-                              $"{randomNumberOne / randomNumberTwo}";
+                lblSum.Text = $"{divisibleNumberOne}" + " : " + $"{divisibleNumberTwo}" + " = " +
+                              $"{divisibleNumberOne / divisibleNumberTwo}";
             }
         }
 
@@ -357,39 +349,38 @@ namespace WindowsFormsApp1
 
         private void TmrControle_Tick_1(object sender, EventArgs e)
         {
+
+            if (rbPlus.Checked)
             {
-                if (rbPlus.Checked)
+                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
                 {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
+                    btnStart.PerformClick();
+                }
+            }
+
+            if (rbMinus.Checked)
+            {
+                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
+                {
+                    btnStart.PerformClick();
+                }
+            }
+
+            if (rbMultiply.Checked)
+            {
+                if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
+                {
+                    btnStart.PerformClick();
+                }
+            }
+
+            if (rbDivide.Checked)
+            {
+                if (divisibleNumberOne != 0 && divisibleNumberTwo != 0)
+                {
+                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(divisibleNumberOne / divisibleNumberTwo))
                     {
                         btnStart.PerformClick();
-                    }
-                }
-
-                if (rbMinus.Checked)
-                {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
-                    {
-                        btnStart.PerformClick();
-                    }
-                }
-
-                if (rbMultiply.Checked)
-                {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
-                    {
-                        btnStart.PerformClick();
-                    }
-                }
-
-                if (rbDivide.Checked)
-                {
-                    if (randomNumberOne != 0 && randomNumberTwo != 0)
-                    {
-                        if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
-                        {
-                            btnStart.PerformClick();
-                        }
                     }
                 }
             }
