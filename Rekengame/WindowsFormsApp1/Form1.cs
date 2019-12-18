@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         private int divisibleNumberTwo;
         private int score;
         private int time = 10;
-        private string groep = "5 Insert Hier De Klas Uit De Database";
+        private string groep = "3 Insert Hier De Klas Uit De Database";
 
         public Form1()
         {
@@ -410,3 +410,6 @@ namespace WindowsFormsApp1
     }
 }
 
+// UI wat kind vriendelijker maken door de knoppen aan te passen.
+// Score winforms popup pimpen
+// UI groter
