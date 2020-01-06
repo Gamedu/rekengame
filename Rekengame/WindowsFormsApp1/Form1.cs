@@ -312,3 +312,7 @@ namespace WindowsFormsApp1
     }
 }
 
+//Selecteer rekensom door *letter* *enter*
+//Uitkomst intypen door *getal* *enter*
+//Implementeer de 'Receive' functie
+//Op volgorde Som maken, bericht ontvangen, controleren, (bericht weghalen), nieuwe som maken etc...
