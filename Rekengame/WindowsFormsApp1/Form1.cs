@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         private int divisibleNumberTwo;
         private int score;
         private int time = 10;
-        private string groep = "3 Insert Hier De Klas Uit De Database";
+        private string groep = "6 Database Groep Mogelijk Hier";
 
         public Form1()
         {
@@ -406,6 +406,12 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+        }
+
+        private void lbClassList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            groep = lbClassList.GetItemText(lbClassList.SelectedItem);
+            SetClassUI();
         }
     }
 }
