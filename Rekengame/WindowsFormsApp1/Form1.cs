@@ -3,12 +3,15 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using org.mariuszgromada.math.mxparser;
+using System.IO.Ports;
 
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        static SerialPort usedPort = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
+        Messages Arduino = new Messages(usedPort);
         //Global variables\\
         private readonly Random rnd = new Random();
         private Function function;
@@ -16,7 +19,7 @@ namespace WindowsFormsApp1
         private int randomNumberOne;
         private int randomNumberTwo;
         private int score;
-        private int time = 10;
+        private int time = 40;
 
         public Form1()
         {
@@ -44,27 +47,43 @@ namespace WindowsFormsApp1
             }
         }
 
-        //Click event for the start button\\
+        void loop()
+        {
+            while (Arduino.receivingData == true)
+            {
+                Arduino.Receive(usedPort);
+                if (Arduino.extractedData == Convert.ToString(randomNumberOne + randomNumberTwo))
+                {
+
+                    ScoreUp();
+                    AfterFirstClick(1, 10, 1, 10, "+");
+                    Arduino.receivingData = false;
+                    Arduino.clearIncomingData();
+                }
+                else
+                {
+                    ScoreDown();
+                    Arduino.receivingData = false;
+                }
+            }
+            Arduino.receivingData = true;
+        }
+
+
+
+    
         private void BtnStart_Click(object sender, EventArgs e)
         {
             if (rbPlus.Checked)
             {
                 if (btnStart.Text == "Controleer")
                 {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
-                    {
-                        ScoreUp();
-                        AfterFirstClick(1, 10, 1, 10, "+");
-                    }
-                    else
-                    {
-                        ScoreDown();
-                    }
                 }
 
                 if (btnStart.Text == "Start")
                 {
                     AfterFirstClick(1, 10, 1, 10, "+");
+                    loop();
                 }
             }
 
@@ -225,7 +244,7 @@ namespace WindowsFormsApp1
         private void ResetValues()
         {
             score = 0;
-            time = 10;
+            time = 40;
             tbAnswer.Clear();
         }
 
