@@ -10,12 +10,10 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        static SerialPort usedPort = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
+        static SerialPort usedPort = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
         //Global variables\\
         private readonly Random rnd = new Random();
-        private Function function;
-        private Argument one;
         private int randomNumberOne;
         private int randomNumberTwo;
         private int score;
@@ -23,8 +21,6 @@ namespace WindowsFormsApp1
 
         public Form1()
         {
-            function = new Function($"{randomNumberOne}");
-            one = new Argument($"one = {randomNumberOne}");
             InitializeComponent();
             this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
             ControlUIVisibility(true, false);
@@ -46,7 +42,7 @@ namespace WindowsFormsApp1
                 lblScore.Text = Convert.ToString(score);
             }
         }
-
+/*
         void loop()
         {
             while (Arduino.receivingData == true)
@@ -56,7 +52,6 @@ namespace WindowsFormsApp1
                 {
 
                     ScoreUp();
-                    AfterFirstClick(1, 10, 1, 10, "+");
                     Arduino.receivingData = false;
                     Arduino.clearIncomingData();
                 }
@@ -64,26 +59,28 @@ namespace WindowsFormsApp1
                 {
                     ScoreDown();
                     Arduino.receivingData = false;
+                    Arduino.clearIncomingData();
                 }
             }
+
             Arduino.receivingData = true;
         }
 
-
-
-    
+    */
         private void BtnStart_Click(object sender, EventArgs e)
         {
             if (rbPlus.Checked)
             {
                 if (btnStart.Text == "Controleer")
                 {
+                    AfterFirstClick(1, 10, 1, 10, "+");
+              
                 }
 
                 if (btnStart.Text == "Start")
                 {
                     AfterFirstClick(1, 10, 1, 10, "+");
-                    loop();
+             
                 }
             }
 
@@ -185,7 +182,6 @@ namespace WindowsFormsApp1
         //Method for creating two random numbers that are temporarily stored as two variables\\
         private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
         {
-            //Zorg dat je de switch case in deze methode zet zodat je de verschillende waardes gewoon uit de methode kan halen
             randomNumberOne = rnd.Next(minValueOne, maxValueOne);
             randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
         }
@@ -237,6 +233,7 @@ namespace WindowsFormsApp1
             ControlUIVisibility(false, true);
             pnlGame.Top = 10;
             pnlGame.Left = 10;
+
         }
 
 
@@ -307,6 +304,23 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
+            }
+        }
+
+        private void DataReceived_Tick(object sender, EventArgs e)
+        {
+            Arduino.Receive(usedPort);
+            if (Convert.ToString(randomNumberOne + randomNumberTwo) == Arduino.extractedData)
+            {
+                ScoreUp();
+                AfterFirstClick(1, 10, 1, 10, "+");
+                Arduino.clearIncomingData();
+            }
+            else if( Arduino.extractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.extractedData)
+            {
+                ScoreDown();
+                AfterFirstClick(1, 10, 1, 10, "+");
+                Arduino.clearIncomingData();
             }
         }
     }

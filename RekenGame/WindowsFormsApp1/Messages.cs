@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             if (messageHandled == false)
             {
                 incomingData = "";
-                incomingData += poort.ReadLine();
+                incomingData += poort.ReadExisting();
                 firstindex = incomingData.IndexOf('>');
                 lastindex = incomingData.IndexOf('<');
                 for (int x = firstindex + 1; x < lastindex; x++)

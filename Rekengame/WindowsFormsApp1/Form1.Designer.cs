@@ -38,6 +38,8 @@
             this.GameCountDown = new System.Windows.Forms.Timer(this.components);
             this.tbAnswer = new System.Windows.Forms.TextBox();
             this.pnlButtons = new System.Windows.Forms.Panel();
+            this.lblIntro = new System.Windows.Forms.Label();
+            this.btnGo = new System.Windows.Forms.Button();
             this.lblScore = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnAnswer = new System.Windows.Forms.Button();
@@ -46,8 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tmrControle = new System.Windows.Forms.Timer(this.components);
             this.pnlGame = new System.Windows.Forms.Panel();
-            this.btnGo = new System.Windows.Forms.Button();
-            this.lblIntro = new System.Windows.Forms.Label();
+            this.DataReceived = new System.Windows.Forms.Timer(this.components);
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.SuspendLayout();
@@ -177,6 +178,28 @@
             this.pnlButtons.Size = new System.Drawing.Size(434, 250);
             this.pnlButtons.TabIndex = 10;
             // 
+            // lblIntro
+            // 
+            this.lblIntro.AutoSize = true;
+            this.lblIntro.BackColor = System.Drawing.Color.Transparent;
+            this.lblIntro.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntro.Location = new System.Drawing.Point(3, 3);
+            this.lblIntro.Name = "lblIntro";
+            this.lblIntro.Size = new System.Drawing.Size(435, 31);
+            this.lblIntro.TabIndex = 20;
+            this.lblIntro.Text = "Selecteer een som en klik op \'Start\'";
+            // 
+            // btnGo
+            // 
+            this.btnGo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGo.Location = new System.Drawing.Point(5, 205);
+            this.btnGo.Name = "btnGo";
+            this.btnGo.Size = new System.Drawing.Size(156, 40);
+            this.btnGo.TabIndex = 19;
+            this.btnGo.Text = "Start";
+            this.btnGo.UseVisualStyleBackColor = true;
+            this.btnGo.Click += new System.EventHandler(this.BtnGo_Click);
+            // 
             // lblScore
             // 
             this.lblScore.AutoSize = true;
@@ -270,27 +293,11 @@
             this.pnlGame.Size = new System.Drawing.Size(279, 220);
             this.pnlGame.TabIndex = 18;
             // 
-            // btnGo
+            // DataReceived
             // 
-            this.btnGo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGo.Location = new System.Drawing.Point(5, 205);
-            this.btnGo.Name = "btnGo";
-            this.btnGo.Size = new System.Drawing.Size(156, 40);
-            this.btnGo.TabIndex = 19;
-            this.btnGo.Text = "Start";
-            this.btnGo.UseVisualStyleBackColor = true;
-            this.btnGo.Click += new System.EventHandler(this.BtnGo_Click);
-            // 
-            // lblIntro
-            // 
-            this.lblIntro.AutoSize = true;
-            this.lblIntro.BackColor = System.Drawing.Color.Transparent;
-            this.lblIntro.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIntro.Location = new System.Drawing.Point(3, 3);
-            this.lblIntro.Name = "lblIntro";
-            this.lblIntro.Size = new System.Drawing.Size(435, 31);
-            this.lblIntro.TabIndex = 20;
-            this.lblIntro.Text = "Selecteer een som en klik op \'Start\'";
+            this.DataReceived.Enabled = true;
+            this.DataReceived.Interval = 10;
+            this.DataReceived.Tick += new System.EventHandler(this.DataReceived_Tick);
             // 
             // Form1
             // 
@@ -331,6 +338,7 @@
         private System.Windows.Forms.Panel pnlGame;
         private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.Label lblIntro;
+        private System.Windows.Forms.Timer DataReceived;
     }
 }
 
