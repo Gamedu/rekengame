@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        static SerialPort usedPort = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
+        static SerialPort usedPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
         //Global variables\\
         private readonly Random rnd = new Random();
@@ -29,8 +29,6 @@ namespace WindowsFormsApp1
         //Click event for all the radio settings in the panel\\
         private void RadioBtn_Click(object sender, EventArgs e)
         {
-            btnStart.Text = "Start";
-
             var radioButtonSender = (RadioButton)sender;
             foreach (var rb in this.pnlButtons.Controls.OfType<RadioButton>())
             {
@@ -42,135 +40,9 @@ namespace WindowsFormsApp1
                 lblScore.Text = Convert.ToString(score);
             }
         }
-/*
-        void loop()
-        {
-            while (Arduino.receivingData == true)
-            {
-                Arduino.Receive(usedPort);
-                if (Arduino.extractedData == Convert.ToString(randomNumberOne + randomNumberTwo))
-                {
-
-                    ScoreUp();
-                    Arduino.receivingData = false;
-                    Arduino.clearIncomingData();
-                }
-                else
-                {
-                    ScoreDown();
-                    Arduino.receivingData = false;
-                    Arduino.clearIncomingData();
-                }
-            }
-
-            Arduino.receivingData = true;
-        }
-
-    */
-        private void BtnStart_Click(object sender, EventArgs e)
-        {
-            if (rbPlus.Checked)
-            {
-                if (btnStart.Text == "Controleer")
-                {
-                    AfterFirstClick(1, 10, 1, 10, "+");
-              
-                }
-
-                if (btnStart.Text == "Start")
-                {
-                    AfterFirstClick(1, 10, 1, 10, "+");
-             
-                }
-            }
-
-            else if (rbMinus.Checked)
-            {
-                if (btnStart.Text == "Controleer")
-                {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
-                    {
-                        ScoreUp();
-                        AfterFirstClick(10, 20, 1, 10, "-");
-                    }
-                    else
-                    {
-                        ScoreDown();
-                    }
-                }
-
-                if (btnStart.Text == "Start")
-                {
-                    AfterFirstClick(10, 20, 1, 10, "-");
-                }
-
-
-            }
-
-            else if (rbMultiply.Checked)
-            {
-                if (btnStart.Text == "Controleer")
-                {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
-                    {
-                        ScoreUp();
-                        AfterFirstClick(1, 10, 1, 10, "x");
-                    }
-                    else
-                    {
-                        ScoreDown();
-                    }
-                }
-
-                if (btnStart.Text == "Start")
-                {
-                    tbAnswer.Clear();
-                    AfterFirstClick(1, 10, 1, 10, "x");
-                }
-
-
-            }
-
-            else
-            {
-                if (btnStart.Text == "Controleer")
-                {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
-                    {
-                        ScoreUp();
-                        AfterFirstClick(5, 10, 1, 5, "+");
-                        while (randomNumberOne % randomNumberTwo != 0)
-                        {
-                            GenerateNumbers(5, 10, 1, 5);
-                        }
-                        lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-                    }
-                    else
-                    {
-                        ScoreDown();
-                    }
-                }
-
-                if (btnStart.Text == "Start")
-                {
-                    AfterFirstClick(5, 10, 1, 5, "+");
-                    while (randomNumberOne % randomNumberTwo != 0)
-                    {
-                        GenerateNumbers(5, 10, 1, 5);
-                    }
-                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-                }
-
-
-            }
-            btnStart.Text = "Controleer";
-            tbAnswer.Clear();
-            this.ActiveControl = tbAnswer;
-        }
 
         private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
         {
-            tbAnswer.Clear();
             lblTime.Visible = true;
             GameCountDown.Enabled = true;
             GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
@@ -186,33 +58,6 @@ namespace WindowsFormsApp1
             randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
         }
 
-        private void BtnAnswer_Click(object sender, EventArgs e)
-        {
-            if (rbPlus.Checked)
-            {
-                lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " = " +
-                              $"{randomNumberOne + randomNumberTwo}";
-            }
-
-            if (rbMinus.Checked)
-            {
-                lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " = " +
-                              $"{randomNumberOne - randomNumberTwo}";
-            }
-
-            if (rbMultiply.Checked)
-            {
-                lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " = " +
-                              $"{randomNumberOne * randomNumberTwo}";
-            }
-
-            if (rbDivide.Checked)
-            {
-                lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " = " +
-                              $"{randomNumberOne / randomNumberTwo}";
-            }
-        }
-
         private void GameCountDown_Tick(object sender, EventArgs e)
         {
             time--;
@@ -225,15 +70,16 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"De tijd is om. \n Je score is {score}");
                 rbPlus.PerformClick();
                 ResetValues();
+                tmrSumTypeCheck.Enabled = true;
+                Arduino.clearIncomingData();
             }
         }
 
-        private void BtnGo_Click(object sender, EventArgs e)
+        private void SetPlayUI(bool setting, bool game, int x, int y)
         {
             ControlUIVisibility(false, true);
-            pnlGame.Top = 10;
-            pnlGame.Left = 10;
-
+            pnlGame.Top = x;
+            pnlGame.Left = y;
         }
 
 
@@ -242,7 +88,6 @@ namespace WindowsFormsApp1
         {
             score = 0;
             time = 40;
-            tbAnswer.Clear();
         }
 
 
@@ -263,64 +108,140 @@ namespace WindowsFormsApp1
         //Methode om de score te verlagen\\
         private void ScoreDown()
         {
-            score--;
+            if (score != 0)
+            {
+                score--;
+            }
             lblScore.Text = Convert.ToString(score);
         }
 
-        private void TmrControle_Tick_1(object sender, EventArgs e)
+        private void tmrAnswerCheck_Tick(object sender, EventArgs e)
         {
+            if (rbPlus.Checked)
             {
-                if (rbPlus.Checked)
+                Arduino.Receive(usedPort);
+                if (Convert.ToString(randomNumberOne + randomNumberTwo) == Arduino.extractedData)
                 {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne + randomNumberTwo))
-                    {
-                        btnStart.PerformClick();
-                    }
+                    ScoreUp();
+                    AfterFirstClick(1, 10, 1, 10, "+");
+                    Arduino.clearIncomingData();
                 }
-
-                if (rbMinus.Checked)
+                else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.extractedData)
                 {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne - randomNumberTwo))
-                    {
-                        btnStart.PerformClick();
-                    }
-                }
-
-                if (rbMultiply.Checked)
-                {
-                    if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne * randomNumberTwo))
-                    {
-                        btnStart.PerformClick();
-                    }
-                }
-
-                if (rbDivide.Checked)
-                {
-                    if (randomNumberOne != 0 && randomNumberTwo != 0)
-                    {
-                        if (Convert.ToString(tbAnswer.Text) == Convert.ToString(randomNumberOne / randomNumberTwo))
-                        {
-                            btnStart.PerformClick();
-                        }
-                    }
+                    ScoreDown();
+                    AfterFirstClick(1, 10, 1, 10, "+");
+                    Arduino.clearIncomingData();
                 }
             }
+
+            else if (rbMinus.Checked)
+            {
+                Arduino.Receive(usedPort);
+                if (Convert.ToString(randomNumberOne - randomNumberTwo) == Arduino.extractedData)
+                {
+                    ScoreUp();
+                    AfterFirstClick(10, 20, 1, 10, "-");
+                    Arduino.clearIncomingData();
+                }
+                else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne - randomNumberTwo) != Arduino.extractedData)
+                {
+                    ScoreDown();
+                    AfterFirstClick(10, 20, 1, 10, "-");
+                    Arduino.clearIncomingData();
+                }
+            }
+
+            else if (rbMultiply.Checked)
+            {
+                Arduino.Receive(usedPort);
+                if (Convert.ToString(randomNumberOne * randomNumberTwo) == Arduino.extractedData)
+                {
+                    ScoreUp();
+                    AfterFirstClick(1, 10, 1, 10, "x");
+                    Arduino.clearIncomingData();
+                }
+                else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne * randomNumberTwo) != Arduino.extractedData)
+                {
+                    ScoreDown();
+                    AfterFirstClick(1, 10, 1, 10, "x");
+                    Arduino.clearIncomingData();
+                }
+            }
+
+            else
+            {
+                Arduino.Receive(usedPort);
+                if (Convert.ToString(randomNumberOne / randomNumberTwo) == Arduino.extractedData)
+                {
+                    ScoreUp();
+                    AfterFirstClick(5, 10, 1, 5, ":");
+                    while (randomNumberOne % randomNumberTwo != 0)
+                    {
+                        GenerateNumbers(5, 10, 1, 5);
+                    }
+                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+                    Arduino.clearIncomingData();
+                }
+                else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne / randomNumberTwo) != Arduino.extractedData)
+                {
+                    ScoreDown();
+                    AfterFirstClick(5, 10, 1, 5, ":");
+                    while (randomNumberOne % randomNumberTwo != 0)
+                    {
+                        GenerateNumbers(5, 10, 1, 5);
+                    }
+                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+                    Arduino.clearIncomingData();
+                }
+            }
+
         }
 
-        private void DataReceived_Tick(object sender, EventArgs e)
+        private void tmrSumTypeCheck_Tick(object sender, EventArgs e)
         {
             Arduino.Receive(usedPort);
-            if (Convert.ToString(randomNumberOne + randomNumberTwo) == Arduino.extractedData)
+            if (Arduino.extractedData == "A")
             {
-                ScoreUp();
+                rbPlus.PerformClick();
                 AfterFirstClick(1, 10, 1, 10, "+");
-                Arduino.clearIncomingData();
+                SetPlayUI(false, true, 10, 10);
+                lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
+                tmrSumTypeCheck.Enabled = false;
+                tmrAnswerCheck.Enabled = true;
             }
-            else if( Arduino.extractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.extractedData)
+
+            else if (Arduino.extractedData == "B")
             {
-                ScoreDown();
-                AfterFirstClick(1, 10, 1, 10, "+");
-                Arduino.clearIncomingData();
+                rbMinus.PerformClick();
+                AfterFirstClick(10, 20, 1, 10, "-");
+                SetPlayUI(false, true, 10, 10);
+                lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
+                tmrSumTypeCheck.Enabled = false;
+                tmrAnswerCheck.Enabled = true;
+            }
+
+            else if (Arduino.extractedData == "c")
+            {
+                rbMultiply.PerformClick();
+                AfterFirstClick(1, 10, 1, 10, "x");
+                SetPlayUI(false, true, 10, 10);
+                lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
+                tmrSumTypeCheck.Enabled = false;
+                tmrAnswerCheck.Enabled = true;
+            }
+
+            else if (Arduino.extractedData == "D")
+            {
+                rbDivide.PerformClick();
+                AfterFirstClick(5, 10, 1, 5, ":");
+                while (randomNumberOne % randomNumberTwo != 0)
+                {
+                    GenerateNumbers(5, 10, 1, 5);
+                }
+                SetPlayUI(false, true, 10, 10);
+                lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+                tmrSumTypeCheck.Enabled = false;
+                tmrAnswerCheck.Enabled = true;
             }
         }
     }
