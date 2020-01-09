@@ -54,9 +54,9 @@ namespace WindowsFormsApp1
             {
                 GameCountDown.Enabled = false;
                 lblTime.Text = Convert.ToString(time);
-                lblSumsMade.Text =$"Je hebt {lblSumsMade} sommen gemaakt";
-                    lblSumsCorrect.Text =$"je hebt er {lblSumsCorrect} goed beantwoord";
-                    lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord";
+                lblSumsMade.Text = $"Je hebt {sumsGenerated} sommen gemaakt";
+                lblSumsCorrect.Text = $"Je hebt er {sumsCorrect} goed beantwoord";
+                lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord";
                 ControlUIVisibility(false, false, true);
                 rbPlus.PerformClick();
                 ResetValues(); //Geeft mogelijk conflict met regel 57 aangezien de score wordt geleegd tijdens het laten zien van de score in pnlInfo\\
@@ -70,6 +70,8 @@ namespace WindowsFormsApp1
             ControlUIVisibility(false, true, false);
             pnlGame.Top = x;
             pnlGame.Left = y;
+            pnlInfo.Top = x;
+            pnlInfo.Left = y;
         }
 
 
@@ -241,6 +243,7 @@ namespace WindowsFormsApp1
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
             }
+            Arduino.clearIncomingData();
         }
     }
 }

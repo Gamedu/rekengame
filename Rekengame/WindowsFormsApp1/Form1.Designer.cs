@@ -305,38 +305,45 @@
             // 
             // pnlInfo
             // 
+            this.pnlInfo.BackColor = System.Drawing.Color.Transparent;
             this.pnlInfo.Controls.Add(this.lblSumsWrong);
             this.pnlInfo.Controls.Add(this.lblSumsCorrect);
             this.pnlInfo.Controls.Add(this.lblSumsMade);
             this.pnlInfo.Location = new System.Drawing.Point(462, 235);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(310, 164);
+            this.pnlInfo.Size = new System.Drawing.Size(455, 164);
             this.pnlInfo.TabIndex = 19;
             // 
             // lblSumsMade
             // 
             this.lblSumsMade.AutoSize = true;
-            this.lblSumsMade.Location = new System.Drawing.Point(21, 17);
+            this.lblSumsMade.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumsMade.ForeColor = System.Drawing.Color.Purple;
+            this.lblSumsMade.Location = new System.Drawing.Point(3, 12);
             this.lblSumsMade.Name = "lblSumsMade";
-            this.lblSumsMade.Size = new System.Drawing.Size(91, 13);
+            this.lblSumsMade.Size = new System.Drawing.Size(240, 31);
             this.lblSumsMade.TabIndex = 0;
             this.lblSumsMade.Text = "Hoeveel gemaakt";
             // 
             // lblSumsCorrect
             // 
             this.lblSumsCorrect.AutoSize = true;
-            this.lblSumsCorrect.Location = new System.Drawing.Point(21, 43);
+            this.lblSumsCorrect.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumsCorrect.ForeColor = System.Drawing.Color.Purple;
+            this.lblSumsCorrect.Location = new System.Drawing.Point(3, 43);
             this.lblSumsCorrect.Name = "lblSumsCorrect";
-            this.lblSumsCorrect.Size = new System.Drawing.Size(74, 13);
+            this.lblSumsCorrect.Size = new System.Drawing.Size(193, 31);
             this.lblSumsCorrect.TabIndex = 1;
             this.lblSumsCorrect.Text = "Hoeveel goed";
             // 
             // lblSumsWrong
             // 
             this.lblSumsWrong.AutoSize = true;
-            this.lblSumsWrong.Location = new System.Drawing.Point(21, 71);
+            this.lblSumsWrong.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumsWrong.ForeColor = System.Drawing.Color.Purple;
+            this.lblSumsWrong.Location = new System.Drawing.Point(3, 74);
             this.lblSumsWrong.Name = "lblSumsWrong";
-            this.lblSumsWrong.Size = new System.Drawing.Size(68, 13);
+            this.lblSumsWrong.Size = new System.Drawing.Size(179, 31);
             this.lblSumsWrong.TabIndex = 2;
             this.lblSumsWrong.Text = "Hoeveel fout";
             // 
