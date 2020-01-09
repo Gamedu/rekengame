@@ -18,27 +18,15 @@ namespace WindowsFormsApp1
         private int randomNumberTwo;
         private int score;
         private int time = 40;
+        private int sumsGenerated = 0;
+        private int sumsCorrect = 0;
+        private int sumsWrong = 0;
 
         public Form1()
         {
             InitializeComponent();
             this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
-            ControlUIVisibility(true, false);
-        }
-
-        //Click event for all the radio settings in the panel\\
-        private void RadioBtn_Click(object sender, EventArgs e)
-        {
-            var radioButtonSender = (RadioButton)sender;
-            foreach (var rb in this.pnlButtons.Controls.OfType<RadioButton>())
-            {
-                var btnColour = rb == radioButtonSender ? "Green" : "Red";
-                rb.BackgroundImage = Image.FromFile($@"Images\Button_{btnColour}_{(string)rb.Tag}.png");
-
-                lblSum.Text = "Klik op start!";
-                ResetValues();
-                lblScore.Text = Convert.ToString(score);
-            }
+            ControlUIVisibility(true, false, false);
         }
 
         private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
@@ -66,10 +54,12 @@ namespace WindowsFormsApp1
             {
                 GameCountDown.Enabled = false;
                 lblTime.Text = Convert.ToString(time);
-                ControlUIVisibility(true, false);
-                MessageBox.Show($"De tijd is om. \n Je score is {score}");
+                lblSumsMade.Text =$"Je hebt {lblSumsMade} sommen gemaakt";
+                    lblSumsCorrect.Text =$"je hebt er {lblSumsCorrect} goed beantwoord";
+                    lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord";
+                ControlUIVisibility(false, false, true);
                 rbPlus.PerformClick();
-                ResetValues();
+                ResetValues(); //Geeft mogelijk conflict met regel 57 aangezien de score wordt geleegd tijdens het laten zien van de score in pnlInfo\\
                 tmrSumTypeCheck.Enabled = true;
                 Arduino.clearIncomingData();
             }
@@ -77,7 +67,7 @@ namespace WindowsFormsApp1
 
         private void SetPlayUI(bool setting, bool game, int x, int y)
         {
-            ControlUIVisibility(false, true);
+            ControlUIVisibility(false, true, false);
             pnlGame.Top = x;
             pnlGame.Left = y;
         }
@@ -88,14 +78,18 @@ namespace WindowsFormsApp1
         {
             score = 0;
             time = 40;
+            sumsGenerated = 0;
+            sumsCorrect = 0;
+            sumsWrong = 0;
         }
 
 
         //Methode om UI te setten\\
-        private void ControlUIVisibility(bool settings, bool game)
+        private void ControlUIVisibility(bool settings, bool game, bool info)
         {
             pnlButtons.Visible = settings;
             pnlGame.Visible = game;
+            pnlInfo.Visible = info;
         }
 
         //Methode om de score te verhogen\\
@@ -103,6 +97,8 @@ namespace WindowsFormsApp1
         {
             score++;
             lblScore.Text = Convert.ToString(score);
+            sumsGenerated++;
+            sumsCorrect++;
         }
 
         //Methode om de score te verlagen\\
@@ -113,6 +109,8 @@ namespace WindowsFormsApp1
                 score--;
             }
             lblScore.Text = Convert.ToString(score);
+            sumsGenerated++;
+            sumsWrong++;
         }
 
         private void tmrAnswerCheck_Tick(object sender, EventArgs e)
@@ -246,8 +244,3 @@ namespace WindowsFormsApp1
         }
     }
 }
-
-//Selecteer rekensom door *letter* *enter*
-//Uitkomst intypen door *getal* *enter*
-//Implementeer de 'Receive' functie
-//Op volgorde Som maken, bericht ontvangen, controleren, (bericht weghalen), nieuwe som maken etc...

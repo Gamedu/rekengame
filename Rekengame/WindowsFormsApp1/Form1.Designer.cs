@@ -49,8 +49,13 @@
             this.pnlGame = new System.Windows.Forms.Panel();
             this.tmrAnswerCheck = new System.Windows.Forms.Timer(this.components);
             this.tmrSumTypeCheck = new System.Windows.Forms.Timer(this.components);
+            this.pnlInfo = new System.Windows.Forms.Panel();
+            this.lblSumsMade = new System.Windows.Forms.Label();
+            this.lblSumsCorrect = new System.Windows.Forms.Label();
+            this.lblSumsWrong = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
+            this.pnlInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // rbPlus
@@ -73,7 +78,6 @@
             this.rbPlus.Tag = "Plus";
             this.rbPlus.Text = "+";
             this.rbPlus.UseVisualStyleBackColor = true;
-            this.rbPlus.Click += new System.EventHandler(this.RadioBtn_Click);
             // 
             // rbMinus
             // 
@@ -94,7 +98,6 @@
             this.rbMinus.Tag = "Minus";
             this.rbMinus.Text = "-";
             this.rbMinus.UseVisualStyleBackColor = true;
-            this.rbMinus.Click += new System.EventHandler(this.RadioBtn_Click);
             // 
             // rbMultiply
             // 
@@ -116,7 +119,6 @@
             this.rbMultiply.Tag = "Multiply";
             this.rbMultiply.Text = "x";
             this.rbMultiply.UseVisualStyleBackColor = false;
-            this.rbMultiply.Click += new System.EventHandler(this.RadioBtn_Click);
             // 
             // rbDivide
             // 
@@ -138,7 +140,6 @@
             this.rbDivide.Tag = "Divide";
             this.rbDivide.Text = ":";
             this.rbDivide.UseVisualStyleBackColor = false;
-            this.rbDivide.Click += new System.EventHandler(this.RadioBtn_Click);
             // 
             // lblSum
             // 
@@ -259,7 +260,7 @@
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.Purple;
-            this.lblTime.Location = new System.Drawing.Point(164, 120);
+            this.lblTime.Location = new System.Drawing.Point(149, 120);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(116, 63);
             this.lblTime.TabIndex = 16;
@@ -272,7 +273,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Purple;
-            this.label2.Location = new System.Drawing.Point(27, 120);
+            this.label2.Location = new System.Drawing.Point(15, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 63);
             this.label2.TabIndex = 17;
@@ -302,12 +303,50 @@
             this.tmrSumTypeCheck.Interval = 10;
             this.tmrSumTypeCheck.Tick += new System.EventHandler(this.tmrSumTypeCheck_Tick);
             // 
+            // pnlInfo
+            // 
+            this.pnlInfo.Controls.Add(this.lblSumsWrong);
+            this.pnlInfo.Controls.Add(this.lblSumsCorrect);
+            this.pnlInfo.Controls.Add(this.lblSumsMade);
+            this.pnlInfo.Location = new System.Drawing.Point(462, 235);
+            this.pnlInfo.Name = "pnlInfo";
+            this.pnlInfo.Size = new System.Drawing.Size(310, 164);
+            this.pnlInfo.TabIndex = 19;
+            // 
+            // lblSumsMade
+            // 
+            this.lblSumsMade.AutoSize = true;
+            this.lblSumsMade.Location = new System.Drawing.Point(21, 17);
+            this.lblSumsMade.Name = "lblSumsMade";
+            this.lblSumsMade.Size = new System.Drawing.Size(91, 13);
+            this.lblSumsMade.TabIndex = 0;
+            this.lblSumsMade.Text = "Hoeveel gemaakt";
+            // 
+            // lblSumsCorrect
+            // 
+            this.lblSumsCorrect.AutoSize = true;
+            this.lblSumsCorrect.Location = new System.Drawing.Point(21, 43);
+            this.lblSumsCorrect.Name = "lblSumsCorrect";
+            this.lblSumsCorrect.Size = new System.Drawing.Size(74, 13);
+            this.lblSumsCorrect.TabIndex = 1;
+            this.lblSumsCorrect.Text = "Hoeveel goed";
+            // 
+            // lblSumsWrong
+            // 
+            this.lblSumsWrong.AutoSize = true;
+            this.lblSumsWrong.Location = new System.Drawing.Point(21, 71);
+            this.lblSumsWrong.Name = "lblSumsWrong";
+            this.lblSumsWrong.Size = new System.Drawing.Size(68, 13);
+            this.lblSumsWrong.TabIndex = 2;
+            this.lblSumsWrong.Text = "Hoeveel fout";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(784, 411);
+            this.ClientSize = new System.Drawing.Size(929, 505);
+            this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlButtons);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -317,6 +356,8 @@
             this.pnlButtons.PerformLayout();
             this.pnlGame.ResumeLayout(false);
             this.pnlGame.PerformLayout();
+            this.pnlInfo.ResumeLayout(false);
+            this.pnlInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -342,6 +383,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel pnlInfo;
+        private System.Windows.Forms.Label lblSumsWrong;
+        private System.Windows.Forms.Label lblSumsCorrect;
+        private System.Windows.Forms.Label lblSumsMade;
     }
 }
 
