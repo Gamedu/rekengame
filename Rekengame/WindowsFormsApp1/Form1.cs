@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
         private int randomNumberOne;
         private int randomNumberTwo;
         private int score;
-        private int time = 40;
+        private int time = 10;
         private int sumsGenerated = 0;
         private int sumsCorrect = 0;
         private int sumsWrong = 0;
@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
                 lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord";
                 ControlUIVisibility(false, false, true);
                 rbPlus.PerformClick();
-                ResetValues(); //Geeft mogelijk conflict met regel 57 aangezien de score wordt geleegd tijdens het laten zien van de score in pnlInfo\\
+                ResetValues();
                 tmrSumTypeCheck.Enabled = true;
                 Arduino.ClearIncomingData();
                 tmrInfo.Enabled = true;
@@ -71,8 +71,8 @@ namespace WindowsFormsApp1
             ControlUIVisibility(false, true, false);
             pnlGame.Top = x;
             pnlGame.Left = y;
-            pnlInfo.Top = x;
-            pnlInfo.Left = y;
+            pnlInfo.Top = x + 150;
+            pnlInfo.Left = y + 150;
         }
 
 
@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
         private void ResetValues()
         {
             score = 0;
-            time = 40;
+            time = 10;
             sumsGenerated = 0;
             sumsCorrect = 0;
             sumsWrong = 0;
@@ -209,7 +209,7 @@ namespace WindowsFormsApp1
             {
                 rbPlus.PerformClick();
                 AfterFirstClick(1, 10, 1, 10, "+");
-                SetPlayUI(false, true, 10, 10);
+                SetPlayUI(false, true, 50, 200);
                 lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
