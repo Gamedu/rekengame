@@ -9,9 +9,9 @@ namespace WindowsFormsApp1
 {
     class Messages
     {
-        public string extractedData { get; private set; } = "";
-        private string incomingData { get; set; } = "";
-        public bool receivingData { get; set; } = true;
+        public string ExtractedData { get; private set; } = "";
+        private string IncomingData { get; set; } = "";
+        public bool ReceivingData { get; set; } = true;
         public Messages(SerialPort poort)
         {
             poort.Open();
@@ -23,13 +23,13 @@ namespace WindowsFormsApp1
             int lastindex;
             if (messageHandled == false)
             {
-                incomingData = "";
-                incomingData += poort.ReadExisting();
-                firstindex = incomingData.IndexOf('>');
-                lastindex = incomingData.IndexOf('<');
+                IncomingData = "";
+                IncomingData += poort.ReadExisting();
+                firstindex = IncomingData.IndexOf('>');
+                lastindex = IncomingData.IndexOf('<');
                 for (int x = firstindex + 1; x < lastindex; x++)
                 {
-                    extractedData += incomingData[x];
+                    ExtractedData += IncomingData[x];
 
                 }
                 messageHandled = true;
@@ -38,10 +38,10 @@ namespace WindowsFormsApp1
 
 
         }
-        public void clearIncomingData()
+        public void ClearIncomingData()
         {
-            extractedData = "";
-            incomingData = "";
+            ExtractedData = "";
+            IncomingData = "";
         }
         public void SendMessage(string message, SerialPort port)
         {

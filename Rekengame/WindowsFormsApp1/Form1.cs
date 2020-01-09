@@ -61,7 +61,7 @@ namespace WindowsFormsApp1
                 rbPlus.PerformClick();
                 ResetValues(); //Geeft mogelijk conflict met regel 57 aangezien de score wordt geleegd tijdens het laten zien van de score in pnlInfo\\
                 tmrSumTypeCheck.Enabled = true;
-                Arduino.clearIncomingData();
+                Arduino.ClearIncomingData();
             }
         }
 
@@ -120,61 +120,61 @@ namespace WindowsFormsApp1
             if (rbPlus.Checked)
             {
                 Arduino.Receive(usedPort);
-                if (Convert.ToString(randomNumberOne + randomNumberTwo) == Arduino.extractedData)
+                if (Convert.ToString(randomNumberOne + randomNumberTwo) == Arduino.ExtractedData)
                 {
                     ScoreUp();
                     AfterFirstClick(1, 10, 1, 10, "+");
-                    Arduino.clearIncomingData();
+                    Arduino.ClearIncomingData();
                 }
-                else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.extractedData)
+                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.ExtractedData)
                 {
                     Arduino.SendMessage("test", usedPort);
                     ScoreDown();
                     AfterFirstClick(1, 10, 1, 10, "+");
-                    Arduino.clearIncomingData();
+                    Arduino.ClearIncomingData();
                 }
             }
 
             else if (rbMinus.Checked)
             {
                 Arduino.Receive(usedPort);
-                if (Convert.ToString(randomNumberOne - randomNumberTwo) == Arduino.extractedData)
+                if (Convert.ToString(randomNumberOne - randomNumberTwo) == Arduino.ExtractedData)
                 {
                     ScoreUp();
                     AfterFirstClick(10, 20, 1, 10, "-");
-                    Arduino.clearIncomingData();
+                    Arduino.ClearIncomingData();
                 }
-                else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne - randomNumberTwo) != Arduino.extractedData)
+                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne - randomNumberTwo) != Arduino.ExtractedData)
                 {
                     Arduino.SendMessage("test", usedPort);
                     ScoreDown();
                     AfterFirstClick(10, 20, 1, 10, "-");
-                    Arduino.clearIncomingData();
+                    Arduino.ClearIncomingData();
                 }
             }
 
             else if (rbMultiply.Checked)
             {
                 Arduino.Receive(usedPort);
-                if (Convert.ToString(randomNumberOne * randomNumberTwo) == Arduino.extractedData)
+                if (Convert.ToString(randomNumberOne * randomNumberTwo) == Arduino.ExtractedData)
                 {
                     ScoreUp();
                     AfterFirstClick(1, 10, 1, 10, "x");
-                    Arduino.clearIncomingData();
+                    Arduino.ClearIncomingData();
                 }
-                else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne * randomNumberTwo) != Arduino.extractedData)
+                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne * randomNumberTwo) != Arduino.ExtractedData)
                 {
                     Arduino.SendMessage("test", usedPort);
                     ScoreDown();
                     AfterFirstClick(1, 10, 1, 10, "x");
-                    Arduino.clearIncomingData();
+                    Arduino.ClearIncomingData();
                 }
             }
 
             else
             {
                 Arduino.Receive(usedPort);
-                if (Convert.ToString(randomNumberOne / randomNumberTwo) == Arduino.extractedData)
+                if (Convert.ToString(randomNumberOne / randomNumberTwo) == Arduino.ExtractedData)
                 {
                     ScoreUp();
                     AfterFirstClick(5, 10, 1, 5, ":");
@@ -183,9 +183,9 @@ namespace WindowsFormsApp1
                         GenerateNumbers(5, 10, 1, 5);
                     }
                     lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-                    Arduino.clearIncomingData();
+                    Arduino.ClearIncomingData();
                 }
-                else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne / randomNumberTwo) != Arduino.extractedData)
+                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne / randomNumberTwo) != Arduino.ExtractedData)
                 {
                     Arduino.SendMessage("test", usedPort);
                     ScoreDown();
@@ -195,7 +195,7 @@ namespace WindowsFormsApp1
                         GenerateNumbers(5, 10, 1, 5);
                     }
                     lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-                    Arduino.clearIncomingData();
+                    Arduino.ClearIncomingData();
                 }
             }
 
@@ -204,7 +204,7 @@ namespace WindowsFormsApp1
         private void tmrSumTypeCheck_Tick(object sender, EventArgs e)
         {
             Arduino.Receive(usedPort);
-            if (Arduino.extractedData == "A")
+            if (Arduino.ExtractedData == "A")
             {
                 rbPlus.PerformClick();
                 AfterFirstClick(1, 10, 1, 10, "+");
@@ -214,7 +214,7 @@ namespace WindowsFormsApp1
                 tmrAnswerCheck.Enabled = true;
             }
 
-            else if (Arduino.extractedData == "B")
+            else if (Arduino.ExtractedData == "B")
             {
                 rbMinus.PerformClick();
                 AfterFirstClick(10, 20, 1, 10, "-");
@@ -224,7 +224,7 @@ namespace WindowsFormsApp1
                 tmrAnswerCheck.Enabled = true;
             }
 
-            else if (Arduino.extractedData == "c")
+            else if (Arduino.ExtractedData == "c")
             {
                 rbMultiply.PerformClick();
                 AfterFirstClick(1, 10, 1, 10, "x");
@@ -234,7 +234,7 @@ namespace WindowsFormsApp1
                 tmrAnswerCheck.Enabled = true;
             }
 
-            else if (Arduino.extractedData == "D")
+            else if (Arduino.ExtractedData == "D")
             {
                 rbDivide.PerformClick();
                 AfterFirstClick(5, 10, 1, 5, ":");
@@ -247,7 +247,7 @@ namespace WindowsFormsApp1
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
             }
-            Arduino.clearIncomingData();
+            Arduino.ClearIncomingData();
         }
     }
 }
