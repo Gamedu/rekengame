@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        static SerialPort usedPort = new SerialPort("COM13", 9600, Parity.None, 8, StopBits.One);
+        static SerialPort usedPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
         //Global variables\\
         private readonly Random rnd = new Random();
@@ -62,6 +62,7 @@ namespace WindowsFormsApp1
                 ResetValues(); //Geeft mogelijk conflict met regel 57 aangezien de score wordt geleegd tijdens het laten zien van de score in pnlInfo\\
                 tmrSumTypeCheck.Enabled = true;
                 Arduino.ClearIncomingData();
+                tmrInfo.Enabled = true;
             }
         }
 
@@ -248,6 +249,12 @@ namespace WindowsFormsApp1
                 tmrAnswerCheck.Enabled = true;
             }
             Arduino.ClearIncomingData();
+        }
+
+        private void tmrInfo_Tick(object sender, EventArgs e)
+        {
+            ControlUIVisibility(true, false, false);
+            tmrInfo.Enabled = false;
         }
     }
 }

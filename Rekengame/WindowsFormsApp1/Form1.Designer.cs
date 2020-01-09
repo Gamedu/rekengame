@@ -50,9 +50,10 @@
             this.tmrAnswerCheck = new System.Windows.Forms.Timer(this.components);
             this.tmrSumTypeCheck = new System.Windows.Forms.Timer(this.components);
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.lblSumsMade = new System.Windows.Forms.Label();
-            this.lblSumsCorrect = new System.Windows.Forms.Label();
             this.lblSumsWrong = new System.Windows.Forms.Label();
+            this.lblSumsCorrect = new System.Windows.Forms.Label();
+            this.lblSumsMade = new System.Windows.Forms.Label();
+            this.tmrInfo = new System.Windows.Forms.Timer(this.components);
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlInfo.SuspendLayout();
@@ -145,10 +146,11 @@
             // 
             this.lblSum.AutoSize = true;
             this.lblSum.BackColor = System.Drawing.Color.Transparent;
-            this.lblSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSum.ForeColor = System.Drawing.Color.Purple;
             this.lblSum.Location = new System.Drawing.Point(8, 3);
             this.lblSum.Name = "lblSum";
-            this.lblSum.Size = new System.Drawing.Size(257, 31);
+            this.lblSum.Size = new System.Drawing.Size(318, 39);
             this.lblSum.TabIndex = 5;
             this.lblSum.Text = "Hier komt een som";
             // 
@@ -170,7 +172,7 @@
             this.pnlButtons.Controls.Add(this.rbMultiply);
             this.pnlButtons.Controls.Add(this.rbMinus);
             this.pnlButtons.ForeColor = System.Drawing.Color.Black;
-            this.pnlButtons.Location = new System.Drawing.Point(8, 12);
+            this.pnlButtons.Location = new System.Drawing.Point(290, 21);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(446, 387);
             this.pnlButtons.TabIndex = 10;
@@ -287,9 +289,9 @@
             this.pnlGame.Controls.Add(this.lblSum);
             this.pnlGame.Controls.Add(this.lblTime);
             this.pnlGame.Controls.Add(this.lblScore);
-            this.pnlGame.Location = new System.Drawing.Point(460, 12);
+            this.pnlGame.Location = new System.Drawing.Point(814, 12);
             this.pnlGame.Name = "pnlGame";
-            this.pnlGame.Size = new System.Drawing.Size(312, 220);
+            this.pnlGame.Size = new System.Drawing.Size(339, 220);
             this.pnlGame.TabIndex = 18;
             // 
             // tmrAnswerCheck
@@ -309,32 +311,10 @@
             this.pnlInfo.Controls.Add(this.lblSumsWrong);
             this.pnlInfo.Controls.Add(this.lblSumsCorrect);
             this.pnlInfo.Controls.Add(this.lblSumsMade);
-            this.pnlInfo.Location = new System.Drawing.Point(462, 235);
+            this.pnlInfo.Location = new System.Drawing.Point(742, 244);
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(455, 164);
             this.pnlInfo.TabIndex = 19;
-            // 
-            // lblSumsMade
-            // 
-            this.lblSumsMade.AutoSize = true;
-            this.lblSumsMade.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSumsMade.ForeColor = System.Drawing.Color.Purple;
-            this.lblSumsMade.Location = new System.Drawing.Point(3, 12);
-            this.lblSumsMade.Name = "lblSumsMade";
-            this.lblSumsMade.Size = new System.Drawing.Size(240, 31);
-            this.lblSumsMade.TabIndex = 0;
-            this.lblSumsMade.Text = "Hoeveel gemaakt";
-            // 
-            // lblSumsCorrect
-            // 
-            this.lblSumsCorrect.AutoSize = true;
-            this.lblSumsCorrect.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSumsCorrect.ForeColor = System.Drawing.Color.Purple;
-            this.lblSumsCorrect.Location = new System.Drawing.Point(3, 43);
-            this.lblSumsCorrect.Name = "lblSumsCorrect";
-            this.lblSumsCorrect.Size = new System.Drawing.Size(193, 31);
-            this.lblSumsCorrect.TabIndex = 1;
-            this.lblSumsCorrect.Text = "Hoeveel goed";
             // 
             // lblSumsWrong
             // 
@@ -347,12 +327,39 @@
             this.lblSumsWrong.TabIndex = 2;
             this.lblSumsWrong.Text = "Hoeveel fout";
             // 
+            // lblSumsCorrect
+            // 
+            this.lblSumsCorrect.AutoSize = true;
+            this.lblSumsCorrect.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumsCorrect.ForeColor = System.Drawing.Color.Purple;
+            this.lblSumsCorrect.Location = new System.Drawing.Point(3, 43);
+            this.lblSumsCorrect.Name = "lblSumsCorrect";
+            this.lblSumsCorrect.Size = new System.Drawing.Size(193, 31);
+            this.lblSumsCorrect.TabIndex = 1;
+            this.lblSumsCorrect.Text = "Hoeveel goed";
+            // 
+            // lblSumsMade
+            // 
+            this.lblSumsMade.AutoSize = true;
+            this.lblSumsMade.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumsMade.ForeColor = System.Drawing.Color.Purple;
+            this.lblSumsMade.Location = new System.Drawing.Point(3, 12);
+            this.lblSumsMade.Name = "lblSumsMade";
+            this.lblSumsMade.Size = new System.Drawing.Size(240, 31);
+            this.lblSumsMade.TabIndex = 0;
+            this.lblSumsMade.Text = "Hoeveel gemaakt";
+            // 
+            // tmrInfo
+            // 
+            this.tmrInfo.Interval = 10000;
+            this.tmrInfo.Tick += new System.EventHandler(this.tmrInfo_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(929, 505);
+            this.ClientSize = new System.Drawing.Size(1165, 503);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlButtons);
@@ -394,6 +401,7 @@
         private System.Windows.Forms.Label lblSumsWrong;
         private System.Windows.Forms.Label lblSumsCorrect;
         private System.Windows.Forms.Label lblSumsMade;
+        private System.Windows.Forms.Timer tmrInfo;
     }
 }
 
