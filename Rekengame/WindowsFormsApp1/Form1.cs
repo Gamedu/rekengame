@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        static SerialPort usedPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
+        static SerialPort usedPort = new SerialPort("COM13", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
         //Global variables\\
         private readonly Random rnd = new Random();
@@ -128,6 +128,7 @@ namespace WindowsFormsApp1
                 }
                 else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.extractedData)
                 {
+                    Arduino.SendMessage("test", usedPort);
                     ScoreDown();
                     AfterFirstClick(1, 10, 1, 10, "+");
                     Arduino.clearIncomingData();
@@ -145,6 +146,7 @@ namespace WindowsFormsApp1
                 }
                 else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne - randomNumberTwo) != Arduino.extractedData)
                 {
+                    Arduino.SendMessage("test", usedPort);
                     ScoreDown();
                     AfterFirstClick(10, 20, 1, 10, "-");
                     Arduino.clearIncomingData();
@@ -162,6 +164,7 @@ namespace WindowsFormsApp1
                 }
                 else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne * randomNumberTwo) != Arduino.extractedData)
                 {
+                    Arduino.SendMessage("test", usedPort);
                     ScoreDown();
                     AfterFirstClick(1, 10, 1, 10, "x");
                     Arduino.clearIncomingData();
@@ -184,6 +187,7 @@ namespace WindowsFormsApp1
                 }
                 else if (Arduino.extractedData != "" && Convert.ToString(randomNumberOne / randomNumberTwo) != Arduino.extractedData)
                 {
+                    Arduino.SendMessage("test", usedPort);
                     ScoreDown();
                     AfterFirstClick(5, 10, 1, 5, ":");
                     while (randomNumberOne % randomNumberTwo != 0)

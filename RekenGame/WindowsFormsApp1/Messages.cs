@@ -43,5 +43,17 @@ namespace WindowsFormsApp1
             extractedData = "";
             incomingData = "";
         }
+        public void SendMessage(string message, SerialPort port)
+        {
+            char startCharacter = '>';
+            char endCharacter = '<';
+            string sendMessage = "";
+            sendMessage += startCharacter;
+            sendMessage += message;
+            sendMessage += endCharacter;
+            port.Write(sendMessage);
+                  
+        
+        }
     }
 }
