@@ -91,7 +91,7 @@
             this.rbMinus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.rbMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMinus.Location = new System.Drawing.Point(290, 37);
+            this.rbMinus.Location = new System.Drawing.Point(279, 37);
             this.rbMinus.Name = "rbMinus";
             this.rbMinus.Size = new System.Drawing.Size(125, 125);
             this.rbMinus.TabIndex = 1;
@@ -133,7 +133,7 @@
             this.rbDivide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.rbDivide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDivide.Location = new System.Drawing.Point(294, 198);
+            this.rbDivide.Location = new System.Drawing.Point(279, 198);
             this.rbDivide.Name = "rbDivide";
             this.rbDivide.Size = new System.Drawing.Size(125, 125);
             this.rbDivide.TabIndex = 3;
@@ -148,7 +148,7 @@
             this.lblSum.BackColor = System.Drawing.Color.Transparent;
             this.lblSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 55F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSum.ForeColor = System.Drawing.Color.Purple;
-            this.lblSum.Location = new System.Drawing.Point(183, 169);
+            this.lblSum.Location = new System.Drawing.Point(148, 167);
             this.lblSum.Name = "lblSum";
             this.lblSum.Size = new System.Drawing.Size(674, 85);
             this.lblSum.TabIndex = 5;
@@ -182,7 +182,7 @@
             this.label6.AutoSize = true;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(226, 240);
+            this.label6.Location = new System.Drawing.Point(211, 240);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 46);
             this.label6.TabIndex = 24;
@@ -204,7 +204,7 @@
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(224, 75);
+            this.label4.Location = new System.Drawing.Point(211, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 46);
             this.label4.TabIndex = 22;
@@ -262,7 +262,7 @@
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.Purple;
-            this.lblTime.Location = new System.Drawing.Point(601, 3);
+            this.lblTime.Location = new System.Drawing.Point(592, 3);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(64, 46);
             this.lblTime.TabIndex = 16;
@@ -275,7 +275,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Purple;
-            this.label2.Location = new System.Drawing.Point(499, 3);
+            this.label2.Location = new System.Drawing.Point(490, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 46);
             this.label2.TabIndex = 17;
@@ -291,7 +291,7 @@
             this.pnlGame.Controls.Add(this.lblScore);
             this.pnlGame.Location = new System.Drawing.Point(464, 12);
             this.pnlGame.Name = "pnlGame";
-            this.pnlGame.Size = new System.Drawing.Size(761, 387);
+            this.pnlGame.Size = new System.Drawing.Size(833, 387);
             this.pnlGame.TabIndex = 18;
             // 
             // tmrAnswerCheck
@@ -313,18 +313,18 @@
             this.pnlInfo.Controls.Add(this.lblSumsMade);
             this.pnlInfo.Location = new System.Drawing.Point(12, 405);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(446, 164);
+            this.pnlInfo.Size = new System.Drawing.Size(1285, 314);
             this.pnlInfo.TabIndex = 19;
             // 
             // lblSumsWrong
             // 
             this.lblSumsWrong.AutoSize = true;
             this.lblSumsWrong.BackColor = System.Drawing.Color.Transparent;
-            this.lblSumsWrong.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumsWrong.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSumsWrong.ForeColor = System.Drawing.Color.Purple;
-            this.lblSumsWrong.Location = new System.Drawing.Point(3, 74);
+            this.lblSumsWrong.Location = new System.Drawing.Point(6, 134);
             this.lblSumsWrong.Name = "lblSumsWrong";
-            this.lblSumsWrong.Size = new System.Drawing.Size(179, 31);
+            this.lblSumsWrong.Size = new System.Drawing.Size(342, 63);
             this.lblSumsWrong.TabIndex = 2;
             this.lblSumsWrong.Text = "Hoeveel fout";
             // 
@@ -332,11 +332,11 @@
             // 
             this.lblSumsCorrect.AutoSize = true;
             this.lblSumsCorrect.BackColor = System.Drawing.Color.Transparent;
-            this.lblSumsCorrect.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumsCorrect.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSumsCorrect.ForeColor = System.Drawing.Color.Purple;
-            this.lblSumsCorrect.Location = new System.Drawing.Point(3, 43);
+            this.lblSumsCorrect.Location = new System.Drawing.Point(6, 71);
             this.lblSumsCorrect.Name = "lblSumsCorrect";
-            this.lblSumsCorrect.Size = new System.Drawing.Size(193, 31);
+            this.lblSumsCorrect.Size = new System.Drawing.Size(372, 63);
             this.lblSumsCorrect.TabIndex = 1;
             this.lblSumsCorrect.Text = "Hoeveel goed";
             // 
@@ -344,11 +344,11 @@
             // 
             this.lblSumsMade.AutoSize = true;
             this.lblSumsMade.BackColor = System.Drawing.Color.Transparent;
-            this.lblSumsMade.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumsMade.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSumsMade.ForeColor = System.Drawing.Color.Purple;
-            this.lblSumsMade.Location = new System.Drawing.Point(3, 12);
+            this.lblSumsMade.Location = new System.Drawing.Point(6, 8);
             this.lblSumsMade.Name = "lblSumsMade";
-            this.lblSumsMade.Size = new System.Drawing.Size(240, 31);
+            this.lblSumsMade.Size = new System.Drawing.Size(462, 63);
             this.lblSumsMade.TabIndex = 0;
             this.lblSumsMade.Text = "Hoeveel gemaakt";
             // 
@@ -362,7 +362,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1237, 542);
+            this.ClientSize = new System.Drawing.Size(1303, 723);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlButtons);

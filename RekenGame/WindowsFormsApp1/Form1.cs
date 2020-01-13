@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         private int sumsGenerated = 0;
         private int sumsCorrect = 0;
         private int sumsWrong = 0;
-        private string group = "6 Hier komt de groep uit de database.";
+        private string group = "3 Hier komt de groep uit de database.";
 
         public Form1()
         {
@@ -34,10 +34,38 @@ namespace WindowsFormsApp1
                 case '3':
                 case '4':
                     this.BackgroundImage = Image.FromFile(@"Images\Wallpaper1.png");
+                    lblIntro.ForeColor = Color.Black;
+                    label3.ForeColor = Color.Black;
+                    label4.ForeColor = Color.Black;
+                    label5.ForeColor = Color.Black;
+                    label6.ForeColor = Color.Black;
+                    lblSumsMade.ForeColor = Color.Black;
+                    lblSumsCorrect.ForeColor = Color.Black;
+                    lblSumsWrong.ForeColor = Color.Black;
+                    label1.ForeColor = Color.Black;
+                    label2.ForeColor = Color.Black;
+                    lblScore.ForeColor = Color.Black;
+                    lblTime.ForeColor = Color.Black;
+                    lblSum.ForeColor = Color.Black;
                     break;
                 case '5':
                 case '6':
                     this.BackgroundImage = Image.FromFile(@"Images\Wallpaper2.png");
+                    pnlButtons.Top = 85;
+                    pnlButtons.Left = 15;
+                    lblIntro.ForeColor = Color.White;
+                    label3.ForeColor = Color.White;
+                    label4.ForeColor = Color.White;
+                    label5.ForeColor = Color.White;
+                    label6.ForeColor = Color.White;
+                    lblSumsMade.ForeColor = Color.White;
+                    lblSumsCorrect.ForeColor = Color.White;
+                    lblSumsWrong.ForeColor = Color.White;
+                    label1.ForeColor = Color.White;
+                    label2.ForeColor = Color.White;
+                    lblScore.ForeColor = Color.White;
+                    lblTime.ForeColor = Color.White;
+                    lblSum.ForeColor = Color.White;
                     break;
                 case '7':
                 case '8':
@@ -87,29 +115,24 @@ namespace WindowsFormsApp1
         }
 
         //methode om de UI te setten\\
-        private void SetPlayUI(bool setting, bool game, int x, int y)
+        private void SetPlayUI(bool setting, bool game, bool info, int x, int y)
         {
-            ControlUIVisibility(false, true, false);
+            ControlUIVisibility(setting, game, info);
             switch (group[0])
             {
                 case '3':
                 case '4':
                     pnlGame.Top = x;
-                    pnlGame.Left = y;
+                    pnlGame.Left = y + 75;
                     pnlInfo.Top = x;
-                    pnlInfo.Left = y + 100;
+                    pnlInfo.Left = y;
                     break;
                 case '5':
                 case '6':
                     pnlGame.Top = x + 50;
-                    pnlGame.Left = y + 175;
+                    pnlGame.Left = y + 125;
                     pnlInfo.Top = x;
                     pnlInfo.Left = y + 100;
-                    label1.ForeColor = Color.White;
-                    label2.ForeColor = Color.White;
-                    lblScore.ForeColor = Color.White;
-                    lblTime.ForeColor = Color.White;
-                    lblSum.ForeColor = Color.White;
                     break;
                 case '7':
                 case '8':
@@ -124,8 +147,6 @@ namespace WindowsFormsApp1
                     pnlInfo.Top = x;
                     pnlInfo.Left = y + 100;
                     break;
-
-
             }
         }
 
@@ -362,7 +383,7 @@ namespace WindowsFormsApp1
             {
                 rbPlus.PerformClick();
                 SumGenerator();
-                SetPlayUI(false, true, 150, 575);
+                SetPlayUI(false, true, false, 150, 500);
                 lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
@@ -372,7 +393,7 @@ namespace WindowsFormsApp1
             {
                 rbMinus.PerformClick();
                 SumGenerator();
-                SetPlayUI(false, true, 150, 575);
+                SetPlayUI(false, true, false, 150, 500);
                 lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
@@ -382,7 +403,7 @@ namespace WindowsFormsApp1
             {
                 rbMultiply.PerformClick();
                 SumGenerator();
-                SetPlayUI(false, true, 150, 575);
+                SetPlayUI(false, true, false, 150, 500);
                 lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
@@ -396,7 +417,7 @@ namespace WindowsFormsApp1
                 {
                     SumGenerator();
                 }
-                SetPlayUI(false, true, 150, 575);
+                SetPlayUI(false, true, false, 150, 50);
                 lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
