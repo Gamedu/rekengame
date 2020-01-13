@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         private int sumsGenerated = 0;
         private int sumsCorrect = 0;
         private int sumsWrong = 0;
+        private string group = "5 Hier komt de groep uit de database.";
 
         public Form1()
         {
@@ -36,7 +37,6 @@ namespace WindowsFormsApp1
             GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
             lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
         }
-
 
 
         //Method for creating two random numbers that are temporarily stored as two variables\\
@@ -66,6 +66,7 @@ namespace WindowsFormsApp1
             }
         }
 
+        //methode om de UI te setten\\
         private void SetPlayUI(bool setting, bool game, int x, int y)
         {
             ControlUIVisibility(false, true, false);
@@ -87,7 +88,7 @@ namespace WindowsFormsApp1
         }
 
 
-        //Methode om UI te setten\\
+        //Methode om de UI zichtbaar te maken\\
         private void ControlUIVisibility(bool settings, bool game, bool info)
         {
             pnlButtons.Visible = settings;
@@ -114,6 +115,91 @@ namespace WindowsFormsApp1
             lblScore.Text = Convert.ToString(score);
             sumsGenerated++;
             sumsWrong++;
+        }
+
+        //Maak hier een switchcase methode aarin je zowel de som als de getallen in kunt stellen.
+        //Dan hoef je dat later niet meer in te stellen bij de Arduino communicatie.
+        private void SumGenerator()
+        {
+            if (rbPlus.Checked)
+            {
+                switch (group[0])
+                {
+                    case '3':
+                        break;
+                    case '4':
+                        break;
+                    case '5':
+                        break;
+                    case '6':
+                        break;
+                    case '7':
+                    case '8':
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (rbMinus.Checked)
+            {
+                switch (group[0])
+                {
+                    case '3':
+                        break;
+                    case '4':
+                        break;
+                    case '5':
+                        break;
+                    case '6':
+                        break;
+                    case '7':
+                    case '8':
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (rbMultiply.Checked)
+            {
+                switch (group[0])
+                {
+                    case '3':
+                        break;
+                    case '4':
+                        break;
+                    case '5':
+                        break;
+                    case '6':
+                        break;
+                    case '7':
+                    case '8':
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (rbDivide.Checked)
+            {
+                switch (group[0])
+                {
+                    case '3':
+                        break;
+                    case '4':
+                        break;
+                    case '5':
+                        break;
+                    case '6':
+                        break;
+                    case '7':
+                    case '8':
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private void tmrAnswerCheck_Tick(object sender, EventArgs e)
