@@ -21,12 +21,32 @@ namespace WindowsFormsApp1
         private int sumsGenerated = 0;
         private int sumsCorrect = 0;
         private int sumsWrong = 0;
-        private string group = "5 Hier komt de groep uit de database.";
+        private string group = "6 Hier komt de groep uit de database.";
 
         public Form1()
         {
+            this.WindowState = FormWindowState.Maximized;
+            this.MinimumSize = this.Size;
+
             InitializeComponent();
-            this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
+            switch (group[0])
+            {
+                case '3':
+                case '4':
+                    this.BackgroundImage = Image.FromFile(@"Images\Wallpaper1.png");
+                    break;
+                case '5':
+                case '6':
+                    this.BackgroundImage = Image.FromFile(@"Images\Wallpaper2.png");
+                    break;
+                case '7':
+                case '8':
+                    this.BackgroundImage = Image.FromFile(@"Images\Wallpaper3.png");
+                    break;
+                default:
+                    this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
+                    break;
+            }
             ControlUIVisibility(true, false, false);
         }
 
@@ -70,10 +90,43 @@ namespace WindowsFormsApp1
         private void SetPlayUI(bool setting, bool game, int x, int y)
         {
             ControlUIVisibility(false, true, false);
-            pnlGame.Top = x;
-            pnlGame.Left = y;
-            pnlInfo.Top = x + 150;
-            pnlInfo.Left = y + 150;
+            switch (group[0])
+            {
+                case '3':
+                case '4':
+                    pnlGame.Top = x;
+                    pnlGame.Left = y;
+                    pnlInfo.Top = x;
+                    pnlInfo.Left = y + 100;
+                    break;
+                case '5':
+                case '6':
+                    pnlGame.Top = x + 50;
+                    pnlGame.Left = y + 175;
+                    pnlInfo.Top = x;
+                    pnlInfo.Left = y + 100;
+                    label1.ForeColor = Color.White;
+                    label2.ForeColor = Color.White;
+                    lblScore.ForeColor = Color.White;
+                    lblTime.ForeColor = Color.White;
+                    lblSum.ForeColor = Color.White;
+                    break;
+                case '7':
+                case '8':
+                    pnlGame.Top = x;
+                    pnlGame.Left = y;
+                    pnlInfo.Top = x;
+                    pnlInfo.Left = y + 100;
+                    break;
+                default:
+                    pnlGame.Top = x;
+                    pnlGame.Left = y;
+                    pnlInfo.Top = x;
+                    pnlInfo.Left = y + 100;
+                    break;
+
+
+            }
         }
 
 
@@ -126,9 +179,83 @@ namespace WindowsFormsApp1
                 switch (group[0])
                 {
                     case '3':
+                        AfterFirstClick(1, 6, 1, 6, "+");
                         break;
                     case '4':
+                        AfterFirstClick(11, 91, 1, 11, "+");
                         break;
+                    case '5':
+                        AfterFirstClick(101, 501, 101, 501, "+");
+                        break;
+                    case '6':
+                        AfterFirstClick(1001, 5001, 1001, 5001, "+");
+                        break;
+                    case '7':
+                    case '8':
+                        AfterFirstClick(10001, 50001, 10001, 50001, "+");
+                        break;
+                    default:
+                        AfterFirstClick(1, 10, 1, 10, "+");
+                        break;
+                }
+
+            }
+
+            if (rbMinus.Checked)
+            {
+                switch (group[0])
+                {
+                    case '3':
+                        AfterFirstClick(7, 11, 1, 6, "-");
+                        break;
+                    case '4':
+                        AfterFirstClick(11, 101, 1, 10, "-");
+                        break;
+                    case '5':
+                        AfterFirstClick(101, 1001, 10, 100, "-");
+                        break;
+                    case '6':
+                        AfterFirstClick(1001, 10001, 100, 1000, "-");
+                        break;
+                    case '7':
+                    case '8':
+                        AfterFirstClick(10001, 100001, 1000, 10000, "-");
+                        break;
+                    default:
+                        AfterFirstClick(1, 10, 1, 10, "-");
+                        break;
+                }
+
+            }
+
+            if (rbMultiply.Checked)
+            {
+                switch (group[0])
+                {
+                    case '4':
+                        AfterFirstClick(1, 11, 1, 11, "x");
+                        break;
+                    case '5':
+                        AfterFirstClick(10, 100, 1, 11, "x");
+                        break;
+                    case '6':
+                        AfterFirstClick(10, 100, 10, 100, "x");
+                        break;
+                    case '7':
+                    case '8':
+                        AfterFirstClick(10, 1000, 10, 1000, "x");
+                        break;
+                    default:
+                        AfterFirstClick(1, 10, 1, 10, "x");
+                        break;
+                }
+
+            }
+
+            if (rbDivide.Checked)
+            {
+                switch (group[0])
+                {
                     case '5':
                         break;
                     case '6':
@@ -150,14 +277,14 @@ namespace WindowsFormsApp1
                 if (Convert.ToString(randomNumberOne + randomNumberTwo) == Arduino.ExtractedData)
                 {
                     ScoreUp();
-                    AfterFirstClick(1, 10, 1, 10, "+");
+                    SumGenerator();
                     Arduino.ClearIncomingData();
                 }
                 else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.ExtractedData)
                 {
                     Arduino.SendMessage("test", usedPort);
                     ScoreDown();
-                    AfterFirstClick(1, 10, 1, 10, "+");
+                    SumGenerator();
                     Arduino.ClearIncomingData();
                 }
             }
@@ -168,14 +295,14 @@ namespace WindowsFormsApp1
                 if (Convert.ToString(randomNumberOne - randomNumberTwo) == Arduino.ExtractedData)
                 {
                     ScoreUp();
-                    AfterFirstClick(10, 20, 1, 10, "-");
+                    SumGenerator();
                     Arduino.ClearIncomingData();
                 }
                 else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne - randomNumberTwo) != Arduino.ExtractedData)
                 {
                     Arduino.SendMessage("test", usedPort);
                     ScoreDown();
-                    AfterFirstClick(10, 20, 1, 10, "-");
+                    SumGenerator();
                     Arduino.ClearIncomingData();
                 }
             }
@@ -186,14 +313,14 @@ namespace WindowsFormsApp1
                 if (Convert.ToString(randomNumberOne * randomNumberTwo) == Arduino.ExtractedData)
                 {
                     ScoreUp();
-                    AfterFirstClick(1, 10, 1, 10, "x");
+                    SumGenerator();
                     Arduino.ClearIncomingData();
                 }
                 else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne * randomNumberTwo) != Arduino.ExtractedData)
                 {
                     Arduino.SendMessage("test", usedPort);
                     ScoreDown();
-                    AfterFirstClick(1, 10, 1, 10, "x");
+                    SumGenerator();
                     Arduino.ClearIncomingData();
                 }
             }
@@ -204,10 +331,10 @@ namespace WindowsFormsApp1
                 if (Convert.ToString(randomNumberOne / randomNumberTwo) == Arduino.ExtractedData)
                 {
                     ScoreUp();
-                    AfterFirstClick(5, 10, 1, 5, ":");
+                    SumGenerator();
                     while (randomNumberOne % randomNumberTwo != 0)
                     {
-                        GenerateNumbers(5, 10, 1, 5);
+                        SumGenerator();
                     }
                     lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
                     Arduino.ClearIncomingData();
@@ -216,10 +343,10 @@ namespace WindowsFormsApp1
                 {
                     Arduino.SendMessage("test", usedPort);
                     ScoreDown();
-                    AfterFirstClick(5, 10, 1, 5, ":");
+                    SumGenerator();
                     while (randomNumberOne % randomNumberTwo != 0)
                     {
-                        GenerateNumbers(5, 10, 1, 5);
+                        SumGenerator();
                     }
                     lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
                     Arduino.ClearIncomingData();
@@ -234,8 +361,8 @@ namespace WindowsFormsApp1
             if (Arduino.ExtractedData == "A")
             {
                 rbPlus.PerformClick();
-                AfterFirstClick(1, 10, 1, 10, "+");
-                SetPlayUI(false, true, 50, 200);
+                SumGenerator();
+                SetPlayUI(false, true, 150, 575);
                 lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
@@ -244,18 +371,18 @@ namespace WindowsFormsApp1
             else if (Arduino.ExtractedData == "B")
             {
                 rbMinus.PerformClick();
-                AfterFirstClick(10, 20, 1, 10, "-");
-                SetPlayUI(false, true, 10, 10);
+                SumGenerator();
+                SetPlayUI(false, true, 150, 575);
                 lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
             }
 
-            else if (Arduino.ExtractedData == "c")
+            else if (Arduino.ExtractedData == "C")
             {
                 rbMultiply.PerformClick();
-                AfterFirstClick(1, 10, 1, 10, "x");
-                SetPlayUI(false, true, 10, 10);
+                SumGenerator();
+                SetPlayUI(false, true, 150, 575);
                 lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
@@ -264,12 +391,12 @@ namespace WindowsFormsApp1
             else if (Arduino.ExtractedData == "D")
             {
                 rbDivide.PerformClick();
-                AfterFirstClick(5, 10, 1, 5, ":");
+                SumGenerator();
                 while (randomNumberOne % randomNumberTwo != 0)
                 {
-                    GenerateNumbers(5, 10, 1, 5);
+                    SumGenerator();
                 }
-                SetPlayUI(false, true, 10, 10);
+                SetPlayUI(false, true, 150, 575);
                 lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
                 tmrAnswerCheck.Enabled = true;
@@ -284,3 +411,6 @@ namespace WindowsFormsApp1
         }
     }
 }
+
+//Maak een optie zodat kinderen de timer in kunnen stellen\\
+//Doe dit door een nieuwe UI in te stellen met de tekst "Vul hier in hoe lang je wilt oefenen."\\

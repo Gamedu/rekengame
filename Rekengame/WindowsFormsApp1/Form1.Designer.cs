@@ -228,9 +228,9 @@
             this.lblIntro.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIntro.Location = new System.Drawing.Point(3, 3);
             this.lblIntro.Name = "lblIntro";
-            this.lblIntro.Size = new System.Drawing.Size(435, 31);
+            this.lblIntro.Size = new System.Drawing.Size(375, 31);
             this.lblIntro.TabIndex = 20;
-            this.lblIntro.Text = "Selecteer een som en klik op \'Start\'";
+            this.lblIntro.Text = "Kies en letter en druk op enter";
             // 
             // lblScore
             // 
@@ -291,7 +291,7 @@
             this.pnlGame.Controls.Add(this.lblScore);
             this.pnlGame.Location = new System.Drawing.Point(464, 12);
             this.pnlGame.Name = "pnlGame";
-            this.pnlGame.Size = new System.Drawing.Size(692, 387);
+            this.pnlGame.Size = new System.Drawing.Size(761, 387);
             this.pnlGame.TabIndex = 18;
             // 
             // tmrAnswerCheck
@@ -319,6 +319,7 @@
             // lblSumsWrong
             // 
             this.lblSumsWrong.AutoSize = true;
+            this.lblSumsWrong.BackColor = System.Drawing.Color.Transparent;
             this.lblSumsWrong.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSumsWrong.ForeColor = System.Drawing.Color.Purple;
             this.lblSumsWrong.Location = new System.Drawing.Point(3, 74);
@@ -330,6 +331,7 @@
             // lblSumsCorrect
             // 
             this.lblSumsCorrect.AutoSize = true;
+            this.lblSumsCorrect.BackColor = System.Drawing.Color.Transparent;
             this.lblSumsCorrect.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSumsCorrect.ForeColor = System.Drawing.Color.Purple;
             this.lblSumsCorrect.Location = new System.Drawing.Point(3, 43);
@@ -341,6 +343,7 @@
             // lblSumsMade
             // 
             this.lblSumsMade.AutoSize = true;
+            this.lblSumsMade.BackColor = System.Drawing.Color.Transparent;
             this.lblSumsMade.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSumsMade.ForeColor = System.Drawing.Color.Purple;
             this.lblSumsMade.Location = new System.Drawing.Point(3, 12);
@@ -359,7 +362,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1166, 505);
+            this.ClientSize = new System.Drawing.Size(1237, 542);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlButtons);
