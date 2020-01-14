@@ -54,13 +54,9 @@
             this.lblSumsCorrect = new System.Windows.Forms.Label();
             this.lblSumsMade = new System.Windows.Forms.Label();
             this.tmrInfo = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tmrSetTime = new System.Windows.Forms.Timer(this.components);
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlInfo.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rbPlus
@@ -317,7 +313,7 @@
             this.pnlInfo.Controls.Add(this.lblSumsMade);
             this.pnlInfo.Location = new System.Drawing.Point(12, 405);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(983, 314);
+            this.pnlInfo.Size = new System.Drawing.Size(1285, 314);
             this.pnlInfo.TabIndex = 19;
             // 
             // lblSumsWrong
@@ -361,35 +357,12 @@
             this.tmrInfo.Interval = 10000;
             this.tmrInfo.Tick += new System.EventHandler(this.tmrInfo_Tick);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Location = new System.Drawing.Point(1001, 405);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(296, 314);
-            this.panel1.TabIndex = 20;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(272, 29);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Hoelang wil je oefenen?";
-            // 
-            // tmrSetTime
-            // 
-            this.tmrSetTime.Interval = 10;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1303, 723);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlButtons);
@@ -402,8 +375,6 @@
             this.pnlGame.PerformLayout();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -434,9 +405,6 @@
         private System.Windows.Forms.Label lblSumsCorrect;
         private System.Windows.Forms.Label lblSumsMade;
         private System.Windows.Forms.Timer tmrInfo;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Timer tmrSetTime;
     }
 }
 
