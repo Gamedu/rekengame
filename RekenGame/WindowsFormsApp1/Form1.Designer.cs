@@ -58,6 +58,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlSetTime = new System.Windows.Forms.Panel();
             this.lblSetTime = new System.Windows.Forms.Label();
+            this.lblSetTime2 = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlInfo.SuspendLayout();
@@ -369,6 +370,8 @@
             // 
             // pnlSetTime
             // 
+            this.pnlSetTime.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSetTime.Controls.Add(this.lblSetTime2);
             this.pnlSetTime.Controls.Add(this.lblSetTime);
             this.pnlSetTime.Location = new System.Drawing.Point(1019, 405);
             this.pnlSetTime.Name = "pnlSetTime";
@@ -384,6 +387,16 @@
             this.lblSetTime.Size = new System.Drawing.Size(272, 29);
             this.lblSetTime.TabIndex = 0;
             this.lblSetTime.Text = "Hoelang wil je oefenen?";
+            // 
+            // lblSetTime2
+            // 
+            this.lblSetTime2.AutoSize = true;
+            this.lblSetTime2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSetTime2.Location = new System.Drawing.Point(3, 42);
+            this.lblSetTime2.Name = "lblSetTime2";
+            this.lblSetTime2.Size = new System.Drawing.Size(273, 29);
+            this.lblSetTime2.TabIndex = 1;
+            this.lblSetTime2.Text = "Vul je tijd in seconden in";
             // 
             // Form1
             // 
@@ -440,6 +453,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel pnlSetTime;
         private System.Windows.Forms.Label lblSetTime;
+        private System.Windows.Forms.Label lblSetTime2;
     }
 }
 

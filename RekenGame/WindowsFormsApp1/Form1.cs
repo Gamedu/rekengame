@@ -35,6 +35,8 @@ namespace WindowsFormsApp1
                 case '3':
                 case '4':
                     this.BackgroundImage = Image.FromFile(@"Images\Wallpaper1.png");
+                    pnlSetTime.Top = 85;
+                    pnlSetTime.Left = 15;
                     lblIntro.ForeColor = Color.Black;
                     label3.ForeColor = Color.Black;
                     label4.ForeColor = Color.Black;
@@ -49,12 +51,15 @@ namespace WindowsFormsApp1
                     lblTime.ForeColor = Color.Black;
                     lblSum.ForeColor = Color.Black;
                     lblSetTime.ForeColor = Color.Black;
+                    lblSetTime2.ForeColor = Color.Black;
                     break;
                 case '5':
                 case '6':
                     this.BackgroundImage = Image.FromFile(@"Images\Wallpaper2.png");
                     pnlButtons.Top = 85;
                     pnlButtons.Left = 15;
+                    pnlSetTime.Top = 85;
+                    pnlSetTime.Left = 15;
                     lblIntro.ForeColor = Color.White;
                     label3.ForeColor = Color.White;
                     label4.ForeColor = Color.White;
@@ -69,10 +74,15 @@ namespace WindowsFormsApp1
                     lblTime.ForeColor = Color.White;
                     lblSum.ForeColor = Color.White;
                     lblSetTime.ForeColor = Color.White;
+                    lblSetTime2.ForeColor = Color.White;
                     break;
                 case '7':
                 case '8':
                     this.BackgroundImage = Image.FromFile(@"Images\Wallpaper3.png");
+                    pnlButtons.Top = 80;
+                    pnlButtons.Left = 70;
+                    pnlSetTime.Top = 80;
+                    pnlSetTime.Left = 120;
                     lblIntro.ForeColor = Color.Black;
                     label3.ForeColor = Color.Black;
                     label4.ForeColor = Color.Black;
@@ -87,6 +97,7 @@ namespace WindowsFormsApp1
                     lblTime.ForeColor = Color.Black;
                     lblSum.ForeColor = Color.Black;
                     lblSetTime.ForeColor = Color.Black;
+                    lblSetTime2.ForeColor = Color.Black;
                     break;
                 default:
                     this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
