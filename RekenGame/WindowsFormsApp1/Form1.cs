@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        static SerialPort usedPort = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
+        static SerialPort usedPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
         //Global variables\\
         private readonly Random rnd = new Random();
@@ -91,22 +91,146 @@ namespace WindowsFormsApp1
             ControlUIVisibility(true, false, false);
         }
 
-        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
+        #region Kies som
+        private void tmrSumTypeCheck_Tick(object sender, EventArgs e)
         {
-            lblTime.Visible = true;
-            GameCountDown.Enabled = true;
-            GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
-            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
+            Arduino.Receive(usedPort);
+            if (Arduino.ExtractedData == "A")
+            {
+                rbPlus.PerformClick();
+                SumGenerator();
+                SetPlayUI(false, true, false, 150, 500);
+                lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
+                tmrSumTypeCheck.Enabled = false;
+                tmrAnswerCheck.Enabled = true;
+            }
+
+            else if (Arduino.ExtractedData == "B")
+            {
+                rbMinus.PerformClick();
+                SumGenerator();
+                SetPlayUI(false, true, false, 150, 500);
+                lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
+                tmrSumTypeCheck.Enabled = false;
+                tmrAnswerCheck.Enabled = true;
+            }
+
+            else if (Arduino.ExtractedData == "C")
+            {
+                rbMultiply.PerformClick();
+                SumGenerator();
+                SetPlayUI(false, true, false, 150, 500);
+                lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
+                tmrSumTypeCheck.Enabled = false;
+                tmrAnswerCheck.Enabled = true;
+            }
+
+            else if (Arduino.ExtractedData == "D")
+            {
+                rbDivide.PerformClick();
+                SumGenerator();
+                while (randomNumberOne % randomNumberTwo != 0)
+                {
+                    SumGenerator();
+                }
+                SetPlayUI(false, true, false, 150, 50);
+                lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+                tmrSumTypeCheck.Enabled = false;
+                tmrAnswerCheck.Enabled = true;
+            }
+            Arduino.ClearIncomingData();
         }
+        #endregion
 
-
-        //Method for creating two random numbers that are temporarily stored as two variables\\
-        private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
+        #region Antwoord controle
+        private void tmrAnswerCheck_Tick(object sender, EventArgs e)
         {
-            randomNumberOne = rnd.Next(minValueOne, maxValueOne);
-            randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
-        }
+            if (rbPlus.Checked)
+            {
+                Arduino.Receive(usedPort);
+                if (Convert.ToString(randomNumberOne + randomNumberTwo) == Arduino.ExtractedData)
+                {
+                    ScoreUp();
+                    SumGenerator();
+                    Arduino.ClearIncomingData();
+                }
+                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.ExtractedData)
+                {
+                    Arduino.SendMessage("wrong", usedPort);
+                    ScoreDown();
+                    SumGenerator();
+                    Arduino.ClearIncomingData();
+                }
+            }
 
+            else if (rbMinus.Checked)
+            {
+                Arduino.Receive(usedPort);
+                if (Convert.ToString(randomNumberOne - randomNumberTwo) == Arduino.ExtractedData)
+                {
+                    ScoreUp();
+                    SumGenerator();
+                    Arduino.ClearIncomingData();
+                }
+                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne - randomNumberTwo) != Arduino.ExtractedData)
+                {
+                    Arduino.SendMessage("wrong", usedPort);
+                    ScoreDown();
+                    SumGenerator();
+                    Arduino.ClearIncomingData();
+                }
+            }
+
+            else if (rbMultiply.Checked)
+            {
+                Arduino.Receive(usedPort);
+                if (Convert.ToString(randomNumberOne * randomNumberTwo) == Arduino.ExtractedData)
+                {
+                    ScoreUp();
+                    SumGenerator();
+                    Arduino.ClearIncomingData();
+                }
+                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne * randomNumberTwo) != Arduino.ExtractedData)
+                {
+                    Arduino.SendMessage("wrong", usedPort);
+                    ScoreDown();
+                    SumGenerator();
+                    Arduino.ClearIncomingData();
+                }
+            }
+
+            else
+            {
+                Arduino.Receive(usedPort);
+                if (Convert.ToString(randomNumberOne / randomNumberTwo) == Arduino.ExtractedData)
+                {
+                    ScoreUp();
+                    SumGenerator();
+                    while (randomNumberOne % randomNumberTwo != 0)
+                    {
+                        SumGenerator();
+                    }
+                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+                    Arduino.ClearIncomingData();
+                }
+                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne / randomNumberTwo) != Arduino.ExtractedData)
+                {
+                    Arduino.SendMessage("wrong", usedPort);
+                    ScoreDown();
+                    SumGenerator();
+                    while (randomNumberOne % randomNumberTwo != 0)
+                    {
+                        SumGenerator();
+                    }
+                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
+                    Arduino.ClearIncomingData();
+                }
+            }
+
+        }
+        #endregion
+
+        #region End Game Timer
         private void GameCountDown_Tick(object sender, EventArgs e)
         {
             time--;
@@ -126,7 +250,33 @@ namespace WindowsFormsApp1
                 tmrInfo.Enabled = true;
             }
         }
+        #endregion
 
+        #region Show info
+        private void tmrInfo_Tick(object sender, EventArgs e)
+        {
+            ControlUIVisibility(true, false, false);
+            tmrInfo.Enabled = false;
+        }
+        #endregion
+
+        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
+        {
+            lblTime.Visible = true;
+            GameCountDown.Enabled = true;
+            GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
+            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
+        }
+
+
+        //Method for creating two random numbers that are temporarily stored as two variables\\
+        private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
+        {
+            randomNumberOne = rnd.Next(minValueOne, maxValueOne);
+            randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
+        }
+
+        #region UI Instellingen
         //methode om de UI te setten\\
         private void SetPlayUI(bool setting, bool game, bool info, int x, int y)
         {
@@ -163,7 +313,15 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void ControlUIVisibility(bool settings, bool game, bool info)
+        {
+            pnlButtons.Visible = settings;
+            pnlGame.Visible = game;
+            pnlInfo.Visible = info;
+        }
+        #endregion
 
+        #region methode die standaardwaarde reset
         //Methode om standaard waarden terug te zetten\\
         private void ResetValues()
         {
@@ -173,17 +331,9 @@ namespace WindowsFormsApp1
             sumsCorrect = 0;
             sumsWrong = 0;
         }
+        #endregion
 
-
-        //Methode om de UI zichtbaar te maken\\
-        private void ControlUIVisibility(bool settings, bool game, bool info)
-        {
-            pnlButtons.Visible = settings;
-            pnlGame.Visible = game;
-            pnlInfo.Visible = info;
-        }
-
-        //Methode om de score te verhogen\\
+        #region Methodes om score te verhogen en verlagen
         private void ScoreUp()
         {
             score++;
@@ -192,7 +342,6 @@ namespace WindowsFormsApp1
             sumsCorrect++;
         }
 
-        //Methode om de score te verlagen\\
         private void ScoreDown()
         {
             if (score != 0)
@@ -203,9 +352,8 @@ namespace WindowsFormsApp1
             sumsGenerated++;
             sumsWrong++;
         }
+        #endregion
 
-        //Maak hier een switchcase methode aarin je zowel de som als de getallen in kunt stellen.
-        //Dan hoef je dat later niet meer in te stellen bij de Arduino communicatie.
         private void SumGenerator()
         {
             if (rbPlus.Checked)
@@ -303,148 +451,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void tmrAnswerCheck_Tick(object sender, EventArgs e)
-        {
-            if (rbPlus.Checked)
-            {
-                Arduino.Receive(usedPort);
-                if (Convert.ToString(randomNumberOne + randomNumberTwo) == Arduino.ExtractedData)
-                {
-                    ScoreUp();
-                    SumGenerator();
-                    Arduino.ClearIncomingData();
-                }
-                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.ExtractedData)
-                {
-                    Arduino.SendMessage("wrong", usedPort);
-                    ScoreDown();
-                    SumGenerator();
-                    Arduino.ClearIncomingData();
-                }
-            }
-
-            else if (rbMinus.Checked)
-            {
-                Arduino.Receive(usedPort);
-                if (Convert.ToString(randomNumberOne - randomNumberTwo) == Arduino.ExtractedData)
-                {
-                    ScoreUp();
-                    SumGenerator();
-                    Arduino.ClearIncomingData();
-                }
-                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne - randomNumberTwo) != Arduino.ExtractedData)
-                {
-                    Arduino.SendMessage("wrong", usedPort);
-                    ScoreDown();
-                    SumGenerator();
-                    Arduino.ClearIncomingData();
-                }
-            }
-
-            else if (rbMultiply.Checked)
-            {
-                Arduino.Receive(usedPort);
-                if (Convert.ToString(randomNumberOne * randomNumberTwo) == Arduino.ExtractedData)
-                {
-                    ScoreUp();
-                    SumGenerator();
-                    Arduino.ClearIncomingData();
-                }
-                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne * randomNumberTwo) != Arduino.ExtractedData)
-                {
-                    Arduino.SendMessage("wrong", usedPort);
-                    ScoreDown();
-                    SumGenerator();
-                    Arduino.ClearIncomingData();
-                }
-            }
-
-            else
-            {
-                Arduino.Receive(usedPort);
-                if (Convert.ToString(randomNumberOne / randomNumberTwo) == Arduino.ExtractedData)
-                {
-                    ScoreUp();
-                    SumGenerator();
-                    while (randomNumberOne % randomNumberTwo != 0)
-                    {
-                        SumGenerator();
-                    }
-                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-                    Arduino.ClearIncomingData();
-                }
-                else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne / randomNumberTwo) != Arduino.ExtractedData)
-                {
-                    Arduino.SendMessage("wrong", usedPort);
-                    ScoreDown();
-                    SumGenerator();
-                    while (randomNumberOne % randomNumberTwo != 0)
-                    {
-                        SumGenerator();
-                    }
-                    lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-                    Arduino.ClearIncomingData();
-                }
-            }
-
-        }
-
-        private void tmrSumTypeCheck_Tick(object sender, EventArgs e)
-        {
-            Arduino.Receive(usedPort);
-            if (Arduino.ExtractedData == "A")
-            {
-                rbPlus.PerformClick();
-                SumGenerator();
-                SetPlayUI(false, true, false, 150, 500);
-                lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
-                tmrSumTypeCheck.Enabled = false;
-                tmrAnswerCheck.Enabled = true;
-            }
-
-            else if (Arduino.ExtractedData == "B")
-            {
-                rbMinus.PerformClick();
-                SumGenerator();
-                SetPlayUI(false, true, false, 150, 500);
-                lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
-                tmrSumTypeCheck.Enabled = false;
-                tmrAnswerCheck.Enabled = true;
-            }
-
-            else if (Arduino.ExtractedData == "C")
-            {
-                rbMultiply.PerformClick();
-                SumGenerator();
-                SetPlayUI(false, true, false, 150, 500);
-                lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
-                tmrSumTypeCheck.Enabled = false;
-                tmrAnswerCheck.Enabled = true;
-            }
-
-            else if (Arduino.ExtractedData == "D")
-            {
-                rbDivide.PerformClick();
-                SumGenerator();
-                while (randomNumberOne % randomNumberTwo != 0)
-                {
-                    SumGenerator();
-                }
-                SetPlayUI(false, true, false, 150, 50);
-                lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-                tmrSumTypeCheck.Enabled = false;
-                tmrAnswerCheck.Enabled = true;
-            }
-            Arduino.ClearIncomingData();
-        }
-
-        private void tmrInfo_Tick(object sender, EventArgs e)
-        {
-            ControlUIVisibility(true, false, false);
-            tmrInfo.Enabled = false;
-        }
     }
 }
-
-//Maak een optie zodat kinderen de timer in kunnen stellen\\
-//Doe dit door een nieuwe UI in te stellen met de tekst "Vul hier in hoe lang je wilt oefenen."\\
+//kies som\\
+//Tijd stamp\\
+//Sommen maken\\
+//Info weergeven\\
