@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        static SerialPort usedPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
+        static SerialPort usedPort = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
         //Global variables\\
         private readonly Random rnd = new Random();
@@ -316,7 +316,7 @@ namespace WindowsFormsApp1
                 }
                 else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne + randomNumberTwo) != Arduino.ExtractedData)
                 {
-                    Arduino.SendMessage("test", usedPort);
+                    Arduino.SendMessage("wrong", usedPort);
                     ScoreDown();
                     SumGenerator();
                     Arduino.ClearIncomingData();
@@ -334,7 +334,7 @@ namespace WindowsFormsApp1
                 }
                 else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne - randomNumberTwo) != Arduino.ExtractedData)
                 {
-                    Arduino.SendMessage("test", usedPort);
+                    Arduino.SendMessage("wrong", usedPort);
                     ScoreDown();
                     SumGenerator();
                     Arduino.ClearIncomingData();
@@ -352,7 +352,7 @@ namespace WindowsFormsApp1
                 }
                 else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne * randomNumberTwo) != Arduino.ExtractedData)
                 {
-                    Arduino.SendMessage("test", usedPort);
+                    Arduino.SendMessage("wrong", usedPort);
                     ScoreDown();
                     SumGenerator();
                     Arduino.ClearIncomingData();
@@ -375,7 +375,7 @@ namespace WindowsFormsApp1
                 }
                 else if (Arduino.ExtractedData != "" && Convert.ToString(randomNumberOne / randomNumberTwo) != Arduino.ExtractedData)
                 {
-                    Arduino.SendMessage("test", usedPort);
+                    Arduino.SendMessage("wrong", usedPort);
                     ScoreDown();
                     SumGenerator();
                     while (randomNumberOne % randomNumberTwo != 0)
