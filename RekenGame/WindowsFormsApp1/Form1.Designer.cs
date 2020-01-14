@@ -54,9 +54,14 @@
             this.lblSumsCorrect = new System.Windows.Forms.Label();
             this.lblSumsMade = new System.Windows.Forms.Label();
             this.tmrInfo = new System.Windows.Forms.Timer(this.components);
+            this.tmrSetTime = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pnlSetTime = new System.Windows.Forms.Panel();
+            this.lblSetTime = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlInfo.SuspendLayout();
+            this.pnlSetTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // rbPlus
@@ -264,9 +269,9 @@
             this.lblTime.ForeColor = System.Drawing.Color.Purple;
             this.lblTime.Location = new System.Drawing.Point(592, 3);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(64, 46);
+            this.lblTime.Size = new System.Drawing.Size(85, 46);
             this.lblTime.TabIndex = 16;
-            this.lblTime.Text = "40";
+            this.lblTime.Text = "Tijd";
             this.lblTime.Visible = false;
             // 
             // label2
@@ -313,7 +318,7 @@
             this.pnlInfo.Controls.Add(this.lblSumsMade);
             this.pnlInfo.Location = new System.Drawing.Point(12, 405);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(1285, 314);
+            this.pnlInfo.Size = new System.Drawing.Size(1001, 314);
             this.pnlInfo.TabIndex = 19;
             // 
             // lblSumsWrong
@@ -357,12 +362,36 @@
             this.tmrInfo.Interval = 10000;
             this.tmrInfo.Tick += new System.EventHandler(this.tmrInfo_Tick);
             // 
+            // tmrSetTime
+            // 
+            this.tmrSetTime.Interval = 10;
+            this.tmrSetTime.Tick += new System.EventHandler(this.tmrSetTime_Tick);
+            // 
+            // pnlSetTime
+            // 
+            this.pnlSetTime.Controls.Add(this.lblSetTime);
+            this.pnlSetTime.Location = new System.Drawing.Point(1019, 405);
+            this.pnlSetTime.Name = "pnlSetTime";
+            this.pnlSetTime.Size = new System.Drawing.Size(278, 314);
+            this.pnlSetTime.TabIndex = 20;
+            // 
+            // lblSetTime
+            // 
+            this.lblSetTime.AutoSize = true;
+            this.lblSetTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSetTime.Location = new System.Drawing.Point(3, 8);
+            this.lblSetTime.Name = "lblSetTime";
+            this.lblSetTime.Size = new System.Drawing.Size(272, 29);
+            this.lblSetTime.TabIndex = 0;
+            this.lblSetTime.Text = "Hoelang wil je oefenen?";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1303, 723);
+            this.Controls.Add(this.pnlSetTime);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlButtons);
@@ -375,6 +404,8 @@
             this.pnlGame.PerformLayout();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
+            this.pnlSetTime.ResumeLayout(false);
+            this.pnlSetTime.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -405,6 +436,10 @@
         private System.Windows.Forms.Label lblSumsCorrect;
         private System.Windows.Forms.Label lblSumsMade;
         private System.Windows.Forms.Timer tmrInfo;
+        private System.Windows.Forms.Timer tmrSetTime;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel pnlSetTime;
+        private System.Windows.Forms.Label lblSetTime;
     }
 }
 
