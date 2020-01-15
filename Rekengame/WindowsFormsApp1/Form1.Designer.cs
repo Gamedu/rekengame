@@ -55,7 +55,6 @@
             this.lblSumsMade = new System.Windows.Forms.Label();
             this.tmrInfo = new System.Windows.Forms.Timer(this.components);
             this.tmrSetTime = new System.Windows.Forms.Timer(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlSetTime = new System.Windows.Forms.Panel();
             this.lblSetTime2 = new System.Windows.Forms.Label();
             this.lblSetTime = new System.Windows.Forms.Label();
@@ -463,7 +462,6 @@
         private System.Windows.Forms.Label lblSumsMade;
         private System.Windows.Forms.Timer tmrInfo;
         private System.Windows.Forms.Timer tmrSetTime;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel pnlSetTime;
         private System.Windows.Forms.Label lblSetTime;
         private System.Windows.Forms.Label lblSetTime2;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="03f162b00dac42d5b3e5a766b8d46e86" Name="Diagram1">
+        <EntityTypeShape EntityType="dbi441943Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.AspNetRoles" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.AspNetUserClaims" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.AspNetUserLogins" Width="1.5" PointX="10.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.AspNetUsers" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.Groups" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.LanguageGameScores" Width="1.5" PointX="10.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.Schools" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.Students" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.TypingGameScores" Width="1.5" PointX="10.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbi441943Model.Words" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_AspNetUsers_dbo_Groups_Group_GroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_AspNetUsers_dbo_Schools_School_SchoolId" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_LanguageGameScores_dbo_AspNetUsers_ApplicationUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_TypingGameScores_dbo_AspNetUsers_ApplicationUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_Groups_dbo_Schools_School_SchoolId" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_Students_dbo_Groups_GroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_Students_dbo_Schools_SchoolId" ManuallyRouted="false" />
+        <AssociationConnector Association="dbi441943Model.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbi441943Model.MathGameScores" Width="1.5" PointX="7.5" PointY="12.375" />
+        <AssociationConnector Association="dbi441943Model.FK_dbo_MathGameScores_dbo_Students_StudentId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
