@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
         private int sumsCorrect = 0;
         private int sumsWrong = 0;
         int time;
-        private string group = "4 Hier komt de groep uit de database.";
+        private string group = "5 Hier komt de groep uit de database.";
 
         public Form1()
         {
@@ -119,8 +119,7 @@ namespace WindowsFormsApp1
                 SumGenerator();
                 ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
-                tmrSumTypeCheck.Enabled = false;
-                tmrSetTime.Enabled = true;
+                SetTimers(false, true, false, false, false);
             }
 
             else if (Arduino.ExtractedData == "B")
@@ -129,8 +128,7 @@ namespace WindowsFormsApp1
                 SumGenerator();
                 ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
-                tmrSumTypeCheck.Enabled = false;
-                tmrSetTime.Enabled = true;
+                SetTimers(false, true, false, false, false);
             }
 
             else if (Arduino.ExtractedData == "C")
@@ -139,22 +137,16 @@ namespace WindowsFormsApp1
                 SumGenerator();
                 ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
-                tmrSumTypeCheck.Enabled = false;
-                tmrSetTime.Enabled = true;
+                SetTimers(false, true, false, false, false);
             }
 
             else if (Arduino.ExtractedData == "D")
             {
                 rbDivide.PerformClick();
                 SumGenerator();
-                //while (randomNumberOne % randomNumberTwo != 0)
-                //{
-                //    SumGenerator();
-                //}
                 ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
-                tmrSumTypeCheck.Enabled = false;
-                tmrSetTime.Enabled = true;
+                SetTimers(false, true, false, false, false);
             }
             Arduino.ClearIncomingData();
         }
@@ -168,9 +160,7 @@ namespace WindowsFormsApp1
             {
                 time = Convert.ToInt32(Arduino.ExtractedData);
                 SetPlayUI(false, false, true, false, 150, 500);
-                tmrAnswerCheck.Enabled = true;
-                GameCountDown.Enabled = true;
-                tmrSetTime.Enabled = false;
+                SetTimers(false, false, true, true, false);
                 Arduino.ClearIncomingData();
             }
 
@@ -413,13 +403,12 @@ namespace WindowsFormsApp1
                 lblSumsMade.Text = $"Je hebt {sumsGenerated} sommen gemaakt.";
                 lblSumsCorrect.Text = $"Je hebt er {sumsCorrect} goed beantwoord.";
                 lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord.";
-                lblTotalScore.Text = $"Je hebt in totaal {score} punten behaald.";
+                lblTotalScore.Text = $"Je hebt {score} punten behaald.";
                 ControlUIVisibility(false, false, false, true);
                 rbPlus.PerformClick();
                 ResetValues();
-                tmrSumTypeCheck.Enabled = true;
                 Arduino.ClearIncomingData();
-                tmrInfo.Enabled = true;
+                SetTimers(false, false, false, false, true);
             }
         }
         #endregion
@@ -428,8 +417,7 @@ namespace WindowsFormsApp1
         private void tmrInfo_Tick(object sender, EventArgs e)
         {
             ControlUIVisibility(true, false, false, false);
-            tmrSumTypeCheck.Enabled = true;
-            tmrInfo.Enabled = false;
+            SetTimers(true, false, false, false, false);
         }
         #endregion
 
@@ -508,6 +496,17 @@ namespace WindowsFormsApp1
             lblScore.Text = Convert.ToString(score);
             sumsGenerated++;
             sumsWrong++;
+        }
+        #endregion
+
+        #region Methode die timers Set
+        private void SetTimers(bool sumType, bool timeSet, bool answerCheck, bool gameCountDown, bool info)
+        {
+            tmrSumTypeCheck.Enabled = sumType;
+            tmrSetTime.Enabled = timeSet;
+            tmrAnswerCheck.Enabled = answerCheck;
+            GameCountDown.Enabled = gameCountDown;
+            tmrInfo.Enabled = info;
         }
         #endregion
 
