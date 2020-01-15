@@ -13,6 +13,8 @@ namespace WindowsFormsApp1
         static SerialPort usedPort = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
 
+        dbi441943Entities DbContext = new dbi441943Entities();
+
         //Global variables\\
         private readonly Random rnd = new Random();
         private int randomNumberOne;
@@ -22,7 +24,8 @@ namespace WindowsFormsApp1
         private int sumsCorrect = 0;
         private int sumsWrong = 0;
         int time;
-        private string group = "5 Hier komt de groep uit de database.";
+
+        private string group = "";
 
         public Form1()
         {
@@ -30,6 +33,11 @@ namespace WindowsFormsApp1
             this.MinimumSize = this.Size;
 
             InitializeComponent();
+
+            var user = DbContext.Students.Where(s => s.EmailAddress == "brian@hotmail.com").FirstOrDefault();
+
+            group = user.Groups.GroupName;
+
             switch (group[0])
             {
                 case '3':
@@ -394,6 +402,9 @@ namespace WindowsFormsApp1
         #region End Game Timer
         private void GameCountDown_Tick(object sender, EventArgs e)
         {
+            var user = DbContext.Students.Where(s => s.EmailAddress == "brian@hotmail.com").FirstOrDefault();
+
+
             time--;
             lblTime.Text = Convert.ToString(time);
             if (time == 0)
@@ -404,6 +415,21 @@ namespace WindowsFormsApp1
                 lblSumsCorrect.Text = $"Je hebt er {sumsCorrect} goed beantwoord.";
                 lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord.";
                 lblTotalScore.Text = $"Je hebt {score} punten behaald.";
+
+                var ScoreToAdd = new MathGameScores
+                {
+                    CorrectSums = sumsCorrect,
+                    InCorrectSums = sumsWrong,
+                    FinalScore = score,
+                    SaveTime = DateTime.Now,
+                    StudentId = user.StudentId,
+                    TotalSum = sumsGenerated
+                };
+
+                DbContext.MathGameScores.Add(ScoreToAdd);
+
+                DbContext.SaveChanges();
+
                 ControlUIVisibility(false, false, false, true);
                 rbPlus.PerformClick();
                 ResetValues();
