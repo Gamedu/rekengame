@@ -10,18 +10,19 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        static SerialPort usedPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
+        static SerialPort usedPort = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
+
         //Global variables\\
         private readonly Random rnd = new Random();
         private int randomNumberOne;
         private int randomNumberTwo;
         private int score;
-        private int time = 10;
         private int sumsGenerated = 0;
         private int sumsCorrect = 0;
         private int sumsWrong = 0;
-        private string group = "3 Hier komt de groep uit de database.";
+        int time;
+        private string group = "4 Hier komt de groep uit de database.";
 
         public Form1()
         {
@@ -34,6 +35,8 @@ namespace WindowsFormsApp1
                 case '3':
                 case '4':
                     this.BackgroundImage = Image.FromFile(@"Images\Wallpaper1.png");
+                    pnlSetTime.Top = 85;
+                    pnlSetTime.Left = 15;
                     lblIntro.ForeColor = Color.Black;
                     label3.ForeColor = Color.Black;
                     label4.ForeColor = Color.Black;
@@ -47,12 +50,17 @@ namespace WindowsFormsApp1
                     lblScore.ForeColor = Color.Black;
                     lblTime.ForeColor = Color.Black;
                     lblSum.ForeColor = Color.Black;
+                    lblSetTime.ForeColor = Color.Black;
+                    lblSetTime2.ForeColor = Color.Black;
+                    lblTotalScore.ForeColor = Color.Black;
                     break;
                 case '5':
                 case '6':
                     this.BackgroundImage = Image.FromFile(@"Images\Wallpaper2.png");
                     pnlButtons.Top = 85;
                     pnlButtons.Left = 15;
+                    pnlSetTime.Top = 85;
+                    pnlSetTime.Left = 15;
                     lblIntro.ForeColor = Color.White;
                     label3.ForeColor = Color.White;
                     label4.ForeColor = Color.White;
@@ -66,10 +74,17 @@ namespace WindowsFormsApp1
                     lblScore.ForeColor = Color.White;
                     lblTime.ForeColor = Color.White;
                     lblSum.ForeColor = Color.White;
+                    lblSetTime.ForeColor = Color.White;
+                    lblSetTime2.ForeColor = Color.White;
+                    lblTotalScore.ForeColor = Color.White;
                     break;
                 case '7':
                 case '8':
                     this.BackgroundImage = Image.FromFile(@"Images\Wallpaper3.png");
+                    pnlButtons.Top = 80;
+                    pnlButtons.Left = 70;
+                    pnlSetTime.Top = 80;
+                    pnlSetTime.Left = 120;
                     lblIntro.ForeColor = Color.Black;
                     label3.ForeColor = Color.Black;
                     label4.ForeColor = Color.Black;
@@ -83,15 +98,18 @@ namespace WindowsFormsApp1
                     lblScore.ForeColor = Color.Black;
                     lblTime.ForeColor = Color.Black;
                     lblSum.ForeColor = Color.Black;
+                    lblSetTime.ForeColor = Color.Black;
+                    lblSetTime2.ForeColor = Color.Black;
+                    lblTotalScore.ForeColor = Color.Black;
                     break;
                 default:
                     this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
                     break;
             }
-            ControlUIVisibility(true, false, false);
+            ControlUIVisibility(true, false, false, false);
         }
 
-        #region Kies som
+        #region Choose Sum
         private void tmrSumTypeCheck_Tick(object sender, EventArgs e)
         {
             Arduino.Receive(usedPort);
@@ -99,50 +117,203 @@ namespace WindowsFormsApp1
             {
                 rbPlus.PerformClick();
                 SumGenerator();
-                SetPlayUI(false, true, false, 150, 500);
+                ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " + " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
-                tmrAnswerCheck.Enabled = true;
+                tmrSetTime.Enabled = true;
             }
 
             else if (Arduino.ExtractedData == "B")
             {
                 rbMinus.PerformClick();
                 SumGenerator();
-                SetPlayUI(false, true, false, 150, 500);
+                ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " - " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
-                tmrAnswerCheck.Enabled = true;
+                tmrSetTime.Enabled = true;
             }
 
             else if (Arduino.ExtractedData == "C")
             {
                 rbMultiply.PerformClick();
                 SumGenerator();
-                SetPlayUI(false, true, false, 150, 500);
+                ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " x " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
-                tmrAnswerCheck.Enabled = true;
+                tmrSetTime.Enabled = true;
             }
 
             else if (Arduino.ExtractedData == "D")
             {
                 rbDivide.PerformClick();
                 SumGenerator();
-                while (randomNumberOne % randomNumberTwo != 0)
-                {
-                    SumGenerator();
-                }
-                SetPlayUI(false, true, false, 150, 50);
+                //while (randomNumberOne % randomNumberTwo != 0)
+                //{
+                //    SumGenerator();
+                //}
+                ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
-                tmrAnswerCheck.Enabled = true;
+                tmrSetTime.Enabled = true;
             }
             Arduino.ClearIncomingData();
         }
         #endregion
 
-        #region Antwoord controle
+        #region Set Time
+        private void tmrSetTime_Tick(object sender, EventArgs e)
+        {
+            Arduino.Receive(usedPort);
+            if (Arduino.ExtractedData != "")
+            {
+                time = Convert.ToInt32(Arduino.ExtractedData);
+                SetPlayUI(false, false, true, false, 150, 500);
+                tmrAnswerCheck.Enabled = true;
+                GameCountDown.Enabled = true;
+                tmrSetTime.Enabled = false;
+                Arduino.ClearIncomingData();
+            }
+
+        }
+        #endregion
+
+        #region Determines Sum Values
+        private void SumGenerator()
+        {
+            if (rbPlus.Checked)
+            {
+                switch (group[0])
+                {
+                    case '3':
+                        AfterFirstClick(1, 6, 1, 6, "+");
+                        break;
+                    case '4':
+                        AfterFirstClick(11, 91, 1, 11, "+");
+                        break;
+                    case '5':
+                        AfterFirstClick(101, 501, 101, 501, "+");
+                        break;
+                    case '6':
+                        AfterFirstClick(1001, 5001, 1001, 5001, "+");
+                        break;
+                    case '7':
+                    case '8':
+                        AfterFirstClick(10001, 50001, 10001, 50001, "+");
+                        break;
+                    default:
+                        AfterFirstClick(1, 10, 1, 10, "+");
+                        break;
+                }
+
+            }
+
+            if (rbMinus.Checked)
+            {
+                switch (group[0])
+                {
+                    case '3':
+                        AfterFirstClick(7, 11, 1, 6, "-");
+                        break;
+                    case '4':
+                        AfterFirstClick(11, 101, 1, 10, "-");
+                        break;
+                    case '5':
+                        AfterFirstClick(101, 1001, 10, 100, "-");
+                        break;
+                    case '6':
+                        AfterFirstClick(1001, 10001, 100, 1000, "-");
+                        break;
+                    case '7':
+                    case '8':
+                        AfterFirstClick(10001, 100001, 1000, 10000, "-");
+                        break;
+                    default:
+                        AfterFirstClick(1, 10, 1, 10, "-");
+                        break;
+                }
+
+            }
+
+            if (rbMultiply.Checked)
+            {
+                switch (group[0])
+                {
+                    case '4':
+                        AfterFirstClick(1, 11, 1, 11, "x");
+                        break;
+                    case '5':
+                        AfterFirstClick(10, 100, 1, 11, "x");
+                        break;
+                    case '6':
+                        AfterFirstClick(10, 100, 10, 100, "x");
+                        break;
+                    case '7':
+                    case '8':
+                        AfterFirstClick(10, 1000, 10, 1000, "x");
+                        break;
+                    default:
+                        AfterFirstClick(1, 10, 1, 10, "x");
+                        break;
+                }
+
+            }
+
+            if (rbDivide.Checked)
+            {
+                switch (group[0])
+                {
+                    case '4':
+                        AfterFirstClick(1, 5, 1, 5, ":");
+                        break;
+                    case '5':
+                        AfterFirstClick(1, 10, 1, 10, ":");
+                        break;
+                    case '6':
+                        AfterFirstClick(10, 101, 1, 10, ":");
+                        break;
+                    case '7':
+                    case '8':
+                        AfterFirstClick(10, 101, 10, 21, ":");
+                        break;
+                    default:
+                        AfterFirstClick(1, 10, 1, 10, ":");
+                        break;
+                }
+            }
+        }
+        #endregion
+
+        #region Sum Generator
+        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
+        {
+            lblTime.Visible = true;
+            if (rbDivide.Checked)
+            {
+                GenerateDivisableSum(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
+            }
+            else
+            {
+                GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
+            }
+            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
+        }
+
+
+        //Method for creating two random numbers that are temporarily stored as two variables\\
+        private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
+        {
+            randomNumberOne = rnd.Next(minValueOne, maxValueOne);
+            randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
+        }
+
+        private void GenerateDivisableSum(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
+        {
+            randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
+            randomNumberOne = (rnd.Next(minValueOne, maxValueOne) * randomNumberTwo);
+        }
+        #endregion
+
+        #region Answer Check
         private void tmrAnswerCheck_Tick(object sender, EventArgs e)
         {
             if (rbPlus.Checked)
@@ -239,10 +410,11 @@ namespace WindowsFormsApp1
             {
                 GameCountDown.Enabled = false;
                 lblTime.Text = Convert.ToString(time);
-                lblSumsMade.Text = $"Je hebt {sumsGenerated} sommen gemaakt";
-                lblSumsCorrect.Text = $"Je hebt er {sumsCorrect} goed beantwoord";
-                lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord";
-                ControlUIVisibility(false, false, true);
+                lblSumsMade.Text = $"Je hebt {sumsGenerated} sommen gemaakt.";
+                lblSumsCorrect.Text = $"Je hebt er {sumsCorrect} goed beantwoord.";
+                lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord.";
+                lblTotalScore.Text = $"Je hebt {score} punten behaald.";
+                ControlUIVisibility(false, false, false, true);
                 rbPlus.PerformClick();
                 ResetValues();
                 tmrSumTypeCheck.Enabled = true;
@@ -252,35 +424,20 @@ namespace WindowsFormsApp1
         }
         #endregion
 
-        #region Show info
+        #region Show End-Game info
         private void tmrInfo_Tick(object sender, EventArgs e)
         {
-            ControlUIVisibility(true, false, false);
+            ControlUIVisibility(true, false, false, false);
+            tmrSumTypeCheck.Enabled = true;
             tmrInfo.Enabled = false;
         }
         #endregion
 
-        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
-        {
-            lblTime.Visible = true;
-            GameCountDown.Enabled = true;
-            GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
-            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
-        }
-
-
-        //Method for creating two random numbers that are temporarily stored as two variables\\
-        private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
-        {
-            randomNumberOne = rnd.Next(minValueOne, maxValueOne);
-            randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
-        }
-
         #region UI Instellingen
         //methode om de UI te setten\\
-        private void SetPlayUI(bool setting, bool game, bool info, int x, int y)
+        private void SetPlayUI(bool setting, bool setTime, bool game, bool info, int x, int y)
         {
-            ControlUIVisibility(setting, game, info);
+            ControlUIVisibility(setting, setTime, game, info);
             switch (group[0])
             {
                 case '3':
@@ -313,9 +470,10 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void ControlUIVisibility(bool settings, bool game, bool info)
+        private void ControlUIVisibility(bool settings, bool setTime, bool game, bool info)
         {
             pnlButtons.Visible = settings;
+            pnlSetTime.Visible = setTime;
             pnlGame.Visible = game;
             pnlInfo.Visible = info;
         }
@@ -326,7 +484,6 @@ namespace WindowsFormsApp1
         private void ResetValues()
         {
             score = 0;
-            time = 10;
             sumsGenerated = 0;
             sumsCorrect = 0;
             sumsWrong = 0;
@@ -354,110 +511,5 @@ namespace WindowsFormsApp1
         }
         #endregion
 
-        private void SumGenerator()
-        {
-            if (rbPlus.Checked)
-            {
-                switch (group[0])
-                {
-                    case '3':
-                        AfterFirstClick(1, 6, 1, 6, "+");
-                        break;
-                    case '4':
-                        AfterFirstClick(11, 91, 1, 11, "+");
-                        break;
-                    case '5':
-                        AfterFirstClick(101, 501, 101, 501, "+");
-                        break;
-                    case '6':
-                        AfterFirstClick(1001, 5001, 1001, 5001, "+");
-                        break;
-                    case '7':
-                    case '8':
-                        AfterFirstClick(10001, 50001, 10001, 50001, "+");
-                        break;
-                    default:
-                        AfterFirstClick(1, 10, 1, 10, "+");
-                        break;
-                }
-
-            }
-
-            if (rbMinus.Checked)
-            {
-                switch (group[0])
-                {
-                    case '3':
-                        AfterFirstClick(7, 11, 1, 6, "-");
-                        break;
-                    case '4':
-                        AfterFirstClick(11, 101, 1, 10, "-");
-                        break;
-                    case '5':
-                        AfterFirstClick(101, 1001, 10, 100, "-");
-                        break;
-                    case '6':
-                        AfterFirstClick(1001, 10001, 100, 1000, "-");
-                        break;
-                    case '7':
-                    case '8':
-                        AfterFirstClick(10001, 100001, 1000, 10000, "-");
-                        break;
-                    default:
-                        AfterFirstClick(1, 10, 1, 10, "-");
-                        break;
-                }
-
-            }
-
-            if (rbMultiply.Checked)
-            {
-                switch (group[0])
-                {
-                    case '4':
-                        AfterFirstClick(1, 11, 1, 11, "x");
-                        break;
-                    case '5':
-                        AfterFirstClick(10, 100, 1, 11, "x");
-                        break;
-                    case '6':
-                        AfterFirstClick(10, 100, 10, 100, "x");
-                        break;
-                    case '7':
-                    case '8':
-                        AfterFirstClick(10, 1000, 10, 1000, "x");
-                        break;
-                    default:
-                        AfterFirstClick(1, 10, 1, 10, "x");
-                        break;
-                }
-
-            }
-
-            if (rbDivide.Checked)
-            {
-                switch (group[0])
-                {
-                    case '5':
-                        AfterFirstClick(101, 501, 101, 501, "+");
-                        break;
-                    case '6':
-                        AfterFirstClick(1001, 5001, 1001, 5001, "+");
-                        break;
-                    case '7':
-                    case '8':
-                        AfterFirstClick(10001, 50001, 10001, 50001, "+");
-                        break;
-                    default:
-                        AfterFirstClick(1, 10, 1, 10, ":");
-                        break;
-                }
-            }
-        }
-
     }
 }
-//kies som\\
-//Tijd stamp\\
-//Sommen maken\\
-//Info weergeven\\

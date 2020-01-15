@@ -54,9 +54,16 @@
             this.lblSumsCorrect = new System.Windows.Forms.Label();
             this.lblSumsMade = new System.Windows.Forms.Label();
             this.tmrInfo = new System.Windows.Forms.Timer(this.components);
+            this.tmrSetTime = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pnlSetTime = new System.Windows.Forms.Panel();
+            this.lblSetTime2 = new System.Windows.Forms.Label();
+            this.lblSetTime = new System.Windows.Forms.Label();
+            this.lblTotalScore = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlInfo.SuspendLayout();
+            this.pnlSetTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // rbPlus
@@ -264,9 +271,9 @@
             this.lblTime.ForeColor = System.Drawing.Color.Purple;
             this.lblTime.Location = new System.Drawing.Point(592, 3);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(64, 46);
+            this.lblTime.Size = new System.Drawing.Size(85, 46);
             this.lblTime.TabIndex = 16;
-            this.lblTime.Text = "40";
+            this.lblTime.Text = "Tijd";
             this.lblTime.Visible = false;
             // 
             // label2
@@ -308,12 +315,13 @@
             // pnlInfo
             // 
             this.pnlInfo.BackColor = System.Drawing.Color.Transparent;
+            this.pnlInfo.Controls.Add(this.lblTotalScore);
             this.pnlInfo.Controls.Add(this.lblSumsWrong);
             this.pnlInfo.Controls.Add(this.lblSumsCorrect);
             this.pnlInfo.Controls.Add(this.lblSumsMade);
             this.pnlInfo.Location = new System.Drawing.Point(12, 405);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(1285, 314);
+            this.pnlInfo.Size = new System.Drawing.Size(1001, 314);
             this.pnlInfo.TabIndex = 19;
             // 
             // lblSumsWrong
@@ -357,12 +365,59 @@
             this.tmrInfo.Interval = 10000;
             this.tmrInfo.Tick += new System.EventHandler(this.tmrInfo_Tick);
             // 
+            // tmrSetTime
+            // 
+            this.tmrSetTime.Interval = 10;
+            this.tmrSetTime.Tick += new System.EventHandler(this.tmrSetTime_Tick);
+            // 
+            // pnlSetTime
+            // 
+            this.pnlSetTime.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSetTime.Controls.Add(this.lblSetTime2);
+            this.pnlSetTime.Controls.Add(this.lblSetTime);
+            this.pnlSetTime.Location = new System.Drawing.Point(1019, 405);
+            this.pnlSetTime.Name = "pnlSetTime";
+            this.pnlSetTime.Size = new System.Drawing.Size(278, 314);
+            this.pnlSetTime.TabIndex = 20;
+            // 
+            // lblSetTime2
+            // 
+            this.lblSetTime2.AutoSize = true;
+            this.lblSetTime2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSetTime2.Location = new System.Drawing.Point(3, 42);
+            this.lblSetTime2.Name = "lblSetTime2";
+            this.lblSetTime2.Size = new System.Drawing.Size(273, 29);
+            this.lblSetTime2.TabIndex = 1;
+            this.lblSetTime2.Text = "Vul je tijd in seconden in";
+            // 
+            // lblSetTime
+            // 
+            this.lblSetTime.AutoSize = true;
+            this.lblSetTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSetTime.Location = new System.Drawing.Point(3, 8);
+            this.lblSetTime.Name = "lblSetTime";
+            this.lblSetTime.Size = new System.Drawing.Size(272, 29);
+            this.lblSetTime.TabIndex = 0;
+            this.lblSetTime.Text = "Hoelang wil je oefenen?";
+            // 
+            // lblTotalScore
+            // 
+            this.lblTotalScore.AutoSize = true;
+            this.lblTotalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalScore.ForeColor = System.Drawing.Color.Purple;
+            this.lblTotalScore.Location = new System.Drawing.Point(6, 197);
+            this.lblTotalScore.Name = "lblTotalScore";
+            this.lblTotalScore.Size = new System.Drawing.Size(419, 63);
+            this.lblTotalScore.TabIndex = 3;
+            this.lblTotalScore.Text = "Hoeveel punten";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1303, 723);
+            this.Controls.Add(this.pnlSetTime);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlButtons);
@@ -375,6 +430,8 @@
             this.pnlGame.PerformLayout();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
+            this.pnlSetTime.ResumeLayout(false);
+            this.pnlSetTime.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -405,6 +462,12 @@
         private System.Windows.Forms.Label lblSumsCorrect;
         private System.Windows.Forms.Label lblSumsMade;
         private System.Windows.Forms.Timer tmrInfo;
+        private System.Windows.Forms.Timer tmrSetTime;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel pnlSetTime;
+        private System.Windows.Forms.Label lblSetTime;
+        private System.Windows.Forms.Label lblSetTime2;
+        private System.Windows.Forms.Label lblTotalScore;
     }
 }
 
