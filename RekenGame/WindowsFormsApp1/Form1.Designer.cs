@@ -57,8 +57,9 @@
             this.tmrSetTime = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlSetTime = new System.Windows.Forms.Panel();
-            this.lblSetTime = new System.Windows.Forms.Label();
             this.lblSetTime2 = new System.Windows.Forms.Label();
+            this.lblSetTime = new System.Windows.Forms.Label();
+            this.lblTotalScore = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlInfo.SuspendLayout();
@@ -314,6 +315,7 @@
             // pnlInfo
             // 
             this.pnlInfo.BackColor = System.Drawing.Color.Transparent;
+            this.pnlInfo.Controls.Add(this.lblTotalScore);
             this.pnlInfo.Controls.Add(this.lblSumsWrong);
             this.pnlInfo.Controls.Add(this.lblSumsCorrect);
             this.pnlInfo.Controls.Add(this.lblSumsMade);
@@ -378,6 +380,16 @@
             this.pnlSetTime.Size = new System.Drawing.Size(278, 314);
             this.pnlSetTime.TabIndex = 20;
             // 
+            // lblSetTime2
+            // 
+            this.lblSetTime2.AutoSize = true;
+            this.lblSetTime2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSetTime2.Location = new System.Drawing.Point(3, 42);
+            this.lblSetTime2.Name = "lblSetTime2";
+            this.lblSetTime2.Size = new System.Drawing.Size(273, 29);
+            this.lblSetTime2.TabIndex = 1;
+            this.lblSetTime2.Text = "Vul je tijd in seconden in";
+            // 
             // lblSetTime
             // 
             this.lblSetTime.AutoSize = true;
@@ -388,15 +400,16 @@
             this.lblSetTime.TabIndex = 0;
             this.lblSetTime.Text = "Hoelang wil je oefenen?";
             // 
-            // lblSetTime2
+            // lblTotalScore
             // 
-            this.lblSetTime2.AutoSize = true;
-            this.lblSetTime2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSetTime2.Location = new System.Drawing.Point(3, 42);
-            this.lblSetTime2.Name = "lblSetTime2";
-            this.lblSetTime2.Size = new System.Drawing.Size(273, 29);
-            this.lblSetTime2.TabIndex = 1;
-            this.lblSetTime2.Text = "Vul je tijd in seconden in";
+            this.lblTotalScore.AutoSize = true;
+            this.lblTotalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalScore.ForeColor = System.Drawing.Color.Purple;
+            this.lblTotalScore.Location = new System.Drawing.Point(6, 197);
+            this.lblTotalScore.Name = "lblTotalScore";
+            this.lblTotalScore.Size = new System.Drawing.Size(419, 63);
+            this.lblTotalScore.TabIndex = 3;
+            this.lblTotalScore.Text = "Hoeveel punten";
             // 
             // Form1
             // 
@@ -454,6 +467,7 @@
         private System.Windows.Forms.Panel pnlSetTime;
         private System.Windows.Forms.Label lblSetTime;
         private System.Windows.Forms.Label lblSetTime2;
+        private System.Windows.Forms.Label lblTotalScore;
     }
 }
 

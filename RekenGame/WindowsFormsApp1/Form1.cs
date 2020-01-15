@@ -52,6 +52,7 @@ namespace WindowsFormsApp1
                     lblSum.ForeColor = Color.Black;
                     lblSetTime.ForeColor = Color.Black;
                     lblSetTime2.ForeColor = Color.Black;
+                    lblTotalScore.ForeColor = Color.Black;
                     break;
                 case '5':
                 case '6':
@@ -75,6 +76,7 @@ namespace WindowsFormsApp1
                     lblSum.ForeColor = Color.White;
                     lblSetTime.ForeColor = Color.White;
                     lblSetTime2.ForeColor = Color.White;
+                    lblTotalScore.ForeColor = Color.White;
                     break;
                 case '7':
                 case '8':
@@ -98,6 +100,7 @@ namespace WindowsFormsApp1
                     lblSum.ForeColor = Color.Black;
                     lblSetTime.ForeColor = Color.Black;
                     lblSetTime2.ForeColor = Color.Black;
+                    lblTotalScore.ForeColor = Color.Black;
                     break;
                 default:
                     this.BackgroundImage = Image.FromFile(@"Images\Jungle_Kids.jpg");
@@ -144,10 +147,10 @@ namespace WindowsFormsApp1
             {
                 rbDivide.PerformClick();
                 SumGenerator();
-                while (randomNumberOne % randomNumberTwo != 0)
-                {
-                    SumGenerator();
-                }
+                //while (randomNumberOne % randomNumberTwo != 0)
+                //{
+                //    SumGenerator();
+                //}
                 ControlUIVisibility(false, true, false, false);
                 lblSum.Text = $"{randomNumberOne}" + " : " + $"{randomNumberTwo}" + " =";
                 tmrSumTypeCheck.Enabled = false;
@@ -174,7 +177,7 @@ namespace WindowsFormsApp1
         }
         #endregion
 
-        #region Sum Generator
+        #region Determines Sum Values
         private void SumGenerator()
         {
             if (rbPlus.Checked)
@@ -259,21 +262,54 @@ namespace WindowsFormsApp1
             {
                 switch (group[0])
                 {
+                    case '4':
+                        AfterFirstClick(1, 5, 1, 5, ":");
+                        break;
                     case '5':
-                        AfterFirstClick(101, 501, 101, 501, ":");
+                        AfterFirstClick(1, 10, 1, 10, ":");
                         break;
                     case '6':
-                        AfterFirstClick(1001, 5001, 1001, 5001, ":");
+                        AfterFirstClick(10, 101, 1, 10, ":");
                         break;
                     case '7':
                     case '8':
-                        AfterFirstClick(10001, 50001, 10001, 50001, ":");
+                        AfterFirstClick(10, 101, 10, 21, ":");
                         break;
                     default:
                         AfterFirstClick(1, 10, 1, 10, ":");
                         break;
                 }
             }
+        }
+        #endregion
+
+        #region Sum Generator
+        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
+        {
+            lblTime.Visible = true;
+            if (rbDivide.Checked)
+            {
+                GenerateDivisableSum(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
+            }
+            else
+            {
+                GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
+            }
+            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
+        }
+
+
+        //Method for creating two random numbers that are temporarily stored as two variables\\
+        private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
+        {
+            randomNumberOne = rnd.Next(minValueOne, maxValueOne);
+            randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
+        }
+
+        private void GenerateDivisableSum(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
+        {
+            randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
+            randomNumberOne = (rnd.Next(minValueOne, maxValueOne) * randomNumberTwo);
         }
         #endregion
 
@@ -374,9 +410,10 @@ namespace WindowsFormsApp1
             {
                 GameCountDown.Enabled = false;
                 lblTime.Text = Convert.ToString(time);
-                lblSumsMade.Text = $"Je hebt {sumsGenerated} sommen gemaakt";
-                lblSumsCorrect.Text = $"Je hebt er {sumsCorrect} goed beantwoord";
-                lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord";
+                lblSumsMade.Text = $"Je hebt {sumsGenerated} sommen gemaakt.";
+                lblSumsCorrect.Text = $"Je hebt er {sumsCorrect} goed beantwoord.";
+                lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord.";
+                lblTotalScore.Text = $"Je hebt in totaal {score} punten behaald.";
                 ControlUIVisibility(false, false, false, true);
                 rbPlus.PerformClick();
                 ResetValues();
@@ -391,24 +428,10 @@ namespace WindowsFormsApp1
         private void tmrInfo_Tick(object sender, EventArgs e)
         {
             ControlUIVisibility(true, false, false, false);
+            tmrSumTypeCheck.Enabled = true;
             tmrInfo.Enabled = false;
         }
         #endregion
-
-        private void AfterFirstClick(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo, string type)
-        {
-            lblTime.Visible = true;
-            GenerateNumbers(minValueOne, maxValueOne, minValueTwo, maxValueTwo);
-            lblSum.Text = $"{randomNumberOne}" + " " + type + " " + $"{randomNumberTwo}" + " =";
-        }
-
-
-        //Method for creating two random numbers that are temporarily stored as two variables\\
-        private void GenerateNumbers(int minValueOne, int maxValueOne, int minValueTwo, int maxValueTwo)
-        {
-            randomNumberOne = rnd.Next(minValueOne, maxValueOne);
-            randomNumberTwo = rnd.Next(minValueTwo, maxValueTwo);
-        }
 
         #region UI Instellingen
         //methode om de UI te setten\\
