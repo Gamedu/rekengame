@@ -50,6 +50,7 @@
             this.tmrAnswerCheck = new System.Windows.Forms.Timer(this.components);
             this.tmrSumTypeCheck = new System.Windows.Forms.Timer(this.components);
             this.pnlInfo = new System.Windows.Forms.Panel();
+            this.lblTotalScore = new System.Windows.Forms.Label();
             this.lblSumsWrong = new System.Windows.Forms.Label();
             this.lblSumsCorrect = new System.Windows.Forms.Label();
             this.lblSumsMade = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.pnlSetTime = new System.Windows.Forms.Panel();
             this.lblSetTime2 = new System.Windows.Forms.Label();
             this.lblSetTime = new System.Windows.Forms.Label();
-            this.lblTotalScore = new System.Windows.Forms.Label();
             this.pnlButtons.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlInfo.SuspendLayout();
@@ -258,9 +258,9 @@
             this.label1.ForeColor = System.Drawing.Color.Purple;
             this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 46);
+            this.label1.Size = new System.Drawing.Size(157, 46);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Punten";
+            this.label1.Text = "Punten:";
             // 
             // lblTime
             // 
@@ -322,6 +322,17 @@
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(1001, 314);
             this.pnlInfo.TabIndex = 19;
+            // 
+            // lblTotalScore
+            // 
+            this.lblTotalScore.AutoSize = true;
+            this.lblTotalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalScore.ForeColor = System.Drawing.Color.Purple;
+            this.lblTotalScore.Location = new System.Drawing.Point(6, 197);
+            this.lblTotalScore.Name = "lblTotalScore";
+            this.lblTotalScore.Size = new System.Drawing.Size(419, 63);
+            this.lblTotalScore.TabIndex = 3;
+            this.lblTotalScore.Text = "Hoeveel punten";
             // 
             // lblSumsWrong
             // 
@@ -399,17 +410,6 @@
             this.lblSetTime.TabIndex = 0;
             this.lblSetTime.Text = "Hoelang wil je oefenen?";
             // 
-            // lblTotalScore
-            // 
-            this.lblTotalScore.AutoSize = true;
-            this.lblTotalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalScore.ForeColor = System.Drawing.Color.Purple;
-            this.lblTotalScore.Location = new System.Drawing.Point(6, 197);
-            this.lblTotalScore.Name = "lblTotalScore";
-            this.lblTotalScore.Size = new System.Drawing.Size(419, 63);
-            this.lblTotalScore.TabIndex = 3;
-            this.lblTotalScore.Text = "Hoeveel punten";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,6 +421,7 @@
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlButtons);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Reken Spel";
             this.pnlButtons.ResumeLayout(false);

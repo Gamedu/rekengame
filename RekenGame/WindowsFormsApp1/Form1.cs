@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             this.WindowState = FormWindowState.Maximized;
             this.MinimumSize = this.Size;
 
-           this.Icon = Icon.ExtractAssociatedIcon(@"Images/Rekengame_Icon.ico");
+            this.Icon = Icon.ExtractAssociatedIcon(@"Images/Rekengame_Icon.ico");
 
             InitializeComponent();
 
@@ -166,13 +166,19 @@ namespace WindowsFormsApp1
         private void tmrSetTime_Tick(object sender, EventArgs e)
         {
             Arduino.Receive(usedPort);
-            if (Arduino.ExtractedData != "")
+            if (Arduino.ExtractedData == "" || Arduino.ExtractedData == "A" || Arduino.ExtractedData == "B" || Arduino.ExtractedData == "C" || Arduino.ExtractedData == "D")
+            {
+                Arduino.ClearIncomingData();
+            }
+
+            else
             {
                 time = Convert.ToInt32(Arduino.ExtractedData);
                 SetPlayUI(false, false, true, false, 150, 500);
                 SetTimers(false, false, true, true, false);
                 Arduino.ClearIncomingData();
             }
+
 
         }
         #endregion
