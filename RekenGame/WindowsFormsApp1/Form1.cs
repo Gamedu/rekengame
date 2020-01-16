@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
         static SerialPort usedPort = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
         Messages Arduino = new Messages(usedPort);
 
-        dbi441943Entities DbContext = new dbi441943Entities();
+        dbi441943Entities1 DbContext = new dbi441943Entities1();
 
         //Global variables\\
         private readonly Random rnd = new Random();
@@ -411,10 +411,26 @@ namespace WindowsFormsApp1
             {
                 GameCountDown.Enabled = false;
                 lblTime.Text = Convert.ToString(time);
-                lblSumsMade.Text = $"Je hebt {sumsGenerated} sommen gemaakt.";
+                if (sumsGenerated == 1)
+                {
+                    lblSumsMade.Text = $"Je hebt {sumsGenerated} som gemaakt.";
+                }
+                else
+                {
+                    lblSumsMade.Text = $"Je hebt {sumsGenerated} sommen gemaakt.";
+                }
+
                 lblSumsCorrect.Text = $"Je hebt er {sumsCorrect} goed beantwoord.";
                 lblSumsWrong.Text = $"Je hebt er {sumsWrong} fout beantwoord.";
-                lblTotalScore.Text = $"Je hebt {score} punten behaald.";
+                if (score == 1)
+                {
+                    lblTotalScore.Text = $"Je hebt {score} punt behaald.";
+                }
+                else
+                {
+                    lblTotalScore.Text = $"Je hebt {score} punten behaald.";
+                }
+
 
                 var ScoreToAdd = new MathGameScores
                 {

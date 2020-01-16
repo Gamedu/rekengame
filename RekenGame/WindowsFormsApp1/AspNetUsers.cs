@@ -20,7 +20,6 @@ namespace WindowsFormsApp1
             this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
             this.LanguageGameScores = new HashSet<LanguageGameScores>();
-            this.TypingGameScores = new HashSet<TypingGameScores>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
         }
     
@@ -50,8 +49,6 @@ namespace WindowsFormsApp1
         public virtual Schools Schools { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LanguageGameScores> LanguageGameScores { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TypingGameScores> TypingGameScores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
     }

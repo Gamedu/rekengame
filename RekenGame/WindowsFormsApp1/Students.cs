@@ -18,18 +18,21 @@ namespace WindowsFormsApp1
         public Students()
         {
             this.MathGameScores = new HashSet<MathGameScores>();
+            this.TypingGameScores = new HashSet<TypingGameScores>();
         }
     
         public System.Guid StudentId { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
-        public int GroupId { get; set; }
         public int SchoolId { get; set; }
+        public int GroupId { get; set; }
     
         public virtual Groups Groups { get; set; }
-        public virtual Schools Schools { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MathGameScores> MathGameScores { get; set; }
+        public virtual Schools Schools { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TypingGameScores> TypingGameScores { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
     
         public int GroupId { get; set; }
         public string GroupName { get; set; }
-        public Nullable<int> School_SchoolId { get; set; }
+        public Nullable<int> SchoolId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }

@@ -19,8 +19,8 @@ namespace WindowsFormsApp1
         public int InCorrect { get; set; }
         public int TotalScore { get; set; }
         public System.DateTime ResultDateTime { get; set; }
-        public string ApplicationUser_Id { get; set; }
+        public System.Guid StudentId { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual Students Students { get; set; }
     }
 }
