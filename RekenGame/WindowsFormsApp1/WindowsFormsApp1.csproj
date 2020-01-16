@@ -209,6 +209,9 @@
     <Content Include="Images\Jungle_Kids.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Rekengame_Icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Wallpaper1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

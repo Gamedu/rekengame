@@ -32,6 +32,8 @@ namespace WindowsFormsApp1
             this.WindowState = FormWindowState.Maximized;
             this.MinimumSize = this.Size;
 
+           this.Icon = Icon.ExtractAssociatedIcon(@"Images/Rekengame_Icon.ico");
+
             InitializeComponent();
 
             var user = DbContext.Students.Where(s => s.EmailAddress == "brian@hotmail.com").FirstOrDefault();
@@ -517,6 +519,7 @@ namespace WindowsFormsApp1
             sumsGenerated = 0;
             sumsCorrect = 0;
             sumsWrong = 0;
+            lblScore.Text = $"{score}";
         }
         #endregion
 
